@@ -120,15 +120,11 @@ $(document).ready(function(){initNavTree('class_scripted_command_listener.html',
 Inheritance diagram for ScriptedCommandListener:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_scripted_command_listener__inherit__graph.png" border="0" usemap="#_scripted_command_listener_inherit__map" alt="Inheritance graph"/></div>
-<map name="_scripted_command_listener_inherit__map" id="_scripted_command_listener_inherit__map">
-</map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
 Collaboration diagram for ScriptedCommandListener:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_scripted_command_listener__coll__graph.png" border="0" usemap="#_scripted_command_listener_coll__map" alt="Collaboration graph"/></div>
-<map name="_scripted_command_listener_coll__map" id="_scripted_command_listener_coll__map">
-</map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="signals"></a>
@@ -189,7 +185,22 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>make sure we know when new connection is established</p>
 <p>now listen to the port </p>
-
+<div class="fragment"><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    : QObject(parent)</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="class_scripted_command_listener.html#ae041b0708b95167777b077f2a5ff4af3">m_tcpServer</a> = <span class="keyword">new</span> QTcpServer( <span class="keyword">this</span>);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    connect( <a class="code" href="class_scripted_command_listener.html#ae041b0708b95167777b077f2a5ff4af3">m_tcpServer</a>, &amp; QTcpServer::newConnection,</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;             <span class="keyword">this</span>, &amp; <a class="code" href="class_scripted_command_listener.html#a21139f5516ea2edbad5332f53b89d4c4">ScriptedCommandListener::newConnectionCB</a>);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordflow">if</span>( ! <a class="code" href="class_scripted_command_listener.html#ae041b0708b95167777b077f2a5ff4af3">m_tcpServer</a>-&gt; listen( QHostAddress::AnyIPv4, port)) {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Coud not listen for scripted commands on given port&quot;</span>);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    }</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;}</div>
+<div class="ttc" id="class_scripted_command_listener_html_a21139f5516ea2edbad5332f53b89d4c4"><div class="ttname"><a href="class_scripted_command_listener.html#a21139f5516ea2edbad5332f53b89d4c4">ScriptedCommandListener::newConnectionCB</a></div><div class="ttdeci">void newConnectionCB()</div><div class="ttdef"><b>Definition:</b> ScriptedCommandListener.cpp:29</div></div>
+<div class="ttc" id="class_scripted_command_listener_html_ae041b0708b95167777b077f2a5ff4af3"><div class="ttname"><a href="class_scripted_command_listener.html#ae041b0708b95167777b077f2a5ff4af3">ScriptedCommandListener::m_tcpServer</a></div><div class="ttdeci">QTcpServer * m_tcpServer</div><div class="ttdef"><b>Definition:</b> ScriptedCommandListener.h:30</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -255,7 +266,21 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
+<div class="fragment"><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;{</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    qDebug() &lt;&lt; <span class="stringliteral">&quot;New scripted client connection...&quot;</span>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordflow">if</span>( <a class="code" href="class_scripted_command_listener.html#ab0905d3a085a8162a55e8347436a04eb">m_connection</a> != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        qWarning() &lt;&lt; <span class="stringliteral">&quot;Another client trying to connect? Ignoring...&quot;</span>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    }</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="class_scripted_command_listener.html#ab0905d3a085a8162a55e8347436a04eb">m_connection</a> = <a class="code" href="class_scripted_command_listener.html#ae041b0708b95167777b077f2a5ff4af3">m_tcpServer</a>-&gt;nextPendingConnection();</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    connect( <a class="code" href="class_scripted_command_listener.html#ab0905d3a085a8162a55e8347436a04eb">m_connection</a>, &amp; QTcpSocket::readyRead,</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;             <span class="keyword">this</span>, &amp; <a class="code" href="class_scripted_command_listener.html#af45cc3ed21eda5ee1ebe835470d601f6">ScriptedCommandListener::socketDataCB</a>);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div>
+<div class="ttc" id="class_scripted_command_listener_html_ab0905d3a085a8162a55e8347436a04eb"><div class="ttname"><a href="class_scripted_command_listener.html#ab0905d3a085a8162a55e8347436a04eb">ScriptedCommandListener::m_connection</a></div><div class="ttdeci">QTcpSocket * m_connection</div><div class="ttdef"><b>Definition:</b> ScriptedCommandListener.h:31</div></div>
+<div class="ttc" id="class_scripted_command_listener_html_af45cc3ed21eda5ee1ebe835470d601f6"><div class="ttname"><a href="class_scripted_command_listener.html#af45cc3ed21eda5ee1ebe835470d601f6">ScriptedCommandListener::socketDataCB</a></div><div class="ttdeci">void socketDataCB()</div><div class="ttdef"><b>Definition:</b> ScriptedCommandListener.cpp:42</div></div>
+<div class="ttc" id="class_scripted_command_listener_html_ae041b0708b95167777b077f2a5ff4af3"><div class="ttname"><a href="class_scripted_command_listener.html#ae041b0708b95167777b077f2a5ff4af3">ScriptedCommandListener::m_tcpServer</a></div><div class="ttdeci">QTcpServer * m_tcpServer</div><div class="ttdef"><b>Definition:</b> ScriptedCommandListener.h:30</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -296,7 +321,27 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
+<div class="fragment"><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;{</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    qDebug() &lt;&lt; <span class="stringliteral">&quot;scripted command listener: socket data ready&quot;</span>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">char</span> buff[ 4096];</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    qint64 lineLength = <a class="code" href="class_scripted_command_listener.html#ab0905d3a085a8162a55e8347436a04eb">m_connection</a>-&gt; readLine( buff, <span class="keyword">sizeof</span>(buff));</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">if</span>( lineLength == -1) {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        qWarning() &lt;&lt; <span class="stringliteral">&quot;scripted command listener: something wrong with socket&quot;</span>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">if</span>( lineLength == 0) {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        qDebug() &lt;&lt; <span class="stringliteral">&quot;scripted command listener: not a full line yet...&quot;</span>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    }</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    QString str( buff);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    str = str.trimmed();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    emit <a class="code" href="class_scripted_command_listener.html#a6575cdbad4efa4709213a53663e3a3b8">command</a>( str);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}</div>
+<div class="ttc" id="class_scripted_command_listener_html_ab0905d3a085a8162a55e8347436a04eb"><div class="ttname"><a href="class_scripted_command_listener.html#ab0905d3a085a8162a55e8347436a04eb">ScriptedCommandListener::m_connection</a></div><div class="ttdeci">QTcpSocket * m_connection</div><div class="ttdef"><b>Definition:</b> ScriptedCommandListener.h:31</div></div>
+<div class="ttc" id="class_scripted_command_listener_html_a6575cdbad4efa4709213a53663e3a3b8"><div class="ttname"><a href="class_scripted_command_listener.html#a6575cdbad4efa4709213a53663e3a3b8">ScriptedCommandListener::command</a></div><div class="ttdeci">void command(QString)</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -359,7 +404,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_scripted_command_listener.html">ScriptedCommandListener</a></li>
-    <li class="footer">Generated on Mon Sep 1 2014 00:13:37 for CARTAVIS by
+    <li class="footer">Generated on Mon Sep 1 2014 00:34:38 for CARTAVIS by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>

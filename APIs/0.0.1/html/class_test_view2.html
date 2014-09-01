@@ -219,7 +219,21 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
+<div class="fragment"><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                                                                     {</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <a class="code" href="class_test_view2.html#aa64d5d080d42808a893c2f8137df0c2c">m_defaultImage</a> = img;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <a class="code" href="class_test_view2.html#a0e513e522c5da11fb40f4f54ddefffd2">m_qimage</a> = QImage( 100, 100, QImage::Format_RGB888);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <a class="code" href="class_test_view2.html#a0e513e522c5da11fb40f4f54ddefffd2">m_qimage</a>.fill( bgColor);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <a class="code" href="class_test_view2.html#a3c1091797aecc42b52ebeb6373587ce2">m_viewName</a> = viewName;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <a class="code" href="class_test_view2.html#a345aa1007a97b03ff4d3e0f76ffe0f7b">m_connector</a>= <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <a class="code" href="class_test_view2.html#a36a57e71117e5fa81538e7f33c7a5a9d">m_bgColor</a> = bgColor;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    }</div>
+<div class="ttc" id="class_test_view2_html_a36a57e71117e5fa81538e7f33c7a5a9d"><div class="ttname"><a href="class_test_view2.html#a36a57e71117e5fa81538e7f33c7a5a9d">TestView2::m_bgColor</a></div><div class="ttdeci">QColor m_bgColor</div><div class="ttdef"><b>Definition:</b> Viewer.cpp:165</div></div>
+<div class="ttc" id="class_test_view2_html_aa64d5d080d42808a893c2f8137df0c2c"><div class="ttname"><a href="class_test_view2.html#aa64d5d080d42808a893c2f8137df0c2c">TestView2::m_defaultImage</a></div><div class="ttdeci">QImage m_defaultImage</div><div class="ttdef"><b>Definition:</b> Viewer.cpp:166</div></div>
+<div class="ttc" id="class_test_view2_html_a0e513e522c5da11fb40f4f54ddefffd2"><div class="ttname"><a href="class_test_view2.html#a0e513e522c5da11fb40f4f54ddefffd2">TestView2::m_qimage</a></div><div class="ttdeci">QImage m_qimage</div><div class="ttdef"><b>Definition:</b> Viewer.cpp:199</div></div>
+<div class="ttc" id="class_test_view2_html_a3c1091797aecc42b52ebeb6373587ce2"><div class="ttname"><a href="class_test_view2.html#a3c1091797aecc42b52ebeb6373587ce2">TestView2::m_viewName</a></div><div class="ttdeci">QString m_viewName</div><div class="ttdef"><b>Definition:</b> Viewer.cpp:200</div></div>
+<div class="ttc" id="class_test_view2_html_a345aa1007a97b03ff4d3e0f76ffe0f7b"><div class="ttname"><a href="class_test_view2.html#a345aa1007a97b03ff4d3e0f76ffe0f7b">TestView2::m_connector</a></div><div class="ttdeci">IConnector * m_connector</div><div class="ttdef"><b>Definition:</b> Viewer.cpp:198</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -247,7 +261,13 @@ Protected Attributes</h2></td></tr>
 <p>handle request for getting the draw buffer that will be drawn strongly suggested format: QImage::Format_RGB888, to avoid conversion </p>
 
 <p>Implements <a class="el" href="class_i_view.html#a0dafd368b8b840f34f156ca142b1941a">IView</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    {</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        <a class="code" href="class_test_view2.html#a0b99e73751d9628c3ca8366f17838991">redrawBuffer</a>();</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="class_test_view2.html#a0e513e522c5da11fb40f4f54ddefffd2">m_qimage</a>;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    }</div>
+<div class="ttc" id="class_test_view2_html_a0b99e73751d9628c3ca8366f17838991"><div class="ttname"><a href="class_test_view2.html#a0b99e73751d9628c3ca8366f17838991">TestView2::redrawBuffer</a></div><div class="ttdeci">void redrawBuffer()</div><div class="ttdef"><b>Definition:</b> Viewer.cpp:168</div></div>
+<div class="ttc" id="class_test_view2_html_a0e513e522c5da11fb40f4f54ddefffd2"><div class="ttname"><a href="class_test_view2.html#a0e513e522c5da11fb40f4f54ddefffd2">TestView2::m_qimage</a></div><div class="ttdeci">QImage m_qimage</div><div class="ttdef"><b>Definition:</b> Viewer.cpp:199</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -284,7 +304,9 @@ Here is the call graph for this function:</div>
 <p>handle keyboard events </p>
 
 <p>Implements <a class="el" href="class_i_view.html#a988597e87985a28038428e8e93acadd6">IView</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    {</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="aeaf65860fb0d79bd1d14acf425f51df0"></a>
@@ -312,7 +334,16 @@ Here is the call graph for this function:</div>
 <p>handle mouse events </p>
 
 <p>Implements <a class="el" href="class_i_view.html#a7aeb25b64eb00ee59b566db1b583d95e">IView</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    {</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        <a class="code" href="class_test_view2.html#a3bb3646c1357cc191ce86900c59128e4">m_lastMouse</a> = QPointF( ev.x(), ev.y());</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        <a class="code" href="class_test_view2.html#a345aa1007a97b03ff4d3e0f76ffe0f7b">m_connector</a>-&gt; refreshView( <span class="keyword">this</span>);</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <a class="code" href="class_test_view2.html#a345aa1007a97b03ff4d3e0f76ffe0f7b">m_connector</a>-&gt; setState( <span class="stringliteral">&quot;/mouse/x&quot;</span>, QString::number(ev.x()));</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        <a class="code" href="class_test_view2.html#a345aa1007a97b03ff4d3e0f76ffe0f7b">m_connector</a>-&gt; setState( <span class="stringliteral">&quot;/mouse/y&quot;</span>, QString::number(ev.y()));</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    }</div>
+<div class="ttc" id="class_test_view2_html_a345aa1007a97b03ff4d3e0f76ffe0f7b"><div class="ttname"><a href="class_test_view2.html#a345aa1007a97b03ff4d3e0f76ffe0f7b">TestView2::m_connector</a></div><div class="ttdeci">IConnector * m_connector</div><div class="ttdef"><b>Definition:</b> Viewer.cpp:198</div></div>
+<div class="ttc" id="class_test_view2_html_a3bb3646c1357cc191ce86900c59128e4"><div class="ttname"><a href="class_test_view2.html#a3bb3646c1357cc191ce86900c59128e4">TestView2::m_lastMouse</a></div><div class="ttdeci">QPointF m_lastMouse</div><div class="ttdef"><b>Definition:</b> Viewer.cpp:202</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="aaad797f4abbd46176c8b75afb927130e"></a>
@@ -340,7 +371,14 @@ Here is the call graph for this function:</div>
 <p>handle client resize request </p>
 
 <p>Implements <a class="el" href="class_i_view.html#ac7da598151f626569f0fec833d2e3e64">IView</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    {</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        <a class="code" href="class_test_view2.html#a0e513e522c5da11fb40f4f54ddefffd2">m_qimage</a> = QImage( <a class="code" href="class_test_view2.html#a2d00efb431cefe73ea3912823bfe3859">size</a>, <a class="code" href="class_test_view2.html#a0e513e522c5da11fb40f4f54ddefffd2">m_qimage</a>.format());</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <a class="code" href="class_test_view2.html#a345aa1007a97b03ff4d3e0f76ffe0f7b">m_connector</a>-&gt; refreshView( <span class="keyword">this</span>);</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    }</div>
+<div class="ttc" id="class_test_view2_html_a0e513e522c5da11fb40f4f54ddefffd2"><div class="ttname"><a href="class_test_view2.html#a0e513e522c5da11fb40f4f54ddefffd2">TestView2::m_qimage</a></div><div class="ttdeci">QImage m_qimage</div><div class="ttdef"><b>Definition:</b> Viewer.cpp:199</div></div>
+<div class="ttc" id="class_test_view2_html_a2d00efb431cefe73ea3912823bfe3859"><div class="ttname"><a href="class_test_view2.html#a2d00efb431cefe73ea3912823bfe3859">TestView2::size</a></div><div class="ttdeci">virtual QSize size()</div><div class="ttdoc">handle request for obtaining size </div><div class="ttdef"><b>Definition:</b> Viewer.cpp:137</div></div>
+<div class="ttc" id="class_test_view2_html_a345aa1007a97b03ff4d3e0f76ffe0f7b"><div class="ttname"><a href="class_test_view2.html#a345aa1007a97b03ff4d3e0f76ffe0f7b">TestView2::m_connector</a></div><div class="ttdeci">IConnector * m_connector</div><div class="ttdef"><b>Definition:</b> Viewer.cpp:198</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="a1f239b67e1d0e9929bffb1cbb1a1010c"></a>
@@ -367,7 +405,11 @@ Here is the call graph for this function:</div>
 <p>get the name of the view </p>
 
 <p>Implements <a class="el" href="class_i_view.html#a9b57cb7feb3d7f2c26502eb9b1ac4239">IView</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    {</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="class_test_view2.html#a3c1091797aecc42b52ebeb6373587ce2">m_viewName</a>;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    }</div>
+<div class="ttc" id="class_test_view2_html_a3c1091797aecc42b52ebeb6373587ce2"><div class="ttname"><a href="class_test_view2.html#a3c1091797aecc42b52ebeb6373587ce2">TestView2::m_viewName</a></div><div class="ttdeci">QString m_viewName</div><div class="ttdef"><b>Definition:</b> Viewer.cpp:200</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="a0b99e73751d9628c3ca8366f17838991"></a>
@@ -390,7 +432,41 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
+<div class="fragment"><div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    {</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        QPointF center = <a class="code" href="class_test_view2.html#a0e513e522c5da11fb40f4f54ddefffd2">m_qimage</a>.rect().center();</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        QPointF diff = <a class="code" href="class_test_view2.html#a3bb3646c1357cc191ce86900c59128e4">m_lastMouse</a> - center;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        <span class="keywordtype">double</span> angle = atan2( diff.x(), diff.y());</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        angle *= - 180 / M_PI;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        <a class="code" href="class_test_view2.html#a0e513e522c5da11fb40f4f54ddefffd2">m_qimage</a>.fill( <a class="code" href="class_test_view2.html#a36a57e71117e5fa81538e7f33c7a5a9d">m_bgColor</a>);</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        {</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            QPainter p( &amp; <a class="code" href="class_test_view2.html#a0e513e522c5da11fb40f4f54ddefffd2">m_qimage</a>);</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            p.drawImage( <a class="code" href="class_test_view2.html#a0e513e522c5da11fb40f4f54ddefffd2">m_qimage</a>.rect(), <a class="code" href="class_test_view2.html#aa64d5d080d42808a893c2f8137df0c2c">m_defaultImage</a>);</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            p.setPen( Qt::NoPen);</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            p.setBrush( QColor( 255, 255, 0, 128));</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            p.drawEllipse( QPoint(<a class="code" href="class_test_view2.html#a3bb3646c1357cc191ce86900c59128e4">m_lastMouse</a>.x(), <a class="code" href="class_test_view2.html#a3bb3646c1357cc191ce86900c59128e4">m_lastMouse</a>.y()), 10, 10 );</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;            p.setPen( QColor( 255, 255, 255));</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            p.drawLine( 0, <a class="code" href="class_test_view2.html#a3bb3646c1357cc191ce86900c59128e4">m_lastMouse</a>.y(), <a class="code" href="class_test_view2.html#a0e513e522c5da11fb40f4f54ddefffd2">m_qimage</a>.width()-1, <a class="code" href="class_test_view2.html#a3bb3646c1357cc191ce86900c59128e4">m_lastMouse</a>.y());</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;            p.drawLine( <a class="code" href="class_test_view2.html#a3bb3646c1357cc191ce86900c59128e4">m_lastMouse</a>.x(), 0, <a class="code" href="class_test_view2.html#a3bb3646c1357cc191ce86900c59128e4">m_lastMouse</a>.x(), <a class="code" href="class_test_view2.html#a0e513e522c5da11fb40f4f54ddefffd2">m_qimage</a>.height()-1);</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            p.translate( <a class="code" href="class_test_view2.html#a0e513e522c5da11fb40f4f54ddefffd2">m_qimage</a>.rect().center());</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            p.rotate( angle);</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;            p.translate( - <a class="code" href="class_test_view2.html#a0e513e522c5da11fb40f4f54ddefffd2">m_qimage</a>.rect().center());</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;            p.setFont( QFont( <span class="stringliteral">&quot;Arial&quot;</span>, 20));</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            p.setPen( QColor( <span class="stringliteral">&quot;white&quot;</span>));</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;            p.drawText( <a class="code" href="class_test_view2.html#a0e513e522c5da11fb40f4f54ddefffd2">m_qimage</a>.rect(), Qt::AlignCenter, <a class="code" href="class_test_view2.html#a3c1091797aecc42b52ebeb6373587ce2">m_viewName</a>);</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        }</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        <span class="comment">// execute the pre-render hook</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        <a class="code" href="class_globals.html#aab0585cd9ec9ccefe8d48f3fe2fb6a19">Globals::instance</a>()-&gt; pluginManager()-&gt; prepare&lt;PreRender&gt;( <a class="code" href="class_test_view2.html#a3c1091797aecc42b52ebeb6373587ce2">m_viewName</a>, &amp; <a class="code" href="class_test_view2.html#a0e513e522c5da11fb40f4f54ddefffd2">m_qimage</a>).executeAll();</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    }</div>
+<div class="ttc" id="class_test_view2_html_a36a57e71117e5fa81538e7f33c7a5a9d"><div class="ttname"><a href="class_test_view2.html#a36a57e71117e5fa81538e7f33c7a5a9d">TestView2::m_bgColor</a></div><div class="ttdeci">QColor m_bgColor</div><div class="ttdef"><b>Definition:</b> Viewer.cpp:165</div></div>
+<div class="ttc" id="class_test_view2_html_aa64d5d080d42808a893c2f8137df0c2c"><div class="ttname"><a href="class_test_view2.html#aa64d5d080d42808a893c2f8137df0c2c">TestView2::m_defaultImage</a></div><div class="ttdeci">QImage m_defaultImage</div><div class="ttdef"><b>Definition:</b> Viewer.cpp:166</div></div>
+<div class="ttc" id="class_test_view2_html_a0e513e522c5da11fb40f4f54ddefffd2"><div class="ttname"><a href="class_test_view2.html#a0e513e522c5da11fb40f4f54ddefffd2">TestView2::m_qimage</a></div><div class="ttdeci">QImage m_qimage</div><div class="ttdef"><b>Definition:</b> Viewer.cpp:199</div></div>
+<div class="ttc" id="class_globals_html_aab0585cd9ec9ccefe8d48f3fe2fb6a19"><div class="ttname"><a href="class_globals.html#aab0585cd9ec9ccefe8d48f3fe2fb6a19">Globals::instance</a></div><div class="ttdeci">static Globals * instance()</div><div class="ttdoc">singleton pattern </div><div class="ttdef"><b>Definition:</b> Globals.cpp:40</div></div>
+<div class="ttc" id="class_test_view2_html_a3c1091797aecc42b52ebeb6373587ce2"><div class="ttname"><a href="class_test_view2.html#a3c1091797aecc42b52ebeb6373587ce2">TestView2::m_viewName</a></div><div class="ttdeci">QString m_viewName</div><div class="ttdef"><b>Definition:</b> Viewer.cpp:200</div></div>
+<div class="ttc" id="class_test_view2_html_a3bb3646c1357cc191ce86900c59128e4"><div class="ttname"><a href="class_test_view2.html#a3bb3646c1357cc191ce86900c59128e4">TestView2::m_lastMouse</a></div><div class="ttdeci">QPointF m_lastMouse</div><div class="ttdef"><b>Definition:</b> Viewer.cpp:202</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -436,7 +512,11 @@ Here is the caller graph for this function:</div>
 <p>accept a connector during registration called once during <a class="el" href="class_i_connector.html#a79f0dd4aa0090fbd74933ddda4180e3e" title="registers a view with the connector ">IConnector::registerView()</a> store the value if you would like to request repaint inside the implementation </p>
 
 <p>Implements <a class="el" href="class_i_view.html#ad2b76f2502f7f49e0eb1fef509cde94b">IView</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    {</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <a class="code" href="class_test_view2.html#a345aa1007a97b03ff4d3e0f76ffe0f7b">m_connector</a> = connector;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    }</div>
+<div class="ttc" id="class_test_view2_html_a345aa1007a97b03ff4d3e0f76ffe0f7b"><div class="ttname"><a href="class_test_view2.html#a345aa1007a97b03ff4d3e0f76ffe0f7b">TestView2::m_connector</a></div><div class="ttdeci">IConnector * m_connector</div><div class="ttdef"><b>Definition:</b> Viewer.cpp:198</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="a5f56f201e6e6267b8ea6cc1c232a7993"></a>
@@ -460,7 +540,13 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
+<div class="fragment"><div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                                       {</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <a class="code" href="class_test_view2.html#aa64d5d080d42808a893c2f8137df0c2c">m_defaultImage</a> = img;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <a class="code" href="class_test_view2.html#a345aa1007a97b03ff4d3e0f76ffe0f7b">m_connector</a>-&gt; refreshView( <span class="keyword">this</span>);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    }</div>
+<div class="ttc" id="class_test_view2_html_aa64d5d080d42808a893c2f8137df0c2c"><div class="ttname"><a href="class_test_view2.html#aa64d5d080d42808a893c2f8137df0c2c">TestView2::m_defaultImage</a></div><div class="ttdeci">QImage m_defaultImage</div><div class="ttdef"><b>Definition:</b> Viewer.cpp:166</div></div>
+<div class="ttc" id="class_test_view2_html_a345aa1007a97b03ff4d3e0f76ffe0f7b"><div class="ttname"><a href="class_test_view2.html#a345aa1007a97b03ff4d3e0f76ffe0f7b">TestView2::m_connector</a></div><div class="ttdeci">IConnector * m_connector</div><div class="ttdef"><b>Definition:</b> Viewer.cpp:198</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="a2d00efb431cefe73ea3912823bfe3859"></a>
@@ -487,7 +573,11 @@ Here is the caller graph for this function:</div>
 <p>handle request for obtaining size </p>
 
 <p>Implements <a class="el" href="class_i_view.html#a29d98e14167e2ea55bd4352ea137a361">IView</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    {</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="class_test_view2.html#a0e513e522c5da11fb40f4f54ddefffd2">m_qimage</a>.size();</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    }</div>
+<div class="ttc" id="class_test_view2_html_a0e513e522c5da11fb40f4f54ddefffd2"><div class="ttname"><a href="class_test_view2.html#a0e513e522c5da11fb40f4f54ddefffd2">TestView2::m_qimage</a></div><div class="ttdeci">QImage m_qimage</div><div class="ttdef"><b>Definition:</b> Viewer.cpp:199</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -640,7 +730,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_test_view2.html">TestView2</a></li>
-    <li class="footer">Generated on Mon Sep 1 2014 00:13:37 for CARTAVIS by
+    <li class="footer">Generated on Mon Sep 1 2014 00:34:38 for CARTAVIS by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>

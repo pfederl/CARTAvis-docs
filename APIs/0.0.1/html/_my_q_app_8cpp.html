@@ -169,7 +169,18 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-
+<div class="fragment"><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;{</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="comment">// create a helper in this thread if not yet created</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordflow">if</span>( ! deferHelpers.hasLocalData()) {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        deferHelpers.setLocalData( <span class="keyword">new</span> <a class="code" href="class_defer_helper2.html">DeferHelper2</a>);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    }</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="comment">// queue up the function execution in this same thread</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="comment">// (because the object was created in this same thread)</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    deferHelpers.localData()-&gt; queue( <span class="keyword">function</span>);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div>
+<div class="ttc" id="class_defer_helper2_html"><div class="ttname"><a href="class_defer_helper2.html">DeferHelper2</a></div><div class="ttdoc">Internal class to implement defer() </div><div class="ttdef"><b>Definition:</b> MyQApp.h:47</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -187,7 +198,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_bdd9a5d540de89e9fe90efdfc6973a4f.html">common</a></li><li class="navelem"><a class="el" href="_my_q_app_8cpp.html">MyQApp.cpp</a></li>
-    <li class="footer">Generated on Mon Sep 1 2014 00:13:37 for CARTAVIS by
+    <li class="footer">Generated on Mon Sep 1 2014 00:34:37 for CARTAVIS by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>

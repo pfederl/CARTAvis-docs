@@ -209,7 +209,11 @@ Protected Attributes</h2></td></tr>
 
 <p>default constructor - creates a [:] slice (ie. everything) </p>
 <p>=========================================================================== </p><h1><a class="el" href="class_slice_n_d.html" title="contains representation of an n-dimensional slice, which is a structure used to create a view of an a...">SliceND</a> </h1>
-
+<div class="fragment"><div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;{</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    <a class="code" href="class_slice_n_d.html#a29563aabc8fdeb2b689a8c1ed44b697f">slice</a>( 0);</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;}</div>
+<div class="ttc" id="class_slice_n_d_html_a29563aabc8fdeb2b689a8c1ed44b697f"><div class="ttname"><a href="class_slice_n_d.html#a29563aabc8fdeb2b689a8c1ed44b697f">SliceND::slice</a></div><div class="ttdeci">Slice1D &amp; slice(size_t pos)</div><div class="ttdoc">get slice at position pos if such slice is not recorded, it is created (i.e. </div><div class="ttdef"><b>Definition:</b> Slice.cpp:266</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="a1b3ae7854e7497a7b6d6ec573e2d1103"></a>
@@ -227,7 +231,13 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>constructor with initializer list </p>
-
+<div class="fragment"><div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;{</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    <a class="code" href="class_slice_n_d.html#a9734168e08bd11aaf022903c107a18db">m_slices</a> = list;</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    <a class="code" href="class_slice_n_d.html#a29563aabc8fdeb2b689a8c1ed44b697f">slice</a>( 0);</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;}</div>
+<div class="ttc" id="class_slice_n_d_html_a9734168e08bd11aaf022903c107a18db"><div class="ttname"><a href="class_slice_n_d.html#a9734168e08bd11aaf022903c107a18db">SliceND::m_slices</a></div><div class="ttdeci">std::vector&lt; Slice1D &gt; m_slices</div><div class="ttdoc">n-dimensional slice is just a collection of 1d-slices </div><div class="ttdef"><b>Definition:</b> Slice.h:211</div></div>
+<div class="ttc" id="class_slice_n_d_html_a29563aabc8fdeb2b689a8c1ed44b697f"><div class="ttname"><a href="class_slice_n_d.html#a29563aabc8fdeb2b689a8c1ed44b697f">SliceND::slice</a></div><div class="ttdeci">Slice1D &amp; slice(size_t pos)</div><div class="ttdoc">get slice at position pos if such slice is not recorded, it is created (i.e. </div><div class="ttdef"><b>Definition:</b> Slice.cpp:266</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -247,7 +257,37 @@ Protected Attributes</h2></td></tr>
 
 <p>figure out which elements to extract for the given dimensions if the numpber of supplied dimensions is greater than number of slices, the slices are padded with defaults (ie. </p>
 <p>':'). If the number of supplied dimensions is smaller than number of slices, an error result is returned. </p>
-
+<div class="fragment"><div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;{</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    ApplyResult res;</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    <span class="comment">// if we the number of input dimensions is less than number of slices</span></div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    <span class="comment">// we report an error</span></div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    <span class="keywordflow">if</span>( dimensions.size() &lt; <a class="code" href="class_slice_n_d.html#a9734168e08bd11aaf022903c107a18db">m_slices</a>.size()) {</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;        <span class="keywordflow">return</span> res;</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    }</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    res.m_single = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    res.m_error = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    <span class="keywordflow">for</span>( <span class="keywordtype">size_t</span> i = 0 ; i &lt; dimensions.size() ; i ++) {</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        <span class="comment">// appy slice[i] to dimension[i]</span></div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        <a class="code" href="struct_slice1_d_1_1_apply_result.html">Slice1D::ApplyResult</a> ar = <a class="code" href="class_slice_n_d.html#a29563aabc8fdeb2b689a8c1ed44b697f">slice</a>(i).<a class="code" href="class_slice1_d.html#a661b94d51ce8372c72fe20f413fd6fe2">apply</a>( dimensions[i]);</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;        <span class="comment">// add this to the results</span></div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;        res.<a class="code" href="class_slice_n_d_1_1_apply_result.html#a54545af62eb41c1e53942ae37875e4c4">m_results</a>.push_back( ar);</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;        <span class="comment">// update error</span></div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;        res.m_error = res.m_error || ar.<a class="code" href="struct_slice1_d_1_1_apply_result.html#ac2df260559adc89d5e25d1b4f1f56239">isError</a>();</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;        <span class="comment">// update single status</span></div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        res.m_single = res.m_single &amp;&amp; ar.<a class="code" href="struct_slice1_d_1_1_apply_result.html#af03bd55cd1fe48bf5af1fb00d35cfed8">isSingle</a>();</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    }</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    <span class="keywordflow">return</span> res;</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;}</div>
+<div class="ttc" id="class_slice_n_d_html_a9734168e08bd11aaf022903c107a18db"><div class="ttname"><a href="class_slice_n_d.html#a9734168e08bd11aaf022903c107a18db">SliceND::m_slices</a></div><div class="ttdeci">std::vector&lt; Slice1D &gt; m_slices</div><div class="ttdoc">n-dimensional slice is just a collection of 1d-slices </div><div class="ttdef"><b>Definition:</b> Slice.h:211</div></div>
+<div class="ttc" id="class_slice_n_d_1_1_apply_result_html_a54545af62eb41c1e53942ae37875e4c4"><div class="ttname"><a href="class_slice_n_d_1_1_apply_result.html#a54545af62eb41c1e53942ae37875e4c4">SliceND::ApplyResult::m_results</a></div><div class="ttdeci">std::vector&lt; Slice1D::ApplyResult &gt; m_results</div><div class="ttdef"><b>Definition:</b> Slice.h:190</div></div>
+<div class="ttc" id="struct_slice1_d_1_1_apply_result_html_af03bd55cd1fe48bf5af1fb00d35cfed8"><div class="ttname"><a href="struct_slice1_d_1_1_apply_result.html#af03bd55cd1fe48bf5af1fb00d35cfed8">Slice1D::ApplyResult::isSingle</a></div><div class="ttdeci">bool isSingle() const </div><div class="ttdoc">convenience test for single value note, the result could still be an error... </div><div class="ttdef"><b>Definition:</b> Slice.cpp:234</div></div>
+<div class="ttc" id="struct_slice1_d_1_1_apply_result_html"><div class="ttname"><a href="struct_slice1_d_1_1_apply_result.html">Slice1D::ApplyResult</a></div><div class="ttdoc">type of result returned from the apply method </div><div class="ttdef"><b>Definition:</b> Slice.h:79</div></div>
+<div class="ttc" id="class_slice1_d_html_a661b94d51ce8372c72fe20f413fd6fe2"><div class="ttname"><a href="class_slice1_d.html#a661b94d51ce8372c72fe20f413fd6fe2">Slice1D::apply</a></div><div class="ttdeci">ApplyResult apply(Index n)</div><div class="ttdoc">return starting index, count and step for the given input size n </div><div class="ttdef"><b>Definition:</b> Slice.cpp:48</div></div>
+<div class="ttc" id="class_slice_n_d_html_a29563aabc8fdeb2b689a8c1ed44b697f"><div class="ttname"><a href="class_slice_n_d.html#a29563aabc8fdeb2b689a8c1ed44b697f">SliceND::slice</a></div><div class="ttdeci">Slice1D &amp; slice(size_t pos)</div><div class="ttdoc">get slice at position pos if such slice is not recorded, it is created (i.e. </div><div class="ttdef"><b>Definition:</b> Slice.cpp:266</div></div>
+<div class="ttc" id="struct_slice1_d_1_1_apply_result_html_ac2df260559adc89d5e25d1b4f1f56239"><div class="ttname"><a href="struct_slice1_d_1_1_apply_result.html#ac2df260559adc89d5e25d1b4f1f56239">Slice1D::ApplyResult::isError</a></div><div class="ttdeci">bool isError() const </div><div class="ttdoc">convenience test for error </div><div class="ttdef"><b>Definition:</b> Slice.cpp:229</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -300,13 +340,19 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>forward 1d slice end </p>
-
+<div class="fragment"><div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                                       {</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    <a class="code" href="class_slice_n_d.html#a29563aabc8fdeb2b689a8c1ed44b697f">slice</a>( <a class="code" href="class_slice_n_d.html#a6dfc83821f438328aa2dcfa52de669c8">m_currentSlice</a>).<a class="code" href="class_slice1_d.html#ad2126e886674a76d2ea88517237f06c0">end</a>( <a class="code" href="class_slice_n_d.html#a9029cfb7eeee88a6121aaad0e0e9ea2a">end</a>);</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    <span class="keywordflow">return</span> * <span class="keyword">this</span>;</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;}</div>
+<div class="ttc" id="class_slice_n_d_html_a6dfc83821f438328aa2dcfa52de669c8"><div class="ttname"><a href="class_slice_n_d.html#a6dfc83821f438328aa2dcfa52de669c8">SliceND::m_currentSlice</a></div><div class="ttdeci">int m_currentSlice</div><div class="ttdoc">for chaining notation we keep track of current position </div><div class="ttdef"><b>Definition:</b> Slice.h:214</div></div>
+<div class="ttc" id="class_slice1_d_html_ad2126e886674a76d2ea88517237f06c0"><div class="ttname"><a href="class_slice1_d.html#ad2126e886674a76d2ea88517237f06c0">Slice1D::end</a></div><div class="ttdeci">Slice1D &amp; end(Index e)</div><div class="ttdoc">set stop (the index past the last element to be extracted) </div><div class="ttdef"><b>Definition:</b> Slice.cpp:25</div></div>
+<div class="ttc" id="class_slice_n_d_html_a9029cfb7eeee88a6121aaad0e0e9ea2a"><div class="ttname"><a href="class_slice_n_d.html#a9029cfb7eeee88a6121aaad0e0e9ea2a">SliceND::end</a></div><div class="ttdeci">SliceND &amp; end(Index end)</div><div class="ttdoc">forward 1d slice end </div><div class="ttdef"><b>Definition:</b> Slice.cpp:278</div></div>
+<div class="ttc" id="class_slice_n_d_html_a29563aabc8fdeb2b689a8c1ed44b697f"><div class="ttname"><a href="class_slice_n_d.html#a29563aabc8fdeb2b689a8c1ed44b697f">SliceND::slice</a></div><div class="ttdeci">Slice1D &amp; slice(size_t pos)</div><div class="ttdoc">get slice at position pos if such slice is not recorded, it is created (i.e. </div><div class="ttdef"><b>Definition:</b> Slice.cpp:266</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_slice_n_d_a9029cfb7eeee88a6121aaad0e0e9ea2a_cgraph.png" border="0" usemap="#class_slice_n_d_a9029cfb7eeee88a6121aaad0e0e9ea2a_cgraph" alt=""/></div>
-<map name="class_slice_n_d_a9029cfb7eeee88a6121aaad0e0e9ea2a_cgraph" id="class_slice_n_d_a9029cfb7eeee88a6121aaad0e0e9ea2a_cgraph">
-</map>
 </div>
 </p>
 
@@ -336,13 +382,19 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>forward 1d slice index </p>
-
+<div class="fragment"><div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                                           {</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    <a class="code" href="class_slice_n_d.html#a29563aabc8fdeb2b689a8c1ed44b697f">slice</a>( <a class="code" href="class_slice_n_d.html#a6dfc83821f438328aa2dcfa52de669c8">m_currentSlice</a>).<a class="code" href="class_slice1_d.html#a68c9d6d45d62ee89796c2776010d76e8">index</a>( <a class="code" href="class_slice_n_d.html#a831d992312e2e16df8070992d8342a82">index</a>);</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    <span class="keywordflow">return</span> * <span class="keyword">this</span>;</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;}</div>
+<div class="ttc" id="class_slice_n_d_html_a6dfc83821f438328aa2dcfa52de669c8"><div class="ttname"><a href="class_slice_n_d.html#a6dfc83821f438328aa2dcfa52de669c8">SliceND::m_currentSlice</a></div><div class="ttdeci">int m_currentSlice</div><div class="ttdoc">for chaining notation we keep track of current position </div><div class="ttdef"><b>Definition:</b> Slice.h:214</div></div>
+<div class="ttc" id="class_slice_n_d_html_a831d992312e2e16df8070992d8342a82"><div class="ttname"><a href="class_slice_n_d.html#a831d992312e2e16df8070992d8342a82">SliceND::index</a></div><div class="ttdeci">SliceND &amp; index(Index index)</div><div class="ttdoc">forward 1d slice index </div><div class="ttdef"><b>Definition:</b> Slice.cpp:288</div></div>
+<div class="ttc" id="class_slice1_d_html_a68c9d6d45d62ee89796c2776010d76e8"><div class="ttname"><a href="class_slice1_d.html#a68c9d6d45d62ee89796c2776010d76e8">Slice1D::index</a></div><div class="ttdeci">void index(Index s)</div><div class="ttdoc">set single index note we do not want chaining here, so we return void </div><div class="ttdef"><b>Definition:</b> Slice.cpp:37</div></div>
+<div class="ttc" id="class_slice_n_d_html_a29563aabc8fdeb2b689a8c1ed44b697f"><div class="ttname"><a href="class_slice_n_d.html#a29563aabc8fdeb2b689a8c1ed44b697f">SliceND::slice</a></div><div class="ttdeci">Slice1D &amp; slice(size_t pos)</div><div class="ttdoc">get slice at position pos if such slice is not recorded, it is created (i.e. </div><div class="ttdef"><b>Definition:</b> Slice.cpp:266</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_slice_n_d_a831d992312e2e16df8070992d8342a82_cgraph.png" border="0" usemap="#class_slice_n_d_a831d992312e2e16df8070992d8342a82_cgraph" alt=""/></div>
-<map name="class_slice_n_d_a831d992312e2e16df8070992d8342a82_cgraph" id="class_slice_n_d_a831d992312e2e16df8070992d8342a82_cgraph">
-</map>
 </div>
 </p>
 
@@ -351,7 +403,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_slice_n_d_a831d992312e2e16df8070992d8342a82_icgraph.png" border="0" usemap="#class_slice_n_d_a831d992312e2e16df8070992d8342a82_icgraph" alt=""/></div>
 <map name="class_slice_n_d_a831d992312e2e16df8070992d8342a82_icgraph" id="class_slice_n_d_a831d992312e2e16df8070992d8342a82_icgraph">
-<area shape="rect" id="node3" href="_i_image_8h.html#a6f25b601a142b2f9ea90ef34b4888471" title="__attribute__" alt="" coords="168,5,264,35"/><area shape="rect" id="node6" href="_slice_tester_8cpp.html#a21212b0c61764e01426aaac2aaad4dc7" title="TEST_CASE" alt="" coords="167,59,265,88"/></map>
+<area shape="rect" id="node3" href="_i_image_8h.html#a6f25b601a142b2f9ea90ef34b4888471" title="API testing this is never executed, only compiled for API testing. " alt="" coords="168,5,264,35"/><area shape="rect" id="node6" href="_slice_tester_8cpp.html#a21212b0c61764e01426aaac2aaad4dc7" title="TEST_CASE" alt="" coords="167,59,265,88"/></map>
 </div>
 </p>
 
@@ -371,13 +423,20 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>moves to the next index (same as what colon does) </p>
-
+<div class="fragment"><div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                        {</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    <a class="code" href="class_slice_n_d.html#a6dfc83821f438328aa2dcfa52de669c8">m_currentSlice</a> ++;</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    <a class="code" href="class_slice_n_d.html#a29563aabc8fdeb2b689a8c1ed44b697f">slice</a>( <a class="code" href="class_slice_n_d.html#a6dfc83821f438328aa2dcfa52de669c8">m_currentSlice</a>);</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    <span class="keywordflow">return</span> * <span class="keyword">this</span>;</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;}</div>
+<div class="ttc" id="class_slice_n_d_html_a6dfc83821f438328aa2dcfa52de669c8"><div class="ttname"><a href="class_slice_n_d.html#a6dfc83821f438328aa2dcfa52de669c8">SliceND::m_currentSlice</a></div><div class="ttdeci">int m_currentSlice</div><div class="ttdoc">for chaining notation we keep track of current position </div><div class="ttdef"><b>Definition:</b> Slice.h:214</div></div>
+<div class="ttc" id="class_slice_n_d_html_a29563aabc8fdeb2b689a8c1ed44b697f"><div class="ttname"><a href="class_slice_n_d.html#a29563aabc8fdeb2b689a8c1ed44b697f">SliceND::slice</a></div><div class="ttdeci">Slice1D &amp; slice(size_t pos)</div><div class="ttdoc">get slice at position pos if such slice is not recorded, it is created (i.e. </div><div class="ttdef"><b>Definition:</b> Slice.cpp:266</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_slice_n_d_a452222b32d6195a9fed86bc4a6ffb661_icgraph.png" border="0" usemap="#class_slice_n_d_a452222b32d6195a9fed86bc4a6ffb661_icgraph" alt=""/></div>
 <map name="class_slice_n_d_a452222b32d6195a9fed86bc4a6ffb661_icgraph" id="class_slice_n_d_a452222b32d6195a9fed86bc4a6ffb661_icgraph">
-<area shape="rect" id="node3" href="_i_image_8h.html#a6f25b601a142b2f9ea90ef34b4888471" title="__attribute__" alt="" coords="160,5,256,35"/><area shape="rect" id="node5" href="_slice_tester_8cpp.html#a21212b0c61764e01426aaac2aaad4dc7" title="TEST_CASE" alt="" coords="159,59,257,88"/></map>
+<area shape="rect" id="node3" href="_i_image_8h.html#a6f25b601a142b2f9ea90ef34b4888471" title="API testing this is never executed, only compiled for API testing. " alt="" coords="160,5,256,35"/><area shape="rect" id="node5" href="_slice_tester_8cpp.html#a21212b0c61764e01426aaac2aaad4dc7" title="TEST_CASE" alt="" coords="159,59,257,88"/></map>
 </div>
 </p>
 
@@ -399,13 +458,20 @@ Here is the caller graph for this function:</div>
 
 <p>get slice at position pos if such slice is not recorded, it is created (i.e. </p>
 <p>the internal array of slices is resized) </p>
-
+<div class="fragment"><div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                                   {</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    <span class="keywordflow">if</span>( <span class="keywordtype">size_t</span>(pos) &gt;= <a class="code" href="class_slice_n_d.html#a9734168e08bd11aaf022903c107a18db">m_slices</a>.size()) {</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;        <a class="code" href="class_slice_n_d.html#a9734168e08bd11aaf022903c107a18db">m_slices</a>.resize( pos + 1);</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    }</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_slice_n_d.html#a9734168e08bd11aaf022903c107a18db">m_slices</a>[ pos];</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;}</div>
+<div class="ttc" id="class_slice_n_d_html_a9734168e08bd11aaf022903c107a18db"><div class="ttname"><a href="class_slice_n_d.html#a9734168e08bd11aaf022903c107a18db">SliceND::m_slices</a></div><div class="ttdeci">std::vector&lt; Slice1D &gt; m_slices</div><div class="ttdoc">n-dimensional slice is just a collection of 1d-slices </div><div class="ttdef"><b>Definition:</b> Slice.h:211</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_slice_n_d_a29563aabc8fdeb2b689a8c1ed44b697f_icgraph.png" border="0" usemap="#class_slice_n_d_a29563aabc8fdeb2b689a8c1ed44b697f_icgraph" alt=""/></div>
 <map name="class_slice_n_d_a29563aabc8fdeb2b689a8c1ed44b697f_icgraph" id="class_slice_n_d_a29563aabc8fdeb2b689a8c1ed44b697f_icgraph">
-<area shape="rect" id="node3" href="_i_image_8h.html#a6f25b601a142b2f9ea90ef34b4888471" title="__attribute__" alt="" coords="161,5,257,35"/></map>
+<area shape="rect" id="node3" href="_i_image_8h.html#a6f25b601a142b2f9ea90ef34b4888471" title="API testing this is never executed, only compiled for API testing. " alt="" coords="161,5,257,35"/></map>
 </div>
 </p>
 
@@ -426,13 +492,19 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>forward 1d slice start </p>
-
+<div class="fragment"><div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                                           {</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    <a class="code" href="class_slice_n_d.html#a29563aabc8fdeb2b689a8c1ed44b697f">slice</a>( <a class="code" href="class_slice_n_d.html#a6dfc83821f438328aa2dcfa52de669c8">m_currentSlice</a>).<a class="code" href="class_slice1_d.html#a9b26f5cf03dffd3da6c99a73ce3ed62a">start</a>( <a class="code" href="class_slice_n_d.html#ae7fd81caeb5971c2da8024e4ae266b5b">start</a>);</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    <span class="keywordflow">return</span> * <span class="keyword">this</span>;</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;}</div>
+<div class="ttc" id="class_slice_n_d_html_a6dfc83821f438328aa2dcfa52de669c8"><div class="ttname"><a href="class_slice_n_d.html#a6dfc83821f438328aa2dcfa52de669c8">SliceND::m_currentSlice</a></div><div class="ttdeci">int m_currentSlice</div><div class="ttdoc">for chaining notation we keep track of current position </div><div class="ttdef"><b>Definition:</b> Slice.h:214</div></div>
+<div class="ttc" id="class_slice_n_d_html_ae7fd81caeb5971c2da8024e4ae266b5b"><div class="ttname"><a href="class_slice_n_d.html#ae7fd81caeb5971c2da8024e4ae266b5b">SliceND::start</a></div><div class="ttdeci">SliceND &amp; start(Index start)</div><div class="ttdoc">forward 1d slice start </div><div class="ttdef"><b>Definition:</b> Slice.cpp:273</div></div>
+<div class="ttc" id="class_slice_n_d_html_a29563aabc8fdeb2b689a8c1ed44b697f"><div class="ttname"><a href="class_slice_n_d.html#a29563aabc8fdeb2b689a8c1ed44b697f">SliceND::slice</a></div><div class="ttdeci">Slice1D &amp; slice(size_t pos)</div><div class="ttdoc">get slice at position pos if such slice is not recorded, it is created (i.e. </div><div class="ttdef"><b>Definition:</b> Slice.cpp:266</div></div>
+<div class="ttc" id="class_slice1_d_html_a9b26f5cf03dffd3da6c99a73ce3ed62a"><div class="ttname"><a href="class_slice1_d.html#a9b26f5cf03dffd3da6c99a73ce3ed62a">Slice1D::start</a></div><div class="ttdeci">Slice1D &amp; start(Index s)</div><div class="ttdoc">set start (index of first element to be extracted) </div><div class="ttdef"><b>Definition:</b> Slice.cpp:19</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_slice_n_d_ae7fd81caeb5971c2da8024e4ae266b5b_cgraph.png" border="0" usemap="#class_slice_n_d_ae7fd81caeb5971c2da8024e4ae266b5b_cgraph" alt=""/></div>
-<map name="class_slice_n_d_ae7fd81caeb5971c2da8024e4ae266b5b_cgraph" id="class_slice_n_d_ae7fd81caeb5971c2da8024e4ae266b5b_cgraph">
-</map>
 </div>
 </p>
 
@@ -441,7 +513,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_slice_n_d_ae7fd81caeb5971c2da8024e4ae266b5b_icgraph.png" border="0" usemap="#class_slice_n_d_ae7fd81caeb5971c2da8024e4ae266b5b_icgraph" alt=""/></div>
 <map name="class_slice_n_d_ae7fd81caeb5971c2da8024e4ae266b5b_icgraph" id="class_slice_n_d_ae7fd81caeb5971c2da8024e4ae266b5b_icgraph">
-<area shape="rect" id="node3" href="_i_image_8h.html#a6f25b601a142b2f9ea90ef34b4888471" title="__attribute__" alt="" coords="163,5,259,35"/><area shape="rect" id="node6" href="_slice_tester_8cpp.html#a21212b0c61764e01426aaac2aaad4dc7" title="TEST_CASE" alt="" coords="161,59,260,88"/></map>
+<area shape="rect" id="node3" href="_i_image_8h.html#a6f25b601a142b2f9ea90ef34b4888471" title="API testing this is never executed, only compiled for API testing. " alt="" coords="163,5,259,35"/><area shape="rect" id="node6" href="_slice_tester_8cpp.html#a21212b0c61764e01426aaac2aaad4dc7" title="TEST_CASE" alt="" coords="161,59,260,88"/></map>
 </div>
 </p>
 
@@ -462,13 +534,19 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>forward 1d slice step </p>
-
+<div class="fragment"><div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                                         {</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    <a class="code" href="class_slice_n_d.html#a29563aabc8fdeb2b689a8c1ed44b697f">slice</a>( <a class="code" href="class_slice_n_d.html#a6dfc83821f438328aa2dcfa52de669c8">m_currentSlice</a>).<a class="code" href="class_slice1_d.html#ae904b62aa0945ca32258469944fa291f">step</a>( <a class="code" href="class_slice_n_d.html#a6b31a9b210b135a549eec8a800198903">step</a>);</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    <span class="keywordflow">return</span> * <span class="keyword">this</span>;</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;}</div>
+<div class="ttc" id="class_slice_n_d_html_a6dfc83821f438328aa2dcfa52de669c8"><div class="ttname"><a href="class_slice_n_d.html#a6dfc83821f438328aa2dcfa52de669c8">SliceND::m_currentSlice</a></div><div class="ttdeci">int m_currentSlice</div><div class="ttdoc">for chaining notation we keep track of current position </div><div class="ttdef"><b>Definition:</b> Slice.h:214</div></div>
+<div class="ttc" id="class_slice1_d_html_ae904b62aa0945ca32258469944fa291f"><div class="ttname"><a href="class_slice1_d.html#ae904b62aa0945ca32258469944fa291f">Slice1D::step</a></div><div class="ttdeci">Slice1D &amp; step(Index s)</div><div class="ttdoc">set step value </div><div class="ttdef"><b>Definition:</b> Slice.cpp:31</div></div>
+<div class="ttc" id="class_slice_n_d_html_a29563aabc8fdeb2b689a8c1ed44b697f"><div class="ttname"><a href="class_slice_n_d.html#a29563aabc8fdeb2b689a8c1ed44b697f">SliceND::slice</a></div><div class="ttdeci">Slice1D &amp; slice(size_t pos)</div><div class="ttdoc">get slice at position pos if such slice is not recorded, it is created (i.e. </div><div class="ttdef"><b>Definition:</b> Slice.cpp:266</div></div>
+<div class="ttc" id="class_slice_n_d_html_a6b31a9b210b135a549eec8a800198903"><div class="ttname"><a href="class_slice_n_d.html#a6b31a9b210b135a549eec8a800198903">SliceND::step</a></div><div class="ttdeci">SliceND &amp; step(Index step)</div><div class="ttdoc">forward 1d slice step </div><div class="ttdef"><b>Definition:</b> Slice.cpp:283</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_slice_n_d_a6b31a9b210b135a549eec8a800198903_cgraph.png" border="0" usemap="#class_slice_n_d_a6b31a9b210b135a549eec8a800198903_cgraph" alt=""/></div>
-<map name="class_slice_n_d_a6b31a9b210b135a549eec8a800198903_cgraph" id="class_slice_n_d_a6b31a9b210b135a549eec8a800198903_cgraph">
-</map>
 </div>
 </p>
 
@@ -477,7 +555,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_slice_n_d_a6b31a9b210b135a549eec8a800198903_icgraph.png" border="0" usemap="#class_slice_n_d_a6b31a9b210b135a549eec8a800198903_icgraph" alt=""/></div>
 <map name="class_slice_n_d_a6b31a9b210b135a549eec8a800198903_icgraph" id="class_slice_n_d_a6b31a9b210b135a549eec8a800198903_icgraph">
-<area shape="rect" id="node3" href="_i_image_8h.html#a6f25b601a142b2f9ea90ef34b4888471" title="__attribute__" alt="" coords="160,5,256,35"/><area shape="rect" id="node6" href="_slice_tester_8cpp.html#a21212b0c61764e01426aaac2aaad4dc7" title="TEST_CASE" alt="" coords="159,59,257,88"/></map>
+<area shape="rect" id="node3" href="_i_image_8h.html#a6f25b601a142b2f9ea90ef34b4888471" title="API testing this is never executed, only compiled for API testing. " alt="" coords="160,5,256,35"/><area shape="rect" id="node6" href="_slice_tester_8cpp.html#a21212b0c61764e01426aaac2aaad4dc7" title="TEST_CASE" alt="" coords="159,59,257,88"/></map>
 </div>
 </p>
 
@@ -498,7 +576,18 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>formats the slice into a string mainly useful for debugging </p>
-
+<div class="fragment"><div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;{</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    QString res;</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    <span class="keywordflow">for</span>( <span class="keyword">auto</span>  &amp; <a class="code" href="class_slice_n_d.html#a29563aabc8fdeb2b689a8c1ed44b697f">slice</a> : <a class="code" href="class_slice_n_d.html#a9734168e08bd11aaf022903c107a18db">m_slices</a>) {</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;        <span class="keywordflow">if</span>( ! res.isEmpty()) res.append( <span class="charliteral">&#39;,&#39;</span>);</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;        res.append( <a class="code" href="class_slice_n_d.html#a29563aabc8fdeb2b689a8c1ed44b697f">slice</a>.<a class="code" href="class_slice1_d.html#ae819055a67b82f15e8be61603f9087f2">toStr</a>( <span class="stringliteral">&quot;%1&quot;</span>));</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    }</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    <span class="keywordflow">return</span> format.arg( res);</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;}</div>
+<div class="ttc" id="class_slice_n_d_html_a9734168e08bd11aaf022903c107a18db"><div class="ttname"><a href="class_slice_n_d.html#a9734168e08bd11aaf022903c107a18db">SliceND::m_slices</a></div><div class="ttdeci">std::vector&lt; Slice1D &gt; m_slices</div><div class="ttdoc">n-dimensional slice is just a collection of 1d-slices </div><div class="ttdef"><b>Definition:</b> Slice.h:211</div></div>
+<div class="ttc" id="class_slice1_d_html_ae819055a67b82f15e8be61603f9087f2"><div class="ttname"><a href="class_slice1_d.html#ae819055a67b82f15e8be61603f9087f2">Slice1D::toStr</a></div><div class="ttdeci">QString toStr(QString format=&quot;[%1]&quot;) const </div><div class="ttdoc">formats the slice into a string mainly useful for debugging </div><div class="ttdef"><b>Definition:</b> Slice.cpp:170</div></div>
+<div class="ttc" id="class_slice_n_d_html_a29563aabc8fdeb2b689a8c1ed44b697f"><div class="ttname"><a href="class_slice_n_d.html#a29563aabc8fdeb2b689a8c1ed44b697f">SliceND::slice</a></div><div class="ttdeci">Slice1D &amp; slice(size_t pos)</div><div class="ttdoc">get slice at position pos if such slice is not recorded, it is created (i.e. </div><div class="ttdef"><b>Definition:</b> Slice.cpp:266</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -556,7 +645,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_slice_n_d.html">SliceND</a></li>
-    <li class="footer">Generated on Mon Sep 1 2014 00:13:37 for CARTAVIS by
+    <li class="footer">Generated on Mon Sep 1 2014 00:34:38 for CARTAVIS by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>

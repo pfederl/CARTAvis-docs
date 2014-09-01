@@ -142,7 +142,66 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>parse the command line, which is extracted from QCoreApplication::arguments() if error occurred, or user asks for '-v' or '-h' options, usage info is printed to stdout and application is terminated. </p>
-
+<div class="fragment"><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    QCommandLineParser parser;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">//    parser.setApplicationDescription(&quot;Skeleton3 program&quot;);</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    parser.addHelpOption();</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    parser.addVersionOption();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    parser.addPositionalArgument( <span class="stringliteral">&quot;input-files&quot;</span>, <span class="stringliteral">&quot;list of files to open&quot;</span>, <span class="stringliteral">&quot;[input files]&quot;</span>);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    QCommandLineOption configFileOption(</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        { <span class="stringliteral">&quot;config&quot;</span>, <span class="stringliteral">&quot;cfg&quot;</span>}, <span class="stringliteral">&quot;config file path&quot;</span>, <span class="stringliteral">&quot;configFilePath&quot;</span>);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    parser.addOption( configFileOption);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    QCommandLineOption htmlPathOption(</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="stringliteral">&quot;html&quot;</span>, <span class="stringliteral">&quot;development option for desktop version, path to html to load&quot;</span>, <span class="stringliteral">&quot;htmlPath&quot;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                );</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    parser.addOption( htmlPathOption);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    QCommandLineOption scriptPortOption(</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                <span class="stringliteral">&quot;scriptPort&quot;</span>, <span class="stringliteral">&quot;port on which to listen for scripted commands&quot;</span>, <span class="stringliteral">&quot;scriptPort&quot;</span>);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    parser.addOption( scriptPortOption);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="comment">// Process the actual command line arguments given by the user, exit if</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="comment">// command line arguments have a syntax error, or the user asks for -h or -v</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    parser.process( argv);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="comment">// try to get config file path from command line</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    ParsedInfo info;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    info.m_configFilePath = parser.value( configFileOption);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="comment">// if command line was not used to set the config file path, try environment var</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">if</span>( info.m_configFilePath.isEmpty()) {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        info.m_configFilePath = cartaGetEnv( <span class="stringliteral">&quot;CONFIG&quot;</span>);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    }</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="comment">// if the config file was not specified neither through command line or environment</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="comment">// assign a default value</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">if</span>( info.m_configFilePath.isEmpty()) {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        info.m_configFilePath = QDir::homePath() + <span class="stringliteral">&quot;/.cartavis/config.json&quot;</span>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    }</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    qDebug() &lt;&lt; <span class="stringliteral">&quot;Config file path=&quot;</span> &lt;&lt; info.configFilePath();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="comment">// get html path</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordflow">if</span>( parser.isSet( htmlPathOption)) {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        info.m_htmlPath = parser.value( htmlPathOption);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    }</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    qDebug() &lt;&lt; <span class="stringliteral">&quot;html path=&quot;</span> &lt;&lt; info.htmlPath();</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="comment">// get script port</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">if</span>( parser.isSet( scriptPortOption)) {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        QString portString = parser.value( scriptPortOption);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordtype">bool</span> ok;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        info.m_scriptPort = portString.toInt( &amp; ok);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordflow">if</span>( ! ok || info.m_scriptPort &lt; 0 || info.m_scriptPort &gt; 65535) {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            parser.showHelp( -1);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    qDebug() &lt;&lt; <span class="stringliteral">&quot;script port=&quot;</span> &lt;&lt; info.scriptPort();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="comment">// get a list of files to open</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    info.m_fileList = parser.positionalArguments();</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    qDebug() &lt;&lt; <span class="stringliteral">&quot;list of files to open:&quot;</span> &lt;&lt; info.m_fileList;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">return</span> info;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -169,7 +228,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_cmd_line.html">CmdLine</a></li>
-    <li class="footer">Generated on Mon Sep 1 2014 00:13:37 for CARTAVIS by
+    <li class="footer">Generated on Mon Sep 1 2014 00:34:38 for CARTAVIS by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>

@@ -184,6 +184,7 @@ Typedefs</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a6f25b601a142b2f9ea90ef34b4888471"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_image_8h.html#a6f25b601a142b2f9ea90ef34b4888471">__attribute__</a> ((unused)) static void test_apis()</td></tr>
+<tr class="memdesc:a6f25b601a142b2f9ea90ef34b4888471"><td class="mdescLeft">&#160;</td><td class="mdescRight">API testing this is never executed, only compiled for API testing.  <a href="#a6f25b601a142b2f9ea90ef34b4888471">More...</a><br /></td></tr>
 <tr class="separator:a6f25b601a142b2f9ea90ef34b4888471"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -200,8 +201,81 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>simulate [3::-1,:,3] </p>
 
+<p>API testing this is never executed, only compiled for API testing. </p>
+<p>simulate [3::-1,:,3] </p>
+<div class="fragment"><div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;{</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    <span class="comment">// get an image....</span></div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    <a class="code" href="class_image_1_1_image_interface.html">Image::ImageInterface</a> * ii;</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    <a class="code" href="class_slice1_d.html">Slice1D</a> r;</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    r.<a class="code" href="class_slice1_d.html#a9b26f5cf03dffd3da6c99a73ce3ed62a">start</a>(10).<a class="code" href="class_slice1_d.html#a9b26f5cf03dffd3da6c99a73ce3ed62a">start</a>(20).<a class="code" href="class_slice1_d.html#ae904b62aa0945ca32258469944fa291f">step</a>(8);</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    <a class="code" href="class_slice_n_d.html">SliceND</a> vp;</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    vp.<a class="code" href="class_slice_n_d.html#ae7fd81caeb5971c2da8024e4ae266b5b">start</a>(3).<a class="code" href="class_slice_n_d.html#a6b31a9b210b135a549eec8a800198903">step</a>(-1)</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;            .<a class="code" href="class_slice_n_d.html#a452222b32d6195a9fed86bc4a6ffb661">next</a>()</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;            .<a class="code" href="class_slice_n_d.html#a452222b32d6195a9fed86bc4a6ffb661">next</a>().<a class="code" href="class_slice_n_d.html#a831d992312e2e16df8070992d8342a82">index</a>(3);</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    <span class="comment">// or</span></div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    vp.<a class="code" href="class_slice_n_d.html#a29563aabc8fdeb2b689a8c1ed44b697f">slice</a>(0).<a class="code" href="class_slice1_d.html#a9b26f5cf03dffd3da6c99a73ce3ed62a">start</a>(3).<a class="code" href="class_slice1_d.html#ae904b62aa0945ca32258469944fa291f">step</a>(-1);</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    vp.<a class="code" href="class_slice_n_d.html#a29563aabc8fdeb2b689a8c1ed44b697f">slice</a>(2).<a class="code" href="class_slice1_d.html#a68c9d6d45d62ee89796c2776010d76e8">index</a>(3);</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    <span class="comment">// or</span></div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    <span class="keyword">typedef</span> <a class="code" href="class_slice1_d.html">Slice1D</a> S;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    <a class="code" href="class_slice_n_d.html">SliceND</a> vp2({ S().start(3).step(-1), S(), S(3) });</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    <span class="comment">// describe the slice we want to extract</span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    <span class="comment">// note: uninitialized slice should denote &#39;entire array view&#39;</span></div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    <a class="code" href="class_slice_n_d.html">SliceND</a> si;</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    <span class="comment">// get the raw view of the data</span></div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    <a class="code" href="class_nd_array_1_1_raw_view_interface.html">NdArray::RawViewInterface</a> * rawView;</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    ii-&gt; getDataSlice(si, *rawView);</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <span class="comment">// access a single pixel in the data, returned in raw binary form</span></div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> * ptr = rawView-&gt; <span class="keyword">get</span>( { 1, 2, 3});</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    Q_UNUSED( ptr);</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    <span class="comment">// access all pixels of the view, one by one</span></div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    u_int64_t count = 0;</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    rawView-&gt; forEach( [ &amp; count] (<span class="keyword">const</span> <span class="keywordtype">char</span> * <span class="comment">/*ptr*/</span>) { count ++; });</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    <span class="comment">// make a double view (from the raw view)</span></div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    <a class="code" href="class_nd_array_1_1_typed_view.html">NdArray::TypedView&lt;double&gt;</a> doubleReader( rawView);</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    <span class="comment">// or using the typedef</span></div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    <a class="code" href="class_nd_array_1_1_typed_view.html">NdArray::Double</a> doubleReader2( rawView);</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    <span class="comment">// extract a single pixel</span></div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    <span class="keywordtype">double</span> x = doubleReader2.get({ 1, 2, 3});</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    Q_UNUSED( x);</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    <span class="comment">// iterate over all pixels</span></div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    <span class="keywordtype">double</span> sum = 0.0;</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    doubleReader.forEach( [&amp; sum]( <span class="keyword">const</span> <span class="keywordtype">double</span> &amp; x) { sum += x; });</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    <span class="comment">// META DATA API tests:</span></div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    <span class="comment">// ===========================</span></div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    <span class="comment">// get info about axis 3</span></div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    <span class="keyword">auto</span> &amp; meta = ii-&gt; metaData();</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    <a class="code" href="class_axis_info.html">AxisInfo</a> axis3 = meta.coordinateFormatter().axisInfo( 3);</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    Q_UNUSED( axis3);</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;}</div>
+<div class="ttc" id="class_axis_info_html"><div class="ttname"><a href="class_axis_info.html">AxisInfo</a></div><div class="ttdoc">description of an axis in an image </div><div class="ttdef"><b>Definition:</b> AxisInfo.h:6</div></div>
+<div class="ttc" id="class_nd_array_1_1_raw_view_interface_html"><div class="ttname"><a href="class_nd_array_1_1_raw_view_interface.html">NdArray::RawViewInterface</a></div><div class="ttdoc">Interface for reading elements of multidimensional array (n-dimensional array) for arbitrary types...</div><div class="ttdef"><b>Definition:</b> IImage.h:44</div></div>
+<div class="ttc" id="class_nd_array_1_1_typed_view_html"><div class="ttname"><a href="class_nd_array_1_1_typed_view.html">NdArray::TypedView</a></div><div class="ttdoc">utility class - wraps a raw view into a typed view </div><div class="ttdef"><b>Definition:</b> IImage.h:63</div></div>
+<div class="ttc" id="class_slice_n_d_html_a831d992312e2e16df8070992d8342a82"><div class="ttname"><a href="class_slice_n_d.html#a831d992312e2e16df8070992d8342a82">SliceND::index</a></div><div class="ttdeci">SliceND &amp; index(Index index)</div><div class="ttdoc">forward 1d slice index </div><div class="ttdef"><b>Definition:</b> Slice.cpp:288</div></div>
+<div class="ttc" id="class_slice1_d_html_a68c9d6d45d62ee89796c2776010d76e8"><div class="ttname"><a href="class_slice1_d.html#a68c9d6d45d62ee89796c2776010d76e8">Slice1D::index</a></div><div class="ttdeci">void index(Index s)</div><div class="ttdoc">set single index note we do not want chaining here, so we return void </div><div class="ttdef"><b>Definition:</b> Slice.cpp:37</div></div>
+<div class="ttc" id="class_image_1_1_image_interface_html"><div class="ttname"><a href="class_image_1_1_image_interface.html">Image::ImageInterface</a></div><div class="ttdoc">Main interface class for representing an image inside the viewer. </div><div class="ttdef"><b>Definition:</b> IImage.h:158</div></div>
+<div class="ttc" id="class_slice1_d_html_ae904b62aa0945ca32258469944fa291f"><div class="ttname"><a href="class_slice1_d.html#ae904b62aa0945ca32258469944fa291f">Slice1D::step</a></div><div class="ttdeci">Slice1D &amp; step(Index s)</div><div class="ttdoc">set step value </div><div class="ttdef"><b>Definition:</b> Slice.cpp:31</div></div>
+<div class="ttc" id="class_slice_n_d_html_a452222b32d6195a9fed86bc4a6ffb661"><div class="ttname"><a href="class_slice_n_d.html#a452222b32d6195a9fed86bc4a6ffb661">SliceND::next</a></div><div class="ttdeci">SliceND &amp; next()</div><div class="ttdoc">moves to the next index (same as what colon does) </div><div class="ttdef"><b>Definition:</b> Slice.cpp:293</div></div>
+<div class="ttc" id="class_slice_n_d_html"><div class="ttname"><a href="class_slice_n_d.html">SliceND</a></div><div class="ttdoc">contains representation of an n-dimensional slice, which is a structure used to create a view of an a...</div><div class="ttdef"><b>Definition:</b> Slice.h:143</div></div>
+<div class="ttc" id="class_slice_n_d_html_ae7fd81caeb5971c2da8024e4ae266b5b"><div class="ttname"><a href="class_slice_n_d.html#ae7fd81caeb5971c2da8024e4ae266b5b">SliceND::start</a></div><div class="ttdeci">SliceND &amp; start(Index start)</div><div class="ttdoc">forward 1d slice start </div><div class="ttdef"><b>Definition:</b> Slice.cpp:273</div></div>
+<div class="ttc" id="class_slice1_d_html"><div class="ttname"><a href="class_slice1_d.html">Slice1D</a></div><div class="ttdoc">Classes for describing slices of arrays, which are used as input for algorithms that extract views fr...</div><div class="ttdef"><b>Definition:</b> Slice.h:41</div></div>
+<div class="ttc" id="class_slice_n_d_html_a29563aabc8fdeb2b689a8c1ed44b697f"><div class="ttname"><a href="class_slice_n_d.html#a29563aabc8fdeb2b689a8c1ed44b697f">SliceND::slice</a></div><div class="ttdeci">Slice1D &amp; slice(size_t pos)</div><div class="ttdoc">get slice at position pos if such slice is not recorded, it is created (i.e. </div><div class="ttdef"><b>Definition:</b> Slice.cpp:266</div></div>
+<div class="ttc" id="class_slice_n_d_html_a6b31a9b210b135a549eec8a800198903"><div class="ttname"><a href="class_slice_n_d.html#a6b31a9b210b135a549eec8a800198903">SliceND::step</a></div><div class="ttdeci">SliceND &amp; step(Index step)</div><div class="ttdoc">forward 1d slice step </div><div class="ttdef"><b>Definition:</b> Slice.cpp:283</div></div>
+<div class="ttc" id="class_slice1_d_html_a9b26f5cf03dffd3da6c99a73ce3ed62a"><div class="ttname"><a href="class_slice1_d.html#a9b26f5cf03dffd3da6c99a73ce3ed62a">Slice1D::start</a></div><div class="ttdeci">Slice1D &amp; start(Index s)</div><div class="ttdoc">set start (index of first element to be extracted) </div><div class="ttdef"><b>Definition:</b> Slice.cpp:19</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -219,7 +293,7 @@ Here is the call graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_bdd9a5d540de89e9fe90efdfc6973a4f.html">common</a></li><li class="navelem"><a class="el" href="_i_image_8h.html">IImage.h</a></li>
-    <li class="footer">Generated on Mon Sep 1 2014 00:13:37 for CARTAVIS by
+    <li class="footer">Generated on Mon Sep 1 2014 00:34:37 for CARTAVIS by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>

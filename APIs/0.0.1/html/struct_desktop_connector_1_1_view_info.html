@@ -167,7 +167,17 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
+<div class="fragment"><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <a class="code" href="struct_desktop_connector_1_1_view_info.html#af91f45b8ea916c107e68d6ecabfc1670">view</a> = pview;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <a class="code" href="struct_desktop_connector_1_1_view_info.html#a78f82b9ec94320dfb56987596cadc870">clientSize</a> = QSize(1,1);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <a class="code" href="struct_desktop_connector_1_1_view_info.html#a7a544cc09bec59677b0a39aab6273386">refreshTimer</a>.setSingleShot( <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="comment">// just long enough that two successive calls will result in only one redraw :)</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <a class="code" href="struct_desktop_connector_1_1_view_info.html#a7a544cc09bec59677b0a39aab6273386">refreshTimer</a>.setInterval( 1);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    }</div>
+<div class="ttc" id="struct_desktop_connector_1_1_view_info_html_af91f45b8ea916c107e68d6ecabfc1670"><div class="ttname"><a href="struct_desktop_connector_1_1_view_info.html#af91f45b8ea916c107e68d6ecabfc1670">DesktopConnector::ViewInfo::view</a></div><div class="ttdeci">IView * view</div><div class="ttdoc">the implemented IView </div><div class="ttdef"><b>Definition:</b> DesktopConnector.cpp:26</div></div>
+<div class="ttc" id="struct_desktop_connector_1_1_view_info_html_a7a544cc09bec59677b0a39aab6273386"><div class="ttname"><a href="struct_desktop_connector_1_1_view_info.html#a7a544cc09bec59677b0a39aab6273386">DesktopConnector::ViewInfo::refreshTimer</a></div><div class="ttdeci">QTimer refreshTimer</div><div class="ttdef"><b>Definition:</b> DesktopConnector.cpp:34</div></div>
+<div class="ttc" id="struct_desktop_connector_1_1_view_info_html_a78f82b9ec94320dfb56987596cadc870"><div class="ttname"><a href="struct_desktop_connector_1_1_view_info.html#a78f82b9ec94320dfb56987596cadc870">DesktopConnector::ViewInfo::clientSize</a></div><div class="ttdeci">QSize clientSize</div><div class="ttdoc">last received client size </div><div class="ttdef"><b>Definition:</b> DesktopConnector.cpp:29</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -244,7 +254,7 @@ Public Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_desktop_connector.html">DesktopConnector</a></li><li class="navelem"><a class="el" href="struct_desktop_connector_1_1_view_info.html">ViewInfo</a></li>
-    <li class="footer">Generated on Mon Sep 1 2014 00:13:37 for CARTAVIS by
+    <li class="footer">Generated on Mon Sep 1 2014 00:34:38 for CARTAVIS by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>

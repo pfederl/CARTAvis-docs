@@ -179,7 +179,57 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>initialize the platform create a gui displaying the provided url inside the built-in browser </p>
-
+<div class="fragment"><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    : QObject( <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;{</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="comment">// install a custom message handler</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    qInstallMessageHandler( qtMessageHandler);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="comment">// figure out which url to use to load the html5 component</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="comment">// by default it&#39;s the locally compiled filesystem, but we let the developer</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="comment">// override it for debugging purposes</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    QUrl url;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keyword">auto</span> &amp; cmdLineInfo = * <a class="code" href="class_globals.html#aab0585cd9ec9ccefe8d48f3fe2fb6a19">Globals::instance</a>()-&gt;<a class="code" href="class_globals.html#ae2dc4772994f76c3200ffb7b9ec3006a">cmdLineInfo</a>();</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">if</span>( cmdLineInfo.htmlPath().isEmpty()) {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        url = QUrl(<span class="stringliteral">&quot;qrc:///html5/desktop/desktopIndex.html&quot;</span>);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        url = QUrl::fromUserInput( cmdLineInfo.htmlPath());</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="comment">// get the filename sfrom the command line</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <a class="code" href="class_desktop_platform.html#a3a3cfc47b241335a4e9f75f78f0502ef">m_initialFileList</a> = cmdLineInfo.fileList();</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordflow">if</span>( <a class="code" href="class_desktop_platform.html#a3a3cfc47b241335a4e9f75f78f0502ef">m_initialFileList</a>.isEmpty()) {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        qFatal( <span class="stringliteral">&quot;No input files to open...&quot;</span>);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    }</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="comment">// create the connector</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <a class="code" href="class_desktop_platform.html#a10f1ff683b87f64a270ed23ab0139a43">m_connector</a> = <span class="keyword">new</span> <a class="code" href="class_desktop_connector.html">DesktopConnector</a>();</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="comment">// enable web inspector</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    QWebSettings::globalSettings()-&gt;setAttribute( QWebSettings::DeveloperExtrasEnabled, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="comment">// create main window</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <a class="code" href="class_desktop_platform.html#aa022abe630d76320925f827bb84069ad">m_mainWindow</a> = <span class="keyword">new</span> <a class="code" href="class_main_window.html">MainWindow</a>();</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="comment">// add platform and connector to JS exports</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <a class="code" href="class_desktop_platform.html#aa022abe630d76320925f827bb84069ad">m_mainWindow</a>-&gt;<a class="code" href="class_main_window.html#a279df7c3947230a36360008998357ff0">exportToJs</a>( <span class="stringliteral">&quot;QtPlatform&quot;</span>, <span class="keyword">this</span>);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <a class="code" href="class_desktop_platform.html#aa022abe630d76320925f827bb84069ad">m_mainWindow</a>-&gt;<a class="code" href="class_main_window.html#a279df7c3947230a36360008998357ff0">exportToJs</a>( <span class="stringliteral">&quot;QtConnector&quot;</span>, <a class="code" href="class_desktop_platform.html#a10f1ff683b87f64a270ed23ab0139a43">m_connector</a>);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="comment">// load the url</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <a class="code" href="class_desktop_platform.html#aa022abe630d76320925f827bb84069ad">m_mainWindow</a>-&gt;<a class="code" href="class_main_window.html#ada68d9a71c83c68c182dfb7aa5e2a4bc">loadUrl</a>( url);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="comment">// display the window</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <a class="code" href="class_desktop_platform.html#aa022abe630d76320925f827bb84069ad">m_mainWindow</a>-&gt;show();</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;}</div>
+<div class="ttc" id="class_main_window_html_a279df7c3947230a36360008998357ff0"><div class="ttname"><a href="class_main_window.html#a279df7c3947230a36360008998357ff0">MainWindow::exportToJs</a></div><div class="ttdeci">void exportToJs(const QString &amp;name, QObject *objPtr)</div><div class="ttdoc">adds the given QObject to javascript exports these will be exported automatically on page reload so c...</div><div class="ttdef"><b>Definition:</b> MainWindow.cpp:58</div></div>
+<div class="ttc" id="class_desktop_connector_html"><div class="ttname"><a href="class_desktop_connector.html">DesktopConnector</a></div><div class="ttdoc">private info we keep with each view unfortunately it needs to live as it&#39;s own class because we need ...</div><div class="ttdef"><b>Definition:</b> DesktopConnector.h:20</div></div>
+<div class="ttc" id="class_desktop_platform_html_a10f1ff683b87f64a270ed23ab0139a43"><div class="ttname"><a href="class_desktop_platform.html#a10f1ff683b87f64a270ed23ab0139a43">DesktopPlatform::m_connector</a></div><div class="ttdeci">DesktopConnector * m_connector</div><div class="ttdef"><b>Definition:</b> DesktopPlatform.h:42</div></div>
+<div class="ttc" id="class_desktop_platform_html_aa022abe630d76320925f827bb84069ad"><div class="ttname"><a href="class_desktop_platform.html#aa022abe630d76320925f827bb84069ad">DesktopPlatform::m_mainWindow</a></div><div class="ttdeci">MainWindow * m_mainWindow</div><div class="ttdef"><b>Definition:</b> DesktopPlatform.h:41</div></div>
+<div class="ttc" id="class_globals_html_aab0585cd9ec9ccefe8d48f3fe2fb6a19"><div class="ttname"><a href="class_globals.html#aab0585cd9ec9ccefe8d48f3fe2fb6a19">Globals::instance</a></div><div class="ttdeci">static Globals * instance()</div><div class="ttdoc">singleton pattern </div><div class="ttdef"><b>Definition:</b> Globals.cpp:40</div></div>
+<div class="ttc" id="class_globals_html_ae2dc4772994f76c3200ffb7b9ec3006a"><div class="ttname"><a href="class_globals.html#ae2dc4772994f76c3200ffb7b9ec3006a">Globals::cmdLineInfo</a></div><div class="ttdeci">const CmdLine::ParsedInfo * cmdLineInfo() const </div><div class="ttdef"><b>Definition:</b> Globals.cpp:48</div></div>
+<div class="ttc" id="class_main_window_html_ada68d9a71c83c68c182dfb7aa5e2a4bc"><div class="ttname"><a href="class_main_window.html#ada68d9a71c83c68c182dfb7aa5e2a4bc">MainWindow::loadUrl</a></div><div class="ttdeci">void loadUrl(const QUrl &amp;url)</div><div class="ttdoc">loads the given url </div><div class="ttdef"><b>Definition:</b> MainWindow.cpp:53</div></div>
+<div class="ttc" id="class_main_window_html"><div class="ttname"><a href="class_main_window.html">MainWindow</a></div><div class="ttdef"><b>Definition:</b> MainWindow.h:10</div></div>
+<div class="ttc" id="class_desktop_platform_html_a3a3cfc47b241335a4e9f75f78f0502ef"><div class="ttname"><a href="class_desktop_platform.html#a3a3cfc47b241335a4e9f75f78f0502ef">DesktopPlatform::m_initialFileList</a></div><div class="ttdeci">QStringList m_initialFileList</div><div class="ttdef"><b>Definition:</b> DesktopPlatform.h:43</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -216,7 +266,11 @@ Here is the call graph for this function:</div>
 <p>returns the appropriate connector for this platform </p>
 
 <p>Implements <a class="el" href="class_i_platform.html#a12d4f5c24d055cb912bbf852c78bb0b1">IPlatform</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;{</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_desktop_platform.html#a10f1ff683b87f64a270ed23ab0139a43">m_connector</a>;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;}</div>
+<div class="ttc" id="class_desktop_platform_html_a10f1ff683b87f64a270ed23ab0139a43"><div class="ttname"><a href="class_desktop_platform.html#a10f1ff683b87f64a270ed23ab0139a43">DesktopPlatform::m_connector</a></div><div class="ttdeci">DesktopConnector * m_connector</div><div class="ttdef"><b>Definition:</b> DesktopPlatform.h:42</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="a1f815fd0f4cd4d44d1b0d2fa47aaa0f7"></a>
@@ -239,7 +293,11 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
+<div class="fragment"><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;{</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <a class="code" href="class_desktop_platform.html#aa022abe630d76320925f827bb84069ad">m_mainWindow</a>-&gt;showFullScreen();</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;}</div>
+<div class="ttc" id="class_desktop_platform_html_aa022abe630d76320925f827bb84069ad"><div class="ttname"><a href="class_desktop_platform.html#aa022abe630d76320925f827bb84069ad">DesktopPlatform::m_mainWindow</a></div><div class="ttdeci">MainWindow * m_mainWindow</div><div class="ttdef"><b>Definition:</b> DesktopPlatform.h:41</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="a5b31adccbeebf386a33fb69857aa8881"></a>
@@ -266,7 +324,11 @@ Here is the call graph for this function:</div>
 <p>return the list of files to load </p>
 
 <p>Implements <a class="el" href="class_i_platform.html#a7e88439cf0242baba4fafa989ea05a0a">IPlatform</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;{</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_desktop_platform.html#a3a3cfc47b241335a4e9f75f78f0502ef">m_initialFileList</a>;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;}</div>
+<div class="ttc" id="class_desktop_platform_html_a3a3cfc47b241335a4e9f75f78f0502ef"><div class="ttname"><a href="class_desktop_platform.html#a3a3cfc47b241335a4e9f75f78f0502ef">DesktopPlatform::m_initialFileList</a></div><div class="ttdeci">QStringList m_initialFileList</div><div class="ttdef"><b>Definition:</b> DesktopPlatform.h:43</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -380,7 +442,7 @@ Here is the call graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_desktop_platform.html">DesktopPlatform</a></li>
-    <li class="footer">Generated on Mon Sep 1 2014 00:13:37 for CARTAVIS by
+    <li class="footer">Generated on Mon Sep 1 2014 00:34:38 for CARTAVIS by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>

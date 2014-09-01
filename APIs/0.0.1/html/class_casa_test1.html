@@ -165,7 +165,11 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
+<div class="fragment"><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                                    :</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    QObject(parent)</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -193,7 +197,15 @@ Public Member Functions</h2></td></tr>
 <p>at startup plugins will be asked to return a list of hook ids they are interested in listening to </p>
 
 <p>Implements <a class="el" href="class_i_plugin.html#a724d42a0f88091a76af7bc291850c361">IPlugin</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;{</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">return</span> {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <a class="code" href="class_initialize.html#a41bdda662ad1107fdc01df74f2584ab9a643b350eb7e600fe3b7ba336b2fad966">Initialize::StaticHookId</a>,</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <a class="code" href="class_load_image.html#a287e7b3e93376d5ff6a8e87a7200b298a493cd1943260a65376aa2fe1d1e0defe">LoadImage::StaticHookId</a></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    };</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;}</div>
+<div class="ttc" id="class_initialize_html_a41bdda662ad1107fdc01df74f2584ab9a643b350eb7e600fe3b7ba336b2fad966"><div class="ttname"><a href="class_initialize.html#a41bdda662ad1107fdc01df74f2584ab9a643b350eb7e600fe3b7ba336b2fad966">Initialize::StaticHookId</a></div><div class="ttdef"><b>Definition:</b> IPlugin.h:102</div></div>
+<div class="ttc" id="class_load_image_html_a287e7b3e93376d5ff6a8e87a7200b298a493cd1943260a65376aa2fe1d1e0defe"><div class="ttname"><a href="class_load_image.html#a287e7b3e93376d5ff6a8e87a7200b298a493cd1943260a65376aa2fe1d1e0defe">LoadImage::StaticHookId</a></div><div class="ttdef"><b>Definition:</b> IPlugin.h:148</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="a28cedb07a7729b902ffcc084f249fcb5"></a>
@@ -221,7 +233,32 @@ Public Member Functions</h2></td></tr>
 <p>this is what we end up calling to do all work </p>
 
 <p>Implements <a class="el" href="class_i_plugin.html#aca6f9da5af97ac31904b6b915e0bdc85">IPlugin</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;{</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    qDebug() &lt;&lt; <span class="stringliteral">&quot;CasaTest Plugin is handling hook #&quot;</span> &lt;&lt; hookData.<a class="code" href="class_base_hook.html#a6ef88a05032d8798b5fc2516d54df994">hookId</a>();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordflow">if</span>( hookData.<a class="code" href="class_base_hook.html#a6ef88a05032d8798b5fc2516d54df994">hookId</a>() == <a class="code" href="class_initialize.html#a41bdda662ad1107fdc01df74f2584ab9a643b350eb7e600fe3b7ba336b2fad966">Initialize::StaticHookId</a> ) {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="comment">// Register FITS and Miriad image types</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        casa::FITSImage::registerOpenFunction();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        casa::MIRIADImage::registerOpenFunction();</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    }</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordflow">if</span>( hookData.<a class="code" href="class_base_hook.html#a6ef88a05032d8798b5fc2516d54df994">hookId</a>() == <a class="code" href="class_load_image.html#a287e7b3e93376d5ff6a8e87a7200b298a493cd1943260a65376aa2fe1d1e0defe">LoadImage::StaticHookId</a>) {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <a class="code" href="class_load_image.html">LoadImage</a> &amp; hook = <span class="keyword">static_cast&lt;</span><a class="code" href="class_load_image.html">LoadImage</a> &amp;<span class="keyword">&gt;</span>( hookData);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keyword">auto</span> fname = hook.<a class="code" href="class_load_image.html#ad7a26aa3d92bec1dc2543cd21f1fe223">paramsPtr</a>-&gt;<a class="code" href="struct_load_image_1_1_params.html#a4eeb81aec7308df927ec53f55c1d0413">fileName</a>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordflow">return</span> loadImage( fname, hook.<a class="code" href="class_load_image.html#a26b56f2ef87145ed2d8ea05a30936d38">result</a> );</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    }</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    qWarning() &lt;&lt; <span class="stringliteral">&quot;Sorrry, dont&#39; know how to handle this hook&quot;</span>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div>
+<div class="ttc" id="class_load_image_html"><div class="ttname"><a href="class_load_image.html">LoadImage</a></div><div class="ttdoc">load image and convert it to QImage </div><div class="ttdef"><b>Definition:</b> IPlugin.h:135</div></div>
+<div class="ttc" id="struct_load_image_1_1_params_html_a4eeb81aec7308df927ec53f55c1d0413"><div class="ttname"><a href="struct_load_image_1_1_params.html#a4eeb81aec7308df927ec53f55c1d0413">LoadImage::Params::fileName</a></div><div class="ttdeci">QString fileName</div><div class="ttdef"><b>Definition:</b> IPlugin.h:146</div></div>
+<div class="ttc" id="class_load_image_html_ad7a26aa3d92bec1dc2543cd21f1fe223"><div class="ttname"><a href="class_load_image.html#ad7a26aa3d92bec1dc2543cd21f1fe223">LoadImage::paramsPtr</a></div><div class="ttdeci">Params * paramsPtr</div><div class="ttdef"><b>Definition:</b> IPlugin.h:151</div></div>
+<div class="ttc" id="class_base_hook_html_a6ef88a05032d8798b5fc2516d54df994"><div class="ttname"><a href="class_base_hook.html#a6ef88a05032d8798b5fc2516d54df994">BaseHook::hookId</a></div><div class="ttdeci">HookId hookId() const </div><div class="ttdoc">getter </div><div class="ttdef"><b>Definition:</b> IPlugin.h:31</div></div>
+<div class="ttc" id="class_load_image_html_a26b56f2ef87145ed2d8ea05a30936d38"><div class="ttname"><a href="class_load_image.html#a26b56f2ef87145ed2d8ea05a30936d38">LoadImage::result</a></div><div class="ttdeci">ResultType result</div><div class="ttdef"><b>Definition:</b> IPlugin.h:150</div></div>
+<div class="ttc" id="class_initialize_html_a41bdda662ad1107fdc01df74f2584ab9a643b350eb7e600fe3b7ba336b2fad966"><div class="ttname"><a href="class_initialize.html#a41bdda662ad1107fdc01df74f2584ab9a643b350eb7e600fe3b7ba336b2fad966">Initialize::StaticHookId</a></div><div class="ttdef"><b>Definition:</b> IPlugin.h:102</div></div>
+<div class="ttc" id="class_load_image_html_a287e7b3e93376d5ff6a8e87a7200b298a493cd1943260a65376aa2fe1d1e0defe"><div class="ttname"><a href="class_load_image.html#a287e7b3e93376d5ff6a8e87a7200b298a493cd1943260a65376aa2fe1d1e0defe">LoadImage::StaticHookId</a></div><div class="ttdef"><b>Definition:</b> IPlugin.h:148</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -243,7 +280,7 @@ Here is the call graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_casa_test1.html">CasaTest1</a></li>
-    <li class="footer">Generated on Mon Sep 1 2014 00:13:37 for CARTAVIS by
+    <li class="footer">Generated on Mon Sep 1 2014 00:34:37 for CARTAVIS by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>

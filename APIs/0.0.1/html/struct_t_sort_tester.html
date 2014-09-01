@@ -178,7 +178,14 @@ int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
   </tr>
 </table>
 </div><div class="memdoc">
-
+<div class="fragment"><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                        : <a class="code" href="struct_t_sort_tester.html#a91ca331ccadafb131bab061d7e2f97b3">m_tsort</a>(n) {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <a class="code" href="struct_t_sort_tester.html#a16c659daa7b4376115038b9142e27072">m_n</a> = n;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <a class="code" href="struct_t_sort_tester.html#a0c25f3b5f2a93c5dffded00343f33139">m_executed</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    }</div>
+<div class="ttc" id="struct_t_sort_tester_html_a0c25f3b5f2a93c5dffded00343f33139"><div class="ttname"><a href="struct_t_sort_tester.html#a0c25f3b5f2a93c5dffded00343f33139">TSortTester::m_executed</a></div><div class="ttdeci">bool m_executed</div><div class="ttdef"><b>Definition:</b> TopoSortTest.cpp:100</div></div>
+<div class="ttc" id="struct_t_sort_tester_html_a16c659daa7b4376115038b9142e27072"><div class="ttname"><a href="struct_t_sort_tester.html#a16c659daa7b4376115038b9142e27072">TSortTester::m_n</a></div><div class="ttdeci">int m_n</div><div class="ttdef"><b>Definition:</b> TopoSortTest.cpp:98</div></div>
+<div class="ttc" id="struct_t_sort_tester_html_a91ca331ccadafb131bab061d7e2f97b3"><div class="ttname"><a href="struct_t_sort_tester.html#a91ca331ccadafb131bab061d7e2f97b3">TSortTester::m_tsort</a></div><div class="ttdeci">Algorithms::Graphs::TopoSort m_tsort</div><div class="ttdef"><b>Definition:</b> TopoSortTest.cpp:97</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -213,7 +220,14 @@ int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
   </tr>
 </table>
 </div><div class="memdoc">
-
+<div class="fragment"><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                                 {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <a class="code" href="struct_t_sort_tester.html#a91ca331ccadafb131bab061d7e2f97b3">m_tsort</a>.<a class="code" href="class_algorithms_1_1_graphs_1_1_topo_sort.html#ae2e5bb6c06a20849b9c58d2b1a270365">addArrow</a>( a, b);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <a class="code" href="struct_t_sort_tester.html#a64493ac8c729e9528f76d75c7f3ee6cb">m_input</a>.push_back( std::make_pair( a, b));</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div>
+<div class="ttc" id="struct_t_sort_tester_html_a64493ac8c729e9528f76d75c7f3ee6cb"><div class="ttname"><a href="struct_t_sort_tester.html#a64493ac8c729e9528f76d75c7f3ee6cb">TSortTester::m_input</a></div><div class="ttdeci">std::vector&lt; std::pair&lt; int, int &gt; &gt; m_input</div><div class="ttdef"><b>Definition:</b> TopoSortTest.cpp:102</div></div>
+<div class="ttc" id="class_algorithms_1_1_graphs_1_1_topo_sort_html_ae2e5bb6c06a20849b9c58d2b1a270365"><div class="ttname"><a href="class_algorithms_1_1_graphs_1_1_topo_sort.html#ae2e5bb6c06a20849b9c58d2b1a270365">Algorithms::Graphs::TopoSort::addArrow</a></div><div class="ttdeci">void addArrow(int a, int b)</div><div class="ttdoc">add an arrow from vertex a to b </div><div class="ttdef"><b>Definition:</b> TopoSort.cpp:18</div></div>
+<div class="ttc" id="struct_t_sort_tester_html_a91ca331ccadafb131bab061d7e2f97b3"><div class="ttname"><a href="struct_t_sort_tester.html#a91ca331ccadafb131bab061d7e2f97b3">TSortTester::m_tsort</a></div><div class="ttdeci">Algorithms::Graphs::TopoSort m_tsort</div><div class="ttdef"><b>Definition:</b> TopoSortTest.cpp:97</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -254,7 +268,13 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
+<div class="fragment"><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                   {</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <a class="code" href="struct_t_sort_tester.html#ae2f1f80dbe20d38c52388c92057be5e0">test</a>();</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="struct_t_sort_tester.html#a90b1a87baf2f4dcc7504f84ff6e6229d">m_hasLoop</a>;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    }</div>
+<div class="ttc" id="struct_t_sort_tester_html_a90b1a87baf2f4dcc7504f84ff6e6229d"><div class="ttname"><a href="struct_t_sort_tester.html#a90b1a87baf2f4dcc7504f84ff6e6229d">TSortTester::m_hasLoop</a></div><div class="ttdeci">bool m_hasLoop</div><div class="ttdef"><b>Definition:</b> TopoSortTest.cpp:103</div></div>
+<div class="ttc" id="struct_t_sort_tester_html_ae2f1f80dbe20d38c52388c92057be5e0"><div class="ttname"><a href="struct_t_sort_tester.html#ae2f1f80dbe20d38c52388c92057be5e0">TSortTester::test</a></div><div class="ttdeci">void test()</div><div class="ttdef"><b>Definition:</b> TopoSortTest.cpp:50</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -295,7 +315,11 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
+<div class="fragment"><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                                           {</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="struct_t_sort_tester.html#a64493ac8c729e9528f76d75c7f3ee6cb">m_input</a>;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    }</div>
+<div class="ttc" id="struct_t_sort_tester_html_a64493ac8c729e9528f76d75c7f3ee6cb"><div class="ttname"><a href="struct_t_sort_tester.html#a64493ac8c729e9528f76d75c7f3ee6cb">TSortTester::m_input</a></div><div class="ttdeci">std::vector&lt; std::pair&lt; int, int &gt; &gt; m_input</div><div class="ttdef"><b>Definition:</b> TopoSortTest.cpp:102</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -327,7 +351,13 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
+<div class="fragment"><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                              {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <a class="code" href="struct_t_sort_tester.html#ae2f1f80dbe20d38c52388c92057be5e0">test</a>();</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="struct_t_sort_tester.html#a289a42d40ed0666161e9c675cedc0c19">m_output</a>;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    }</div>
+<div class="ttc" id="struct_t_sort_tester_html_a289a42d40ed0666161e9c675cedc0c19"><div class="ttname"><a href="struct_t_sort_tester.html#a289a42d40ed0666161e9c675cedc0c19">TSortTester::m_output</a></div><div class="ttdeci">std::vector&lt; int &gt; m_output</div><div class="ttdef"><b>Definition:</b> TopoSortTest.cpp:101</div></div>
+<div class="ttc" id="struct_t_sort_tester_html_ae2f1f80dbe20d38c52388c92057be5e0"><div class="ttname"><a href="struct_t_sort_tester.html#ae2f1f80dbe20d38c52388c92057be5e0">TSortTester::test</a></div><div class="ttdeci">void test()</div><div class="ttdef"><b>Definition:</b> TopoSortTest.cpp:50</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -368,7 +398,13 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
+<div class="fragment"><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                  {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <a class="code" href="struct_t_sort_tester.html#ae2f1f80dbe20d38c52388c92057be5e0">test</a>();</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="struct_t_sort_tester.html#aa90c75d5cd33036d2c04592b63976954">m_passed</a>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    }</div>
+<div class="ttc" id="struct_t_sort_tester_html_aa90c75d5cd33036d2c04592b63976954"><div class="ttname"><a href="struct_t_sort_tester.html#aa90c75d5cd33036d2c04592b63976954">TSortTester::m_passed</a></div><div class="ttdeci">bool m_passed</div><div class="ttdef"><b>Definition:</b> TopoSortTest.cpp:99</div></div>
+<div class="ttc" id="struct_t_sort_tester_html_ae2f1f80dbe20d38c52388c92057be5e0"><div class="ttname"><a href="struct_t_sort_tester.html#ae2f1f80dbe20d38c52388c92057be5e0">TSortTester::test</a></div><div class="ttdeci">void test()</div><div class="ttdef"><b>Definition:</b> TopoSortTest.cpp:50</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -409,7 +445,43 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
+<div class="fragment"><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">if</span>( <a class="code" href="struct_t_sort_tester.html#a0c25f3b5f2a93c5dffded00343f33139">m_executed</a>) <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <a class="code" href="struct_t_sort_tester.html#a289a42d40ed0666161e9c675cedc0c19">m_output</a> = <a class="code" href="struct_t_sort_tester.html#a91ca331ccadafb131bab061d7e2f97b3">m_tsort</a>.<a class="code" href="class_algorithms_1_1_graphs_1_1_topo_sort.html#a69ca517f1be4caf235403afe8228d4bd">compute</a>();</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <a class="code" href="struct_t_sort_tester.html#a0c25f3b5f2a93c5dffded00343f33139">m_executed</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="comment">// if we have a loop, we are done</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <a class="code" href="struct_t_sort_tester.html#a90b1a87baf2f4dcc7504f84ff6e6229d">m_hasLoop</a> = <a class="code" href="struct_t_sort_tester.html#a289a42d40ed0666161e9c675cedc0c19">m_output</a>.empty();</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordflow">if</span>( <a class="code" href="struct_t_sort_tester.html#a90b1a87baf2f4dcc7504f84ff6e6229d">m_hasLoop</a>) {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <a class="code" href="struct_t_sort_tester.html#aa90c75d5cd33036d2c04592b63976954">m_passed</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="comment">// record the mapping from vertex to position in sorted list</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        std::vector&lt;int&gt; pos( <a class="code" href="struct_t_sort_tester.html#a16c659daa7b4376115038b9142e27072">m_n</a>);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordflow">for</span>( <span class="keywordtype">size_t</span> i = 0 ; i &lt; <a class="code" href="struct_t_sort_tester.html#a289a42d40ed0666161e9c675cedc0c19">m_output</a>.size() ; ++ i) {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            pos[ <a class="code" href="struct_t_sort_tester.html#a289a42d40ed0666161e9c675cedc0c19">m_output</a>[i]] = i;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        }</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="comment">// now check for each arrow that pos(a) &lt; pos(b)</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <a class="code" href="struct_t_sort_tester.html#aa90c75d5cd33036d2c04592b63976954">m_passed</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordflow">for</span>( <span class="keyword">const</span> <span class="keyword">auto</span> &amp; arrow : <a class="code" href="struct_t_sort_tester.html#a64493ac8c729e9528f76d75c7f3ee6cb">m_input</a>) {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <span class="keywordflow">if</span>( pos[ arrow.first] &gt;= pos[ arrow.second]) {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                <a class="code" href="struct_t_sort_tester.html#aa90c75d5cd33036d2c04592b63976954">m_passed</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    }</div>
+<div class="ttc" id="class_algorithms_1_1_graphs_1_1_topo_sort_html_a69ca517f1be4caf235403afe8228d4bd"><div class="ttname"><a href="class_algorithms_1_1_graphs_1_1_topo_sort.html#a69ca517f1be4caf235403afe8228d4bd">Algorithms::Graphs::TopoSort::compute</a></div><div class="ttdeci">VI compute()</div><div class="ttdoc">compute and return the sorted vertices </div><div class="ttdef"><b>Definition:</b> TopoSort.cpp:31</div></div>
+<div class="ttc" id="struct_t_sort_tester_html_a90b1a87baf2f4dcc7504f84ff6e6229d"><div class="ttname"><a href="struct_t_sort_tester.html#a90b1a87baf2f4dcc7504f84ff6e6229d">TSortTester::m_hasLoop</a></div><div class="ttdeci">bool m_hasLoop</div><div class="ttdef"><b>Definition:</b> TopoSortTest.cpp:103</div></div>
+<div class="ttc" id="struct_t_sort_tester_html_a0c25f3b5f2a93c5dffded00343f33139"><div class="ttname"><a href="struct_t_sort_tester.html#a0c25f3b5f2a93c5dffded00343f33139">TSortTester::m_executed</a></div><div class="ttdeci">bool m_executed</div><div class="ttdef"><b>Definition:</b> TopoSortTest.cpp:100</div></div>
+<div class="ttc" id="struct_t_sort_tester_html_a16c659daa7b4376115038b9142e27072"><div class="ttname"><a href="struct_t_sort_tester.html#a16c659daa7b4376115038b9142e27072">TSortTester::m_n</a></div><div class="ttdeci">int m_n</div><div class="ttdef"><b>Definition:</b> TopoSortTest.cpp:98</div></div>
+<div class="ttc" id="struct_t_sort_tester_html_aa90c75d5cd33036d2c04592b63976954"><div class="ttname"><a href="struct_t_sort_tester.html#aa90c75d5cd33036d2c04592b63976954">TSortTester::m_passed</a></div><div class="ttdeci">bool m_passed</div><div class="ttdef"><b>Definition:</b> TopoSortTest.cpp:99</div></div>
+<div class="ttc" id="struct_t_sort_tester_html_a64493ac8c729e9528f76d75c7f3ee6cb"><div class="ttname"><a href="struct_t_sort_tester.html#a64493ac8c729e9528f76d75c7f3ee6cb">TSortTester::m_input</a></div><div class="ttdeci">std::vector&lt; std::pair&lt; int, int &gt; &gt; m_input</div><div class="ttdef"><b>Definition:</b> TopoSortTest.cpp:102</div></div>
+<div class="ttc" id="struct_t_sort_tester_html_a289a42d40ed0666161e9c675cedc0c19"><div class="ttname"><a href="struct_t_sort_tester.html#a289a42d40ed0666161e9c675cedc0c19">TSortTester::m_output</a></div><div class="ttdeci">std::vector&lt; int &gt; m_output</div><div class="ttdef"><b>Definition:</b> TopoSortTest.cpp:101</div></div>
+<div class="ttc" id="struct_t_sort_tester_html_a91ca331ccadafb131bab061d7e2f97b3"><div class="ttname"><a href="struct_t_sort_tester.html#a91ca331ccadafb131bab061d7e2f97b3">TSortTester::m_tsort</a></div><div class="ttdeci">Algorithms::Graphs::TopoSort m_tsort</div><div class="ttdef"><b>Definition:</b> TopoSortTest.cpp:97</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -524,7 +596,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="struct_t_sort_tester.html">TSortTester</a></li>
-    <li class="footer">Generated on Mon Sep 1 2014 00:13:37 for CARTAVIS by
+    <li class="footer">Generated on Mon Sep 1 2014 00:34:38 for CARTAVIS by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>

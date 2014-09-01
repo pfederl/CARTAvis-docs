@@ -204,7 +204,19 @@ Static Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
+<div class="fragment"><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;{</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <a class="code" href="class_globals.html#a869920f444b2113260b90f426be9fde4">m_connector</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <a class="code" href="class_globals.html#aced1892b3518ab2dd8684f9340f8e591">m_platform</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <a class="code" href="class_globals.html#a4213d6ed6aee1d4ba8fbb358f87d4894">m_pluginManager</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <a class="code" href="class_globals.html#a150e39b741b2490cf40d9cce50cc68e6">m_cmdLineInfo</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <a class="code" href="class_globals.html#a247ba2df79e88198ec72be21d0670885">m_mainConfig</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;}</div>
+<div class="ttc" id="class_globals_html_a4213d6ed6aee1d4ba8fbb358f87d4894"><div class="ttname"><a href="class_globals.html#a4213d6ed6aee1d4ba8fbb358f87d4894">Globals::m_pluginManager</a></div><div class="ttdeci">PluginManager * m_pluginManager</div><div class="ttdef"><b>Definition:</b> Globals.h:54</div></div>
+<div class="ttc" id="class_globals_html_a247ba2df79e88198ec72be21d0670885"><div class="ttname"><a href="class_globals.html#a247ba2df79e88198ec72be21d0670885">Globals::m_mainConfig</a></div><div class="ttdeci">const MainConfig::ParsedInfo * m_mainConfig</div><div class="ttdef"><b>Definition:</b> Globals.h:58</div></div>
+<div class="ttc" id="class_globals_html_a869920f444b2113260b90f426be9fde4"><div class="ttname"><a href="class_globals.html#a869920f444b2113260b90f426be9fde4">Globals::m_connector</a></div><div class="ttdeci">IConnector * m_connector</div><div class="ttdef"><b>Definition:</b> Globals.h:56</div></div>
+<div class="ttc" id="class_globals_html_aced1892b3518ab2dd8684f9340f8e591"><div class="ttname"><a href="class_globals.html#aced1892b3518ab2dd8684f9340f8e591">Globals::m_platform</a></div><div class="ttdeci">IPlatform * m_platform</div><div class="ttdef"><b>Definition:</b> Globals.h:55</div></div>
+<div class="ttc" id="class_globals_html_a150e39b741b2490cf40d9cce50cc68e6"><div class="ttname"><a href="class_globals.html#a150e39b741b2490cf40d9cce50cc68e6">Globals::m_cmdLineInfo</a></div><div class="ttdeci">const CmdLine::ParsedInfo * m_cmdLineInfo</div><div class="ttdef"><b>Definition:</b> Globals.h:57</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -229,7 +241,12 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
+<div class="fragment"><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;{</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    Q_ASSERT( <a class="code" href="class_globals.html#a150e39b741b2490cf40d9cce50cc68e6">m_cmdLineInfo</a>);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_globals.html#a150e39b741b2490cf40d9cce50cc68e6">m_cmdLineInfo</a>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
+<div class="ttc" id="class_globals_html_a150e39b741b2490cf40d9cce50cc68e6"><div class="ttname"><a href="class_globals.html#a150e39b741b2490cf40d9cce50cc68e6">Globals::m_cmdLineInfo</a></div><div class="ttdeci">const CmdLine::ParsedInfo * m_cmdLineInfo</div><div class="ttdef"><b>Definition:</b> Globals.h:57</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -255,7 +272,13 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>get the connector </p>
-
+<div class="fragment"><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;{</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    Q_ASSERT( <a class="code" href="class_globals.html#a869920f444b2113260b90f426be9fde4">m_connector</a> != <span class="keyword">nullptr</span>);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_globals.html#a869920f444b2113260b90f426be9fde4">m_connector</a>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
+<div class="ttc" id="class_globals_html_a869920f444b2113260b90f426be9fde4"><div class="ttname"><a href="class_globals.html#a869920f444b2113260b90f426be9fde4">Globals::m_connector</a></div><div class="ttdeci">IConnector * m_connector</div><div class="ttdef"><b>Definition:</b> Globals.h:56</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -289,7 +312,15 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>singleton pattern </p>
-
+<div class="fragment"><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;{</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordflow">if</span>( ! <a class="code" href="class_globals.html#af6cc82a05aa519a63af528cce772364a">m_instance</a>) {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <a class="code" href="class_globals.html#af6cc82a05aa519a63af528cce772364a">m_instance</a> = <span class="keyword">new</span> <a class="code" href="class_globals.html#a3b78cfdbe2809ad8b6b722969dda4425">Globals</a>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_globals.html#af6cc82a05aa519a63af528cce772364a">m_instance</a>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;}</div>
+<div class="ttc" id="class_globals_html_a3b78cfdbe2809ad8b6b722969dda4425"><div class="ttname"><a href="class_globals.html#a3b78cfdbe2809ad8b6b722969dda4425">Globals::Globals</a></div><div class="ttdeci">Globals()</div><div class="ttdef"><b>Definition:</b> Globals.cpp:72</div></div>
+<div class="ttc" id="class_globals_html_af6cc82a05aa519a63af528cce772364a"><div class="ttname"><a href="class_globals.html#af6cc82a05aa519a63af528cce772364a">Globals::m_instance</a></div><div class="ttdeci">static Globals * m_instance</div><div class="ttdef"><b>Definition:</b> Globals.h:60</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -322,7 +353,12 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
+<div class="fragment"><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;{</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    Q_ASSERT( <a class="code" href="class_globals.html#a247ba2df79e88198ec72be21d0670885">m_mainConfig</a>);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_globals.html#a247ba2df79e88198ec72be21d0670885">m_mainConfig</a>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
+<div class="ttc" id="class_globals_html_a247ba2df79e88198ec72be21d0670885"><div class="ttname"><a href="class_globals.html#a247ba2df79e88198ec72be21d0670885">Globals::m_mainConfig</a></div><div class="ttdeci">const MainConfig::ParsedInfo * m_mainConfig</div><div class="ttdef"><b>Definition:</b> Globals.h:58</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -348,7 +384,14 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>get the platform </p>
-
+<div class="fragment"><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    Q_ASSERT( <a class="code" href="class_globals.html#aab0585cd9ec9ccefe8d48f3fe2fb6a19">instance</a>()-&gt; <a class="code" href="class_globals.html#aced1892b3518ab2dd8684f9340f8e591">m_platform</a> != <span class="keyword">nullptr</span>);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_globals.html#aab0585cd9ec9ccefe8d48f3fe2fb6a19">instance</a>()-&gt; <a class="code" href="class_globals.html#aced1892b3518ab2dd8684f9340f8e591">m_platform</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;}</div>
+<div class="ttc" id="class_globals_html_aab0585cd9ec9ccefe8d48f3fe2fb6a19"><div class="ttname"><a href="class_globals.html#aab0585cd9ec9ccefe8d48f3fe2fb6a19">Globals::instance</a></div><div class="ttdeci">static Globals * instance()</div><div class="ttdoc">singleton pattern </div><div class="ttdef"><b>Definition:</b> Globals.cpp:40</div></div>
+<div class="ttc" id="class_globals_html_aced1892b3518ab2dd8684f9340f8e591"><div class="ttname"><a href="class_globals.html#aced1892b3518ab2dd8684f9340f8e591">Globals::m_platform</a></div><div class="ttdeci">IPlatform * m_platform</div><div class="ttdef"><b>Definition:</b> Globals.h:55</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -383,7 +426,14 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>get the plugin manager </p>
-
+<div class="fragment"><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;{</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    Q_ASSERT( <a class="code" href="class_globals.html#aab0585cd9ec9ccefe8d48f3fe2fb6a19">instance</a>()-&gt; <a class="code" href="class_globals.html#a4213d6ed6aee1d4ba8fbb358f87d4894">m_pluginManager</a> != <span class="keyword">nullptr</span>);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_globals.html#aab0585cd9ec9ccefe8d48f3fe2fb6a19">instance</a>()-&gt; <a class="code" href="class_globals.html#a4213d6ed6aee1d4ba8fbb358f87d4894">m_pluginManager</a>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div>
+<div class="ttc" id="class_globals_html_a4213d6ed6aee1d4ba8fbb358f87d4894"><div class="ttname"><a href="class_globals.html#a4213d6ed6aee1d4ba8fbb358f87d4894">Globals::m_pluginManager</a></div><div class="ttdeci">PluginManager * m_pluginManager</div><div class="ttdef"><b>Definition:</b> Globals.h:54</div></div>
+<div class="ttc" id="class_globals_html_aab0585cd9ec9ccefe8d48f3fe2fb6a19"><div class="ttname"><a href="class_globals.html#aab0585cd9ec9ccefe8d48f3fe2fb6a19">Globals::instance</a></div><div class="ttdeci">static Globals * instance()</div><div class="ttdoc">singleton pattern </div><div class="ttdef"><b>Definition:</b> Globals.cpp:40</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -417,7 +467,13 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
+<div class="fragment"><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;{</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    Q_ASSERT_X( ! <a class="code" href="class_globals.html#a150e39b741b2490cf40d9cce50cc68e6">m_cmdLineInfo</a>, <span class="stringliteral">&quot;Globals&quot;</span>, <span class="stringliteral">&quot;Redefinging command line info!?!?!&quot;</span>);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <a class="code" href="class_globals.html#a150e39b741b2490cf40d9cce50cc68e6">m_cmdLineInfo</a> = <a class="code" href="class_globals.html#ae2dc4772994f76c3200ffb7b9ec3006a">cmdLineInfo</a>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
+<div class="ttc" id="class_globals_html_a150e39b741b2490cf40d9cce50cc68e6"><div class="ttname"><a href="class_globals.html#a150e39b741b2490cf40d9cce50cc68e6">Globals::m_cmdLineInfo</a></div><div class="ttdeci">const CmdLine::ParsedInfo * m_cmdLineInfo</div><div class="ttdef"><b>Definition:</b> Globals.h:57</div></div>
+<div class="ttc" id="class_globals_html_ae2dc4772994f76c3200ffb7b9ec3006a"><div class="ttname"><a href="class_globals.html#ae2dc4772994f76c3200ffb7b9ec3006a">Globals::cmdLineInfo</a></div><div class="ttdeci">const CmdLine::ParsedInfo * cmdLineInfo() const </div><div class="ttdef"><b>Definition:</b> Globals.cpp:48</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -444,7 +500,14 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>set the connector </p>
-
+<div class="fragment"><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;{</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    Q_ASSERT_X( <a class="code" href="class_globals.html#a869920f444b2113260b90f426be9fde4">m_connector</a> == <span class="keyword">nullptr</span>, <span class="stringliteral">&quot;Globals&quot;</span>, <span class="stringliteral">&quot;redefining connector?!?!&quot;</span>);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <a class="code" href="class_globals.html#a869920f444b2113260b90f426be9fde4">m_connector</a> = <a class="code" href="class_globals.html#ac5ea5615b42574b75059858e1ba7deea">connector</a>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;}</div>
+<div class="ttc" id="class_globals_html_a869920f444b2113260b90f426be9fde4"><div class="ttname"><a href="class_globals.html#a869920f444b2113260b90f426be9fde4">Globals::m_connector</a></div><div class="ttdeci">IConnector * m_connector</div><div class="ttdef"><b>Definition:</b> Globals.h:56</div></div>
+<div class="ttc" id="class_globals_html_ac5ea5615b42574b75059858e1ba7deea"><div class="ttname"><a href="class_globals.html#ac5ea5615b42574b75059858e1ba7deea">Globals::connector</a></div><div class="ttdeci">IConnector * connector()</div><div class="ttdoc">get the connector </div><div class="ttdef"><b>Definition:</b> Globals.cpp:81</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -469,7 +532,13 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
+<div class="fragment"><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;{</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    Q_ASSERT_X( ! <a class="code" href="class_globals.html#a247ba2df79e88198ec72be21d0670885">m_mainConfig</a>, <span class="stringliteral">&quot;Globals&quot;</span>, <span class="stringliteral">&quot;Redefinging main config info!?!?!&quot;</span>);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <a class="code" href="class_globals.html#a247ba2df79e88198ec72be21d0670885">m_mainConfig</a> = <a class="code" href="class_globals.html#a1ab6efb504671b69b8d01566f26ecc2b">mainConfig</a>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div>
+<div class="ttc" id="class_globals_html_a247ba2df79e88198ec72be21d0670885"><div class="ttname"><a href="class_globals.html#a247ba2df79e88198ec72be21d0670885">Globals::m_mainConfig</a></div><div class="ttdeci">const MainConfig::ParsedInfo * m_mainConfig</div><div class="ttdef"><b>Definition:</b> Globals.h:58</div></div>
+<div class="ttc" id="class_globals_html_a1ab6efb504671b69b8d01566f26ecc2b"><div class="ttname"><a href="class_globals.html#a1ab6efb504671b69b8d01566f26ecc2b">Globals::mainConfig</a></div><div class="ttdeci">const MainConfig::ParsedInfo * mainConfig() const </div><div class="ttdef"><b>Definition:</b> Globals.cpp:59</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -496,7 +565,15 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>set the platform </p>
-
+<div class="fragment"><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    Q_ASSERT_X( <a class="code" href="class_globals.html#aab0585cd9ec9ccefe8d48f3fe2fb6a19">instance</a>()-&gt; <a class="code" href="class_globals.html#aced1892b3518ab2dd8684f9340f8e591">m_platform</a> == <span class="keyword">nullptr</span>, <span class="stringliteral">&quot;Globals&quot;</span>, <span class="stringliteral">&quot;redefining platform&quot;</span>);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="class_globals.html#aab0585cd9ec9ccefe8d48f3fe2fb6a19">instance</a>()-&gt; <a class="code" href="class_globals.html#aced1892b3518ab2dd8684f9340f8e591">m_platform</a> = <a class="code" href="class_globals.html#a9dfefa52bc99be7f03d0b68928122bbb">platform</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div>
+<div class="ttc" id="class_globals_html_aab0585cd9ec9ccefe8d48f3fe2fb6a19"><div class="ttname"><a href="class_globals.html#aab0585cd9ec9ccefe8d48f3fe2fb6a19">Globals::instance</a></div><div class="ttdeci">static Globals * instance()</div><div class="ttdoc">singleton pattern </div><div class="ttdef"><b>Definition:</b> Globals.cpp:40</div></div>
+<div class="ttc" id="class_globals_html_aced1892b3518ab2dd8684f9340f8e591"><div class="ttname"><a href="class_globals.html#aced1892b3518ab2dd8684f9340f8e591">Globals::m_platform</a></div><div class="ttdeci">IPlatform * m_platform</div><div class="ttdef"><b>Definition:</b> Globals.h:55</div></div>
+<div class="ttc" id="class_globals_html_a9dfefa52bc99be7f03d0b68928122bbb"><div class="ttname"><a href="class_globals.html#a9dfefa52bc99be7f03d0b68928122bbb">Globals::platform</a></div><div class="ttdeci">IPlatform * platform()</div><div class="ttdoc">get the platform </div><div class="ttdef"><b>Definition:</b> Globals.cpp:12</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -523,7 +600,15 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>set the plugin manager </p>
-
+<div class="fragment"><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;{</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    Q_ASSERT_X( <a class="code" href="class_globals.html#aab0585cd9ec9ccefe8d48f3fe2fb6a19">instance</a>()-&gt; <a class="code" href="class_globals.html#a4213d6ed6aee1d4ba8fbb358f87d4894">m_pluginManager</a> == <span class="keyword">nullptr</span>, <span class="stringliteral">&quot;Globals&quot;</span>, <span class="stringliteral">&quot;redefining platform manager&quot;</span>);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="class_globals.html#aab0585cd9ec9ccefe8d48f3fe2fb6a19">instance</a>()-&gt; <a class="code" href="class_globals.html#a4213d6ed6aee1d4ba8fbb358f87d4894">m_pluginManager</a> = <a class="code" href="class_globals.html#a2a86365ff1165e67b01b2f2a9dd90cae">pluginManager</a>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div>
+<div class="ttc" id="class_globals_html_a4213d6ed6aee1d4ba8fbb358f87d4894"><div class="ttname"><a href="class_globals.html#a4213d6ed6aee1d4ba8fbb358f87d4894">Globals::m_pluginManager</a></div><div class="ttdeci">PluginManager * m_pluginManager</div><div class="ttdef"><b>Definition:</b> Globals.h:54</div></div>
+<div class="ttc" id="class_globals_html_aab0585cd9ec9ccefe8d48f3fe2fb6a19"><div class="ttname"><a href="class_globals.html#aab0585cd9ec9ccefe8d48f3fe2fb6a19">Globals::instance</a></div><div class="ttdeci">static Globals * instance()</div><div class="ttdoc">singleton pattern </div><div class="ttdef"><b>Definition:</b> Globals.cpp:40</div></div>
+<div class="ttc" id="class_globals_html_a2a86365ff1165e67b01b2f2a9dd90cae"><div class="ttname"><a href="class_globals.html#a2a86365ff1165e67b01b2f2a9dd90cae">Globals::pluginManager</a></div><div class="ttdeci">PluginManager * pluginManager()</div><div class="ttdoc">get the plugin manager </div><div class="ttdef"><b>Definition:</b> Globals.cpp:26</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -666,7 +751,7 @@ Here is the call graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_globals.html">Globals</a></li>
-    <li class="footer">Generated on Mon Sep 1 2014 00:13:37 for CARTAVIS by
+    <li class="footer">Generated on Mon Sep 1 2014 00:34:38 for CARTAVIS by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>

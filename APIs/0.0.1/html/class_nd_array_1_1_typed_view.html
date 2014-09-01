@@ -210,7 +210,17 @@ template&lt;typename Type &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-
+<div class="fragment"><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        : <a class="code" href="class_nd_array_1_1_typed_view.html#a901a0a0eb1417cfa8c2ca41f16a10226">m_rawView</a>(rawView), <a class="code" href="class_nd_array_1_1_typed_view.html#a08a9ff366b28673ddbca7983ed5025e0">m_keepOwnership</a>(keepOwnership)</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        Q_ASSERT(rawView != <span class="keyword">nullptr</span>);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="comment">// figure out which converter to use</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <a class="code" href="class_nd_array_1_1_typed_view.html#a8cafc045d83b6a480e04a518b688280c">m_converterFunc</a> = getConverter&lt;Type&gt;(rawView-&gt;pixelType());</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    }</div>
+<div class="ttc" id="class_nd_array_1_1_typed_view_html_a08a9ff366b28673ddbca7983ed5025e0"><div class="ttname"><a href="class_nd_array_1_1_typed_view.html#a08a9ff366b28673ddbca7983ed5025e0">NdArray::TypedView::m_keepOwnership</a></div><div class="ttdeci">bool m_keepOwnership</div><div class="ttdoc">are we keeping ownership of m_rawView </div><div class="ttdef"><b>Definition:</b> IImage.h:107</div></div>
+<div class="ttc" id="class_nd_array_1_1_typed_view_html_a8cafc045d83b6a480e04a518b688280c"><div class="ttname"><a href="class_nd_array_1_1_typed_view.html#a8cafc045d83b6a480e04a518b688280c">NdArray::TypedView::m_converterFunc</a></div><div class="ttdeci">const Type &amp;(* m_converterFunc)(const char *)</div><div class="ttdoc">classic c-style function pointer to the converter </div><div class="ttdef"><b>Definition:</b> IImage.h:111</div></div>
+<div class="ttc" id="class_nd_array_1_1_typed_view_html_a901a0a0eb1417cfa8c2ca41f16a10226"><div class="ttname"><a href="class_nd_array_1_1_typed_view.html#a901a0a0eb1417cfa8c2ca41f16a10226">NdArray::TypedView::m_rawView</a></div><div class="ttdeci">RawViewInterface * m_rawView</div><div class="ttdoc">pointer to the raw view </div><div class="ttdef"><b>Definition:</b> IImage.h:104</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -244,7 +254,15 @@ template&lt;typename Type &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-
+<div class="fragment"><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    {</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="class_nd_array_1_1_typed_view.html#a08a9ff366b28673ddbca7983ed5025e0">m_keepOwnership</a>) {</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            Q_ASSERT(<a class="code" href="class_nd_array_1_1_typed_view.html#a901a0a0eb1417cfa8c2ca41f16a10226">m_rawView</a> != <span class="keyword">nullptr</span>);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            <span class="keyword">delete</span> <a class="code" href="class_nd_array_1_1_typed_view.html#a901a0a0eb1417cfa8c2ca41f16a10226">m_rawView</a>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        }</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    }</div>
+<div class="ttc" id="class_nd_array_1_1_typed_view_html_a08a9ff366b28673ddbca7983ed5025e0"><div class="ttname"><a href="class_nd_array_1_1_typed_view.html#a08a9ff366b28673ddbca7983ed5025e0">NdArray::TypedView::m_keepOwnership</a></div><div class="ttdeci">bool m_keepOwnership</div><div class="ttdoc">are we keeping ownership of m_rawView </div><div class="ttdef"><b>Definition:</b> IImage.h:107</div></div>
+<div class="ttc" id="class_nd_array_1_1_typed_view_html_a901a0a0eb1417cfa8c2ca41f16a10226"><div class="ttname"><a href="class_nd_array_1_1_typed_view.html#a901a0a0eb1417cfa8c2ca41f16a10226">NdArray::TypedView::m_rawView</a></div><div class="ttdeci">RawViewInterface * m_rawView</div><div class="ttdoc">pointer to the raw view </div><div class="ttdef"><b>Definition:</b> IImage.h:104</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -274,7 +292,17 @@ template&lt;typename Type &gt; </div>
 
 <p>forEach </p>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd>investigate performance of std::function vs raw function pointer </dd></dl>
-
+<div class="fragment"><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keyword">auto</span> wrapper = [ <span class="keyword">this</span>, &amp;func ](<span class="keyword">const</span> <span class="keywordtype">char</span> * ptr)-&gt;<span class="keywordtype">void</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            func(<a class="code" href="class_nd_array_1_1_typed_view.html#a8cafc045d83b6a480e04a518b688280c">m_converterFunc</a>(ptr));</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        };</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <a class="code" href="class_nd_array_1_1_typed_view.html#a901a0a0eb1417cfa8c2ca41f16a10226">m_rawView</a>-&gt;<a class="code" href="class_nd_array_1_1_raw_view_interface.html#a8d204d2ce37372a208dd8ac8db7842a3">forEach</a>(wrapper);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    }</div>
+<div class="ttc" id="class_nd_array_1_1_raw_view_interface_html_a8d204d2ce37372a208dd8ac8db7842a3"><div class="ttname"><a href="class_nd_array_1_1_raw_view_interface.html#a8d204d2ce37372a208dd8ac8db7842a3">NdArray::RawViewInterface::forEach</a></div><div class="ttdeci">virtual void forEach(std::function&lt; void(const char *)&gt;)=0</div><div class="ttdoc">a way to access each element via function pointer </div></div>
+<div class="ttc" id="class_nd_array_1_1_typed_view_html_a8cafc045d83b6a480e04a518b688280c"><div class="ttname"><a href="class_nd_array_1_1_typed_view.html#a8cafc045d83b6a480e04a518b688280c">NdArray::TypedView::m_converterFunc</a></div><div class="ttdeci">const Type &amp;(* m_converterFunc)(const char *)</div><div class="ttdoc">classic c-style function pointer to the converter </div><div class="ttdef"><b>Definition:</b> IImage.h:111</div></div>
+<div class="ttc" id="class_nd_array_1_1_typed_view_html_a901a0a0eb1417cfa8c2ca41f16a10226"><div class="ttname"><a href="class_nd_array_1_1_typed_view.html#a901a0a0eb1417cfa8c2ca41f16a10226">NdArray::TypedView::m_rawView</a></div><div class="ttdeci">RawViewInterface * m_rawView</div><div class="ttdoc">pointer to the raw view </div><div class="ttdef"><b>Definition:</b> IImage.h:104</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -311,7 +339,13 @@ template&lt;typename Type &gt; </div>
 </div><div class="memdoc">
 
 <p>extract the data and convert it to double </p>
-
+<div class="fragment"><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="class_nd_array_1_1_typed_view.html#a8cafc045d83b6a480e04a518b688280c">m_converterFunc</a>(<a class="code" href="class_nd_array_1_1_typed_view.html#a901a0a0eb1417cfa8c2ca41f16a10226">m_rawView</a>-&gt;<a class="code" href="class_nd_array_1_1_raw_view_interface.html#ac2078320d56860ffdfcd44de48eb5c70">get</a>(pos));</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    }</div>
+<div class="ttc" id="class_nd_array_1_1_raw_view_interface_html_ac2078320d56860ffdfcd44de48eb5c70"><div class="ttname"><a href="class_nd_array_1_1_raw_view_interface.html#ac2078320d56860ffdfcd44de48eb5c70">NdArray::RawViewInterface::get</a></div><div class="ttdeci">virtual const char * get(const VI &amp;pos)=0</div><div class="ttdoc">get the raw data for the given pixel (at acoordinates &#39;pos&#39;) </div></div>
+<div class="ttc" id="class_nd_array_1_1_typed_view_html_a8cafc045d83b6a480e04a518b688280c"><div class="ttname"><a href="class_nd_array_1_1_typed_view.html#a8cafc045d83b6a480e04a518b688280c">NdArray::TypedView::m_converterFunc</a></div><div class="ttdeci">const Type &amp;(* m_converterFunc)(const char *)</div><div class="ttdoc">classic c-style function pointer to the converter </div><div class="ttdef"><b>Definition:</b> IImage.h:111</div></div>
+<div class="ttc" id="class_nd_array_1_1_typed_view_html_a901a0a0eb1417cfa8c2ca41f16a10226"><div class="ttname"><a href="class_nd_array_1_1_typed_view.html#a901a0a0eb1417cfa8c2ca41f16a10226">NdArray::TypedView::m_rawView</a></div><div class="ttdeci">RawViewInterface * m_rawView</div><div class="ttdoc">pointer to the raw view </div><div class="ttdef"><b>Definition:</b> IImage.h:104</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -326,7 +360,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_nd_array_1_1_typed_view_ae0c500dcb9528905863c58e0a7e4bf30_icgraph.png" border="0" usemap="#class_nd_array_1_1_typed_view_ae0c500dcb9528905863c58e0a7e4bf30_icgraph" alt=""/></div>
 <map name="class_nd_array_1_1_typed_view_ae0c500dcb9528905863c58e0a7e4bf30_icgraph" id="class_nd_array_1_1_typed_view_ae0c500dcb9528905863c58e0a7e4bf30_icgraph">
-<area shape="rect" id="node3" href="_i_image_8h.html#a6f25b601a142b2f9ea90ef34b4888471" title="__attribute__" alt="" coords="225,5,321,35"/></map>
+<area shape="rect" id="node3" href="_i_image_8h.html#a6f25b601a142b2f9ea90ef34b4888471" title="API testing this is never executed, only compiled for API testing. " alt="" coords="225,5,321,35"/></map>
 </div>
 </p>
 
@@ -415,7 +449,7 @@ template&lt;typename Type &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_nd_array.html">NdArray</a></li><li class="navelem"><a class="el" href="class_nd_array_1_1_typed_view.html">TypedView</a></li>
-    <li class="footer">Generated on Mon Sep 1 2014 00:13:37 for CARTAVIS by
+    <li class="footer">Generated on Mon Sep 1 2014 00:34:38 for CARTAVIS by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>

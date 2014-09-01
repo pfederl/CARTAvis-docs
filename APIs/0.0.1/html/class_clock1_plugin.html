@@ -160,7 +160,11 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
+<div class="fragment"><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;                                          :</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    QObject(parent)</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;{</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;}</div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -188,7 +192,15 @@ Public Member Functions</h2></td></tr>
 <p>at startup plugins will be asked to return a list of hook ids they are interested in listening to </p>
 
 <p>Implements <a class="el" href="class_i_plugin.html#a724d42a0f88091a76af7bc291850c361">IPlugin</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;{</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordflow">return</span> {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <a class="code" href="class_initialize.html#a41bdda662ad1107fdc01df74f2584ab9a643b350eb7e600fe3b7ba336b2fad966">Initialize::StaticHookId</a>,</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <a class="code" href="class_pre_render.html#a6aee7be115eab43f5e82dc29996030a8a5517a5a362f8304c5c76c8510a3a9145">PreRender::StaticHookId</a></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    };</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
+<div class="ttc" id="class_pre_render_html_a6aee7be115eab43f5e82dc29996030a8a5517a5a362f8304c5c76c8510a3a9145"><div class="ttname"><a href="class_pre_render.html#a6aee7be115eab43f5e82dc29996030a8a5517a5a362f8304c5c76c8510a3a9145">PreRender::StaticHookId</a></div><div class="ttdef"><b>Definition:</b> IPlugin.h:128</div></div>
+<div class="ttc" id="class_initialize_html_a41bdda662ad1107fdc01df74f2584ab9a643b350eb7e600fe3b7ba336b2fad966"><div class="ttname"><a href="class_initialize.html#a41bdda662ad1107fdc01df74f2584ab9a643b350eb7e600fe3b7ba336b2fad966">Initialize::StaticHookId</a></div><div class="ttdef"><b>Definition:</b> IPlugin.h:102</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="a41d1eba9f30e9a19c4a11dc5a35b0653"></a>
@@ -216,7 +228,50 @@ Public Member Functions</h2></td></tr>
 <p>this is what we end up calling to do all work </p>
 
 <p>Implements <a class="el" href="class_i_plugin.html#aca6f9da5af97ac31904b6b915e0bdc85">IPlugin</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    qDebug() &lt;&lt; <span class="stringliteral">&quot;ClockPlugin is handling hook #&quot;</span> &lt;&lt; hookData.<a class="code" href="class_base_hook.html#a6ef88a05032d8798b5fc2516d54df994">hookId</a>();</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordflow">if</span>( hookData.<a class="code" href="class_base_hook.html#a6ef88a05032d8798b5fc2516d54df994">hookId</a>() == <a class="code" href="class_initialize.html#a41bdda662ad1107fdc01df74f2584ab9a643b350eb7e600fe3b7ba336b2fad966">Initialize::StaticHookId</a> ) {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">//        Initialize &amp; initHook = static_cast&lt;Initialize &amp;&gt;( hookData);</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        qDebug() &lt;&lt; <span class="stringliteral">&quot;Woohoo, clock plugin received initialize request.&quot;</span>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">//        qDebug() &lt;&lt; &quot;You should see debug from Initialize below&quot;;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">//        initHook.debug();</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    }</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordflow">if</span>( hookData.<a class="code" href="class_base_hook.html#a6ef88a05032d8798b5fc2516d54df994">hookId</a>() == <a class="code" href="class_pre_render.html#a6aee7be115eab43f5e82dc29996030a8a5517a5a362f8304c5c76c8510a3a9145">PreRender::StaticHookId</a> ) {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <a class="code" href="class_pre_render.html">PreRender</a> &amp; hook = <span class="keyword">static_cast&lt;</span><a class="code" href="class_pre_render.html">PreRender</a> &amp;<span class="keyword">&gt;</span>( hookData);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        qDebug() &lt;&lt; <span class="stringliteral">&quot;Prerender hook received by clock plugin&quot;</span>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        qDebug() &lt;&lt; <span class="stringliteral">&quot;  &quot;</span> &lt;&lt; hook.<a class="code" href="class_pre_render.html#a716f086c4da7b6dc3362af9d4dfec32d">paramsPtr</a>-&gt;<a class="code" href="struct_pre_render_1_1_params.html#a26553561c5bed0879988e7eb50ae9ae1">viewName</a>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        qDebug() &lt;&lt; <span class="stringliteral">&quot;  &quot;</span> &lt;&lt; hook.<a class="code" href="class_pre_render.html#a716f086c4da7b6dc3362af9d4dfec32d">paramsPtr</a>-&gt;<a class="code" href="struct_pre_render_1_1_params.html#a62f827464e5b65e0fcfdc47f543be2db">imgPtr</a>-&gt;size();</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        QPainter p( hook.<a class="code" href="class_pre_render.html#a716f086c4da7b6dc3362af9d4dfec32d">paramsPtr</a>-&gt;<a class="code" href="struct_pre_render_1_1_params.html#a62f827464e5b65e0fcfdc47f543be2db">imgPtr</a>);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        QString txt = QTime::currentTime().toString();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        QRectF rect = hook.<a class="code" href="class_pre_render.html#a716f086c4da7b6dc3362af9d4dfec32d">paramsPtr</a>-&gt;<a class="code" href="struct_pre_render_1_1_params.html#a62f827464e5b65e0fcfdc47f543be2db">imgPtr</a>-&gt;rect();</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        p.setFont( QFont( <span class="stringliteral">&quot;Arial&quot;</span>, 20));</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        rect = p.boundingRect( rect, Qt::AlignRight | Qt::AlignTop, txt);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        p.fillRect( rect, QColor( 0,0,0,128));</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        p.setPen( QColor( <span class="stringliteral">&quot;yellow&quot;</span>));</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        p.drawText( hook.<a class="code" href="class_pre_render.html#a716f086c4da7b6dc3362af9d4dfec32d">paramsPtr</a>-&gt;<a class="code" href="struct_pre_render_1_1_params.html#a62f827464e5b65e0fcfdc47f543be2db">imgPtr</a>-&gt;rect(), Qt::AlignRight | Qt::AlignTop, txt);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    }</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    qDebug() &lt;&lt; <span class="stringliteral">&quot;Sorrry, dont&#39; know how to handle this hook&quot;</span>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
+<div class="ttc" id="struct_pre_render_1_1_params_html_a26553561c5bed0879988e7eb50ae9ae1"><div class="ttname"><a href="struct_pre_render_1_1_params.html#a26553561c5bed0879988e7eb50ae9ae1">PreRender::Params::viewName</a></div><div class="ttdeci">QString viewName</div><div class="ttdef"><b>Definition:</b> IPlugin.h:126</div></div>
+<div class="ttc" id="class_pre_render_html"><div class="ttname"><a href="class_pre_render.html">PreRender</a></div><div class="ttdoc">just before rendering a view, plugins are given a chance to modify the rendered image ...</div><div class="ttdef"><b>Definition:</b> IPlugin.h:113</div></div>
+<div class="ttc" id="class_base_hook_html_a6ef88a05032d8798b5fc2516d54df994"><div class="ttname"><a href="class_base_hook.html#a6ef88a05032d8798b5fc2516d54df994">BaseHook::hookId</a></div><div class="ttdeci">HookId hookId() const </div><div class="ttdoc">getter </div><div class="ttdef"><b>Definition:</b> IPlugin.h:31</div></div>
+<div class="ttc" id="class_pre_render_html_a6aee7be115eab43f5e82dc29996030a8a5517a5a362f8304c5c76c8510a3a9145"><div class="ttname"><a href="class_pre_render.html#a6aee7be115eab43f5e82dc29996030a8a5517a5a362f8304c5c76c8510a3a9145">PreRender::StaticHookId</a></div><div class="ttdef"><b>Definition:</b> IPlugin.h:128</div></div>
+<div class="ttc" id="class_initialize_html_a41bdda662ad1107fdc01df74f2584ab9a643b350eb7e600fe3b7ba336b2fad966"><div class="ttname"><a href="class_initialize.html#a41bdda662ad1107fdc01df74f2584ab9a643b350eb7e600fe3b7ba336b2fad966">Initialize::StaticHookId</a></div><div class="ttdef"><b>Definition:</b> IPlugin.h:102</div></div>
+<div class="ttc" id="class_pre_render_html_a716f086c4da7b6dc3362af9d4dfec32d"><div class="ttname"><a href="class_pre_render.html#a716f086c4da7b6dc3362af9d4dfec32d">PreRender::paramsPtr</a></div><div class="ttdeci">Params * paramsPtr</div><div class="ttdef"><b>Definition:</b> IPlugin.h:131</div></div>
+<div class="ttc" id="struct_pre_render_1_1_params_html_a62f827464e5b65e0fcfdc47f543be2db"><div class="ttname"><a href="struct_pre_render_1_1_params.html#a62f827464e5b65e0fcfdc47f543be2db">PreRender::Params::imgPtr</a></div><div class="ttdeci">QImage * imgPtr</div><div class="ttdef"><b>Definition:</b> IPlugin.h:125</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -238,7 +293,7 @@ Here is the call graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_clock1_plugin.html">Clock1Plugin</a></li>
-    <li class="footer">Generated on Mon Sep 1 2014 00:13:37 for CARTAVIS by
+    <li class="footer">Generated on Mon Sep 1 2014 00:34:37 for CARTAVIS by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>

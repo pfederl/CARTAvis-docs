@@ -118,15 +118,11 @@ $(document).ready(function(){initNavTree('class_main_window.html','');});
 Inheritance diagram for MainWindow:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_main_window__inherit__graph.png" border="0" usemap="#_main_window_inherit__map" alt="Inheritance graph"/></div>
-<map name="_main_window_inherit__map" id="_main_window_inherit__map">
-</map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
 Collaboration diagram for MainWindow:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_main_window__coll__graph.png" border="0" usemap="#_main_window_coll__map" alt="Collaboration graph"/></div>
-<map name="_main_window_coll__map" id="_main_window_coll__map">
-</map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -173,7 +169,55 @@ Protected Slots</h2></td></tr>
 </div><div class="memdoc">
 
 <p>constructor initializes the GUI </p>
-
+<div class="fragment"><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    m_progress = 0;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    QNetworkProxyFactory::setUseSystemConfiguration(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    m_view = <span class="keyword">new</span> QWebView(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">//    m_view-&gt; setPage( new CustomWebPage(this));</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    connect(m_view, SIGNAL(loadFinished(<span class="keywordtype">bool</span>)), SLOT(<a class="code" href="class_main_window.html#abc986ea471c555e40b0aeed81984b538">adjustLocation</a>()));</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    connect(m_view, SIGNAL(titleChanged(QString)), SLOT(<a class="code" href="class_main_window.html#aed1743bdade741264ece219a989d069a">adjustTitle</a>()));</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    connect(m_view, SIGNAL(loadProgress(<span class="keywordtype">int</span>)), SLOT(<a class="code" href="class_main_window.html#a5a175039cf16dce5513ebebde8606ab0">setProgress</a>(<span class="keywordtype">int</span>)));</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    connect(m_view, SIGNAL(loadFinished(<span class="keywordtype">bool</span>)), SLOT(<a class="code" href="class_main_window.html#a01823e4005196a20a6b70c1afe992a77">finishLoading</a>(<span class="keywordtype">bool</span>)));</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    m_locationEdit = <span class="keyword">new</span> QLineEdit(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    m_locationEdit-&gt;setSizePolicy(QSizePolicy::Expanding, m_locationEdit-&gt;sizePolicy().verticalPolicy());</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    connect(m_locationEdit, SIGNAL(returnPressed()), SLOT(<a class="code" href="class_main_window.html#af9dda6fe6f7f5e06f3a6d5e856cf140b">changeLocation</a>()));</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    QToolBar *toolBar = addToolBar(tr(<span class="stringliteral">&quot;Navigation&quot;</span>));</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    toolBar-&gt;addAction(m_view-&gt;pageAction(QWebPage::Back));</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    toolBar-&gt;addAction(m_view-&gt;pageAction(QWebPage::Forward));</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    toolBar-&gt;addAction(m_view-&gt;pageAction(QWebPage::Reload));</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    toolBar-&gt;addAction(QIcon(<span class="stringliteral">&quot;://icons/inspector.png&quot;</span>), <span class="stringliteral">&quot;Inspector&quot;</span>, <span class="keyword">this</span>, SLOT(<a class="code" href="class_main_window.html#ad8ded5e1820b0233fd093ae95404950f">showJsConsole</a>()));</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    toolBar-&gt;addWidget(m_locationEdit);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    m_inspector = <span class="keyword">new</span> QWebInspector( <span class="keyword">nullptr</span>);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    m_inspector-&gt; setPage( m_view-&gt; page());</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    m_inspector-&gt; resize( 800, 600);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    QMenu *toolsMenu = menuBar()-&gt;addMenu(tr(<span class="stringliteral">&quot;&amp;Tools&quot;</span>));</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    toolsMenu-&gt;addAction(tr(<span class="stringliteral">&quot;Show JS Console&quot;</span>), <span class="keyword">this</span>, SLOT(<a class="code" href="class_main_window.html#ad8ded5e1820b0233fd093ae95404950f">showJsConsole</a>()));</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    setCentralWidget(m_view);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    setUnifiedTitleAndToolBarOnMac(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    connect( m_view-&gt;page()-&gt;mainFrame(),</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;             &amp; QWebFrame::javaScriptWindowObjectCleared,</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;             <span class="keyword">this</span>,</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;             &amp; <a class="code" href="class_main_window.html#a0490353a6445a32495087ed61680a3d0">MainWindow::addToJavaScript</a> );</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">//    m_img = QImage( 500, 500, QImage::Format_RGB888);</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
+<div class="ttc" id="class_main_window_html_a01823e4005196a20a6b70c1afe992a77"><div class="ttname"><a href="class_main_window.html#a01823e4005196a20a6b70c1afe992a77">MainWindow::finishLoading</a></div><div class="ttdeci">void finishLoading(bool)</div><div class="ttdef"><b>Definition:</b> MainWindow.cpp:96</div></div>
+<div class="ttc" id="class_main_window_html_ad8ded5e1820b0233fd093ae95404950f"><div class="ttname"><a href="class_main_window.html#ad8ded5e1820b0233fd093ae95404950f">MainWindow::showJsConsole</a></div><div class="ttdeci">void showJsConsole()</div><div class="ttdef"><b>Definition:</b> MainWindow.cpp:104</div></div>
+<div class="ttc" id="class_main_window_html_aed1743bdade741264ece219a989d069a"><div class="ttname"><a href="class_main_window.html#aed1743bdade741264ece219a989d069a">MainWindow::adjustTitle</a></div><div class="ttdeci">void adjustTitle()</div><div class="ttdef"><b>Definition:</b> MainWindow.cpp:81</div></div>
+<div class="ttc" id="class_main_window_html_a5a175039cf16dce5513ebebde8606ab0"><div class="ttname"><a href="class_main_window.html#a5a175039cf16dce5513ebebde8606ab0">MainWindow::setProgress</a></div><div class="ttdeci">void setProgress(int p)</div><div class="ttdef"><b>Definition:</b> MainWindow.cpp:89</div></div>
+<div class="ttc" id="class_main_window_html_abc986ea471c555e40b0aeed81984b538"><div class="ttname"><a href="class_main_window.html#abc986ea471c555e40b0aeed81984b538">MainWindow::adjustLocation</a></div><div class="ttdeci">void adjustLocation()</div><div class="ttdef"><b>Definition:</b> MainWindow.cpp:69</div></div>
+<div class="ttc" id="class_main_window_html_a0490353a6445a32495087ed61680a3d0"><div class="ttname"><a href="class_main_window.html#a0490353a6445a32495087ed61680a3d0">MainWindow::addToJavaScript</a></div><div class="ttdeci">void addToJavaScript()</div><div class="ttdef"><b>Definition:</b> MainWindow.cpp:111</div></div>
+<div class="ttc" id="class_main_window_html_af9dda6fe6f7f5e06f3a6d5e856cf140b"><div class="ttname"><a href="class_main_window.html#af9dda6fe6f7f5e06f3a6d5e856cf140b">MainWindow::changeLocation</a></div><div class="ttdeci">void changeLocation()</div><div class="ttdef"><b>Definition:</b> MainWindow.cpp:74</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -206,7 +250,14 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
+<div class="fragment"><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;{</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keywordflow">for</span>( <span class="keyword">auto</span> &amp; entry : m_jsExports ) {</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        qDebug() &lt;&lt; <span class="stringliteral">&quot;Exporting &quot;</span> &lt;&lt; entry.first;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        m_view-&gt;page()-&gt;mainFrame()-&gt;addToJavaScriptWindowObject(</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                    entry.first, entry.second);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    }</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;}</div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -238,7 +289,10 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
+<div class="fragment"><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;{</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    m_locationEdit-&gt;setText(m_view-&gt;url().toString());</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;}</div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -270,7 +324,13 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
+<div class="fragment"><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;{</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordflow">if</span> (m_progress &lt;= 0 || m_progress &gt;= 100)</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        setWindowTitle(m_view-&gt;title());</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        setWindowTitle(QString(<span class="stringliteral">&quot;%1 (%2%)&quot;</span>).arg(m_view-&gt;title()).arg(m_progress));</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;}</div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -302,7 +362,12 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
+<div class="fragment"><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;{</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    QUrl url = QUrl::fromUserInput(m_locationEdit-&gt;text());</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    m_view-&gt;load(url);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    m_view-&gt;setFocus();</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;}</div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -339,7 +404,13 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>adds the given QObject to javascript exports these will be exported automatically on page reload so call this before calling <a class="el" href="class_main_window.html#ada68d9a71c83c68c182dfb7aa5e2a4bc" title="loads the given url ">loadUrl()</a> </p>
-
+<div class="fragment"><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;{</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    m_jsExports.push_back( std::make_pair( <a class="code" href="namespacesetup.html#a61de3710bf6c9d78c0afa352263f8b09">name</a>, objPtr));</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">//    m_view-&gt;page()-&gt;mainFrame()-&gt;addToJavaScriptWindowObject( name, objPtr);</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
+<div class="ttc" id="namespacesetup_html_a61de3710bf6c9d78c0afa352263f8b09"><div class="ttname"><a href="namespacesetup.html#a61de3710bf6c9d78c0afa352263f8b09">setup.name</a></div><div class="ttdeci">string name</div><div class="ttdef"><b>Definition:</b> setup.py:8</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -372,7 +443,14 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
+<div class="fragment"><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;{</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    qDebug() &lt;&lt; <span class="stringliteral">&quot;Page loaded.&quot;</span>;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    m_progress = 100;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <a class="code" href="class_main_window.html#aed1743bdade741264ece219a989d069a">adjustTitle</a>();</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    statusBar()-&gt; showMessage( <span class="stringliteral">&quot;Page loaded&quot;</span>);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;}</div>
+<div class="ttc" id="class_main_window_html_aed1743bdade741264ece219a989d069a"><div class="ttname"><a href="class_main_window.html#aed1743bdade741264ece219a989d069a">MainWindow::adjustTitle</a></div><div class="ttdeci">void adjustTitle()</div><div class="ttdef"><b>Definition:</b> MainWindow.cpp:81</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -408,7 +486,10 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>loads the given url </p>
-
+<div class="fragment"><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;{</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    m_view-&gt; load( url );</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -441,7 +522,13 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
+<div class="fragment"><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;{</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    qDebug() &lt;&lt; <span class="stringliteral">&quot;Loading page progress: &quot;</span> &lt;&lt; p &lt;&lt; <span class="stringliteral">&quot;/100&quot;</span>;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    m_progress = p;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <a class="code" href="class_main_window.html#aed1743bdade741264ece219a989d069a">adjustTitle</a>();</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;}</div>
+<div class="ttc" id="class_main_window_html_aed1743bdade741264ece219a989d069a"><div class="ttname"><a href="class_main_window.html#aed1743bdade741264ece219a989d069a">MainWindow::adjustTitle</a></div><div class="ttdeci">void adjustTitle()</div><div class="ttdef"><b>Definition:</b> MainWindow.cpp:81</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -482,7 +569,10 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
+<div class="fragment"><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;{</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    m_inspector-&gt; setVisible( ! m_inspector-&gt; isVisible());</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;}</div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -504,7 +594,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_main_window.html">MainWindow</a></li>
-    <li class="footer">Generated on Mon Sep 1 2014 00:13:37 for CARTAVIS by
+    <li class="footer">Generated on Mon Sep 1 2014 00:34:38 for CARTAVIS by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>

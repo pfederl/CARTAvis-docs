@@ -144,7 +144,19 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
+<div class="fragment"><div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="namespacenoisepy.html#acc3788162bc1399e80401f513f739c18">   13</a></span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">def </span><a class="code" href="namespacenoisepy.html#acc3788162bc1399e80401f513f739c18">preRenderHook</a>(w, h, data):</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    print(<span class="stringliteral">&quot;preRenderHook from noisepy.py&quot;</span>, w, h, len(data))</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">#    myShape = data.reshape(h,w,3)</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    myShape = data</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordflow">for</span> y <span class="keywordflow">in</span> range(0,h):</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keywordflow">if</span> y % 2 &lt; 1:</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            myShape[y,...] = 0</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">#    for i, x in enumerate(data):</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">#        if (i // (w*3)) % 10 &lt; 5:</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">#           data[i] = 0</span></div>
+<div class="ttc" id="namespacenoisepy_html_acc3788162bc1399e80401f513f739c18"><div class="ttname"><a href="namespacenoisepy.html#acc3788162bc1399e80401f513f739c18">noisepy.preRenderHook</a></div><div class="ttdeci">def preRenderHook</div><div class="ttdef"><b>Definition:</b> noisepy.py:13</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->
@@ -153,7 +165,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacenoisepy.html">noisepy</a></li>
-    <li class="footer">Generated on Mon Sep 1 2014 00:13:37 for CARTAVIS by
+    <li class="footer">Generated on Mon Sep 1 2014 00:34:38 for CARTAVIS by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>

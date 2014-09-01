@@ -152,7 +152,68 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
+<div class="fragment"><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="comment">// initialize Qt</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="class_my_q_app.html">MyQApp</a> qapp( argc, argv);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#ifdef QT_DEBUG</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    MyQApp::setApplicationName( <span class="stringliteral">&quot;Skeleton3-desktop-debug&quot;</span>);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    MyQApp::setApplicationName( <span class="stringliteral">&quot;Skeleton3-desktop-release&quot;</span>);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    qDebug() &lt;&lt; <span class="stringliteral">&quot;Starting&quot;</span> &lt;&lt; qapp.applicationName() &lt;&lt; qapp.applicationVersion();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="comment">// alias globals</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keyword">auto</span> &amp; globals = * <a class="code" href="class_globals.html#aab0585cd9ec9ccefe8d48f3fe2fb6a19">Globals::instance</a>();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="comment">// parse command line arguments &amp; environment variables</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">auto</span> cmdLineInfo = <a class="code" href="namespace_cmd_line.html#a3909c3de8a58313516e45880d14183d0">CmdLine::parse</a>( MyQApp::arguments());</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    globals.setCmdLineInfo( &amp; cmdLineInfo);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="comment">// load the config file</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    QString configFilePath = cmdLineInfo.configFilePath();</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keyword">auto</span> mainConfig = <a class="code" href="namespace_main_config.html#a154d930d809d344f2f4b89ca894fbefc">MainConfig::parse</a>( configFilePath);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    globals.setMainConfig( &amp; mainConfig);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    qDebug() &lt;&lt; <span class="stringliteral">&quot;plugin directories:\n - &quot;</span> + mainConfig.pluginDirectories().join( <span class="stringliteral">&quot;\n - &quot;</span>);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="comment">// initialize platform</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="comment">// platform gets command line &amp; main config file via globals ?!?!?</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">auto</span> platform = <span class="keyword">new</span> <a class="code" href="class_desktop_platform.html">DesktopPlatform</a>();</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    globals.setPlatform( platform);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="comment">// prepare connector</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <a class="code" href="class_i_connector.html">IConnector</a> * connector = platform-&gt; connector();</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">if</span>( ! connector) {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        qFatal( <span class="stringliteral">&quot;Could not initialize connector!&quot;</span>);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    globals.setConnector( connector);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="comment">// create the viewer</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="class_viewer.html">Viewer</a> viewer;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="comment">// prepare closure to execute when connector is initialized</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="class_i_connector.html#a991d9f062375f2f08c16cf69e7fe0c89">IConnector::InitializeCallback</a> initCB = [connector, &amp; viewer](<span class="keywordtype">bool</span> valid) -&gt; <span class="keywordtype">void</span> {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        qDebug() &lt;&lt; <span class="stringliteral">&quot;Connector initialized:&quot;</span> &lt;&lt; valid;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        viewer.<a class="code" href="class_viewer.html#a81db42a75d1c11ea0da88c76c83aa7e2">start</a>();</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    };</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="comment">// initialize connector</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    connector-&gt; initialize( initCB);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="comment">// qt now has control</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">return</span> qapp.exec();</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div>
+<div class="ttc" id="namespace_main_config_html_a154d930d809d344f2f4b89ca894fbefc"><div class="ttname"><a href="namespace_main_config.html#a154d930d809d344f2f4b89ca894fbefc">MainConfig::parse</a></div><div class="ttdeci">ParsedInfo parse(const QString &amp;filePath)</div><div class="ttdoc">parse the given config file </div><div class="ttdef"><b>Definition:</b> MainConfig.cpp:18</div></div>
+<div class="ttc" id="class_my_q_app_html"><div class="ttname"><a href="class_my_q_app.html">MyQApp</a></div><div class="ttdef"><b>Definition:</b> MyQApp.h:17</div></div>
+<div class="ttc" id="class_i_connector_html_a991d9f062375f2f08c16cf69e7fe0c89"><div class="ttname"><a href="class_i_connector.html#a991d9f062375f2f08c16cf69e7fe0c89">IConnector::InitializeCallback</a></div><div class="ttdeci">std::function&lt; void(bool success)&gt; InitializeCallback</div><div class="ttdoc">signature for initialization callback </div><div class="ttdef"><b>Definition:</b> IConnector.h:31</div></div>
+<div class="ttc" id="class_viewer_html_a81db42a75d1c11ea0da88c76c83aa7e2"><div class="ttname"><a href="class_viewer.html#a81db42a75d1c11ea0da88c76c83aa7e2">Viewer::start</a></div><div class="ttdeci">void start()</div><div class="ttdoc">called by skeleton when connector is already initialized (i.e. </div><div class="ttdef"><b>Definition:</b> Viewer.cpp:222</div></div>
+<div class="ttc" id="namespace_cmd_line_html_a3909c3de8a58313516e45880d14183d0"><div class="ttname"><a href="namespace_cmd_line.html#a3909c3de8a58313516e45880d14183d0">CmdLine::parse</a></div><div class="ttdeci">ParsedInfo parse(const QStringList &amp;argv)</div><div class="ttdoc">parse the command line, which is extracted from QCoreApplication::arguments() if error occurred...</div><div class="ttdef"><b>Definition:</b> CmdLine.cpp:19</div></div>
+<div class="ttc" id="class_globals_html_aab0585cd9ec9ccefe8d48f3fe2fb6a19"><div class="ttname"><a href="class_globals.html#aab0585cd9ec9ccefe8d48f3fe2fb6a19">Globals::instance</a></div><div class="ttdeci">static Globals * instance()</div><div class="ttdoc">singleton pattern </div><div class="ttdef"><b>Definition:</b> Globals.cpp:40</div></div>
+<div class="ttc" id="class_desktop_platform_html"><div class="ttname"><a href="class_desktop_platform.html">DesktopPlatform</a></div><div class="ttdef"><b>Definition:</b> DesktopPlatform.h:16</div></div>
+<div class="ttc" id="class_i_connector_html"><div class="ttname"><a href="class_i_connector.html">IConnector</a></div><div class="ttdoc">The IConnector interface offers common API that the C++ code uses to communicate with the JavaScript ...</div><div class="ttdef"><b>Definition:</b> IConnector.h:18</div></div>
+<div class="ttc" id="class_viewer_html"><div class="ttname"><a href="class_viewer.html">Viewer</a></div><div class="ttdef"><b>Definition:</b> Viewer.h:11</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -170,7 +231,7 @@ Here is the call graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_634d989582191fdfe017f28ecbfd9152.html">desktop</a></li><li class="navelem"><a class="el" href="desktop_main_8cpp.html">desktopMain.cpp</a></li>
-    <li class="footer">Generated on Mon Sep 1 2014 00:13:37 for CARTAVIS by
+    <li class="footer">Generated on Mon Sep 1 2014 00:34:37 for CARTAVIS by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>

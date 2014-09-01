@@ -207,7 +207,10 @@ template&lt;typename T&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-
+<div class="fragment"><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        : <a class="code" href="class_hook_helper.html#a29bbdb34237c5358f7169777298512c3">m_params</a>( std::forward&lt;typename T::Params&gt;( params))</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    {}</div>
+<div class="ttc" id="class_hook_helper_html_a29bbdb34237c5358f7169777298512c3"><div class="ttname"><a href="class_hook_helper.html#a29bbdb34237c5358f7169777298512c3">HookHelper::m_params</a></div><div class="ttdeci">T::Params m_params</div><div class="ttdef"><b>Definition:</b> PluginManager.h:88</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -235,7 +238,14 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 
 <p>execute all plugins and ignore results </p>
-
+<div class="fragment"><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                      {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keyword">auto</span> wrapper = [=] (<span class="keyword">typename</span> T::ResultType &amp;&amp;) -&gt; <span class="keywordtype">bool</span> {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        };</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <a class="code" href="class_hook_helper.html#a0a2437f8870ab7fcffd9f681f62c1cc9">forEachCond</a>( wrapper);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    }</div>
+<div class="ttc" id="class_hook_helper_html_a0a2437f8870ab7fcffd9f681f62c1cc9"><div class="ttname"><a href="class_hook_helper.html#a0a2437f8870ab7fcffd9f681f62c1cc9">HookHelper::forEachCond</a></div><div class="ttdeci">void forEachCond(std::function&lt; bool(typename T::ResultType)&gt; func)</div><div class="ttdoc">call all plugins and execute func with the result of the plugin&#39;s hook (if the plugin answered) the r...</div><div class="ttdef"><b>Definition:</b> PluginManager.h:179</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -272,7 +282,19 @@ template&lt;typename T&gt; </div>
 
 <p>execute all plugins and return an array of results (for every plugin that answered) </p>
 <p>keep executing plugins until one answers </p>
-
+<div class="fragment"><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                                           {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <a class="code" href="class_nullable.html">Nullable&lt;typename T::ResultType&gt;</a> result;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keyword">auto</span> wrapper = [&amp; result] (<span class="keyword">typename</span> T::ResultType &amp;&amp; hookResult) -&gt; <span class="keywordtype">bool</span> {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            result = hookResult;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        };</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <a class="code" href="class_hook_helper.html#a0a2437f8870ab7fcffd9f681f62c1cc9">forEachCond</a>( wrapper);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="comment">// return unset value</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    }</div>
+<div class="ttc" id="class_hook_helper_html_a0a2437f8870ab7fcffd9f681f62c1cc9"><div class="ttname"><a href="class_hook_helper.html#a0a2437f8870ab7fcffd9f681f62c1cc9">HookHelper::forEachCond</a></div><div class="ttdeci">void forEachCond(std::function&lt; bool(typename T::ResultType)&gt; func)</div><div class="ttdoc">call all plugins and execute func with the result of the plugin&#39;s hook (if the plugin answered) the r...</div><div class="ttdef"><b>Definition:</b> PluginManager.h:179</div></div>
+<div class="ttc" id="class_nullable_html"><div class="ttname"><a href="class_nullable.html">Nullable</a></div><div class="ttdoc">Templated container holding a single value of type T. </div><div class="ttdef"><b>Definition:</b> Nullable.h:17</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -309,7 +331,16 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 
 <p>as above, but all plugins are processed </p>
-
+<div class="fragment"><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                                                                 {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="comment">// code reuse by wrapping the supplied function into one that always return true</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keyword">auto</span> wrapper = [=] (<span class="keyword">typename</span> T::ResultType &amp;&amp; res) -&gt; <span class="keywordtype">bool</span> {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            func( std::forward(res));</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        };</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <a class="code" href="class_hook_helper.html#a0a2437f8870ab7fcffd9f681f62c1cc9">forEachCond</a>( wrapper);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    }</div>
+<div class="ttc" id="class_hook_helper_html_a0a2437f8870ab7fcffd9f681f62c1cc9"><div class="ttname"><a href="class_hook_helper.html#a0a2437f8870ab7fcffd9f681f62c1cc9">HookHelper::forEachCond</a></div><div class="ttdeci">void forEachCond(std::function&lt; bool(typename T::ResultType)&gt; func)</div><div class="ttdoc">call all plugins and execute func with the result of the plugin&#39;s hook (if the plugin answered) the r...</div><div class="ttdef"><b>Definition:</b> PluginManager.h:179</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -338,7 +369,43 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>call all plugins and execute func with the result of the plugin's hook (if the plugin answered) the return value of func() will be used to determine whether to continue the loop (true = continue, false = abort) </p>
-
+<div class="fragment"><div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;{</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    qDebug() &lt;&lt; <span class="stringliteral">&quot;forEachCond&quot;</span>;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    <span class="comment">// get the list of plugins that claim they handle this hook</span></div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    <a class="code" href="_i_plugin_8h.html#a7353e35db97f351f0fe1cb30eeac1f89">HookId</a> hookId = T::StaticHookId;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    qDebug() &lt;&lt; <span class="stringliteral">&quot;  static hook id = &quot;</span> &lt;&lt; hookId;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <span class="keyword">auto</span> pluginList = <a class="code" href="class_hook_helper.html#a8053393e7489c1855c82b09bc2e60715">m_pm</a>-&gt; listForHook( hookId);</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    qDebug() &lt;&lt; <span class="stringliteral">&quot;  plugins registered for this hook: &quot;</span> &lt;&lt; pluginList.size();</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <span class="comment">// make an actual instance of the Hook</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    T hookData( &amp; <a class="code" href="class_hook_helper.html#a29bbdb34237c5358f7169777298512c3">m_params</a>);</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <span class="keywordflow">for</span>( <span class="keyword">auto</span> pluginInfo : pluginList) {</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        qDebug() &lt;&lt; <span class="stringliteral">&quot;  calling...&quot;</span> &lt;&lt; pluginInfo-&gt; json.name</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                    ;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        <span class="keywordtype">bool</span> handled = pluginInfo-&gt; rawPlugin-&gt; handleHook( hookData);</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        <span class="comment">// skip to the next plugin immediately if this hook was not handled by</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        <span class="comment">// this plugin</span></div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        <span class="keywordflow">if</span>( ! handled) {</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;            <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        }</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        <span class="comment">// call the func() with the result of the hook</span></div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        <span class="keywordtype">bool</span> shouldContinue = func( hookData.result);</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        <span class="comment">// if we should not continue, abort right here</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        <span class="keywordflow">if</span>( ! shouldContinue) {</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        }</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    }</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;}</div>
+<div class="ttc" id="class_hook_helper_html_a8053393e7489c1855c82b09bc2e60715"><div class="ttname"><a href="class_hook_helper.html#a8053393e7489c1855c82b09bc2e60715">HookHelper::m_pm</a></div><div class="ttdeci">PluginManager * m_pm</div><div class="ttdef"><b>Definition:</b> PluginManager.h:89</div></div>
+<div class="ttc" id="class_hook_helper_html_a29bbdb34237c5358f7169777298512c3"><div class="ttname"><a href="class_hook_helper.html#a29bbdb34237c5358f7169777298512c3">HookHelper::m_params</a></div><div class="ttdeci">T::Params m_params</div><div class="ttdef"><b>Definition:</b> PluginManager.h:88</div></div>
+<div class="ttc" id="_i_plugin_8h_html_a7353e35db97f351f0fe1cb30eeac1f89"><div class="ttname"><a href="_i_plugin_8h.html#a7353e35db97f351f0fe1cb30eeac1f89">HookId</a></div><div class="ttdeci">int64_t HookId</div><div class="ttdoc">Every hook as a unique ID and we are using 64bit integers for hook IDs The IDs will allow us to do st...</div><div class="ttdef"><b>Definition:</b> IPlugin.h:10</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -427,7 +494,7 @@ template&lt;typename T&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_hook_helper.html">HookHelper</a></li>
-    <li class="footer">Generated on Mon Sep 1 2014 00:13:37 for CARTAVIS by
+    <li class="footer">Generated on Mon Sep 1 2014 00:34:38 for CARTAVIS by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>

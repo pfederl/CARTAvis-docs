@@ -153,7 +153,11 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 
 <p>get a list of plugin directories </p>
-
+<div class="fragment"><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;{</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_main_config_1_1_parsed_info.html#a881ae20b3a53aacfd3fe1a8ae4d3c3c1">m_pluginDirectories</a>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
+<div class="ttc" id="class_main_config_1_1_parsed_info_html_a881ae20b3a53aacfd3fe1a8ae4d3c3c1"><div class="ttname"><a href="class_main_config_1_1_parsed_info.html#a881ae20b3a53aacfd3fe1a8ae4d3c3c1">MainConfig::ParsedInfo::m_pluginDirectories</a></div><div class="ttdeci">QStringList m_pluginDirectories</div><div class="ttdef"><b>Definition:</b> MainConfig.h:27</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Friends And Related Function Documentation</h2>
@@ -187,7 +191,47 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>parsed config file </dd></dl>
-
+<div class="fragment"><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    qDebug() &lt;&lt; <span class="stringliteral">&quot;Parsing global settings from&quot;</span> &lt;&lt; filePath;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="comment">// prepare result</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    ParsedInfo info;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="comment">// open file and read it in</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    QFile file( filePath);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordflow">if</span>( ! file.open( QFile::ReadOnly)) {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        qWarning() &lt;&lt; <span class="stringliteral">&quot;Could not open main config file from&quot;</span> &lt;&lt; filePath;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordflow">return</span> info;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    }</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">auto</span> fileContents = file.readAll();</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    qDebug() &lt;&lt; <span class="stringliteral">&quot;Config file has&quot;</span> &lt;&lt; fileContents.size() &lt;&lt; <span class="stringliteral">&quot;bytes&quot;</span>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="comment">// parse json</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    QJsonParseError errors;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    QJsonDocument jsonDoc = QJsonDocument::fromJson( fileContents, &amp; errors);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordflow">if</span>( jsonDoc.isNull()) {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        qWarning() &lt;&lt; <span class="stringliteral">&quot;Could not parse config file&quot;</span> &lt;&lt; filePath;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        qWarning() &lt;&lt; <span class="stringliteral">&quot;Errors below:&quot;</span>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        qWarning() &lt;&lt; errors.errorString();</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordflow">return</span> info;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    }</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    QJsonObject json = jsonDoc.object();</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="comment">// extract plugin directories</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keyword">auto</span> pluginDirs = json[ <span class="stringliteral">&quot;pluginDirs&quot;</span>].toArray().toVariantList();</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">for</span>( <span class="keyword">auto</span>  dir : pluginDirs) {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        QString raw = dir.toString();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="comment">// perform some substitutions</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="comment">// TODO: document these substitutions somewhere</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        raw.replace( <span class="stringliteral">&quot;$(HOME)&quot;</span>, QDir::homePath());</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        raw.replace( <span class="stringliteral">&quot;$(APPDIR)&quot;</span>, QCoreApplication::applicationDirPath());</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        info.m_pluginDirectories.append( QDir::cleanPath(raw));</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">//    qDebug() &lt;&lt; &quot;All dirs&quot; &lt;&lt; info.pluginDirectories();</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">return</span> info;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -221,7 +265,7 @@ Friends</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_main_config.html">MainConfig</a></li><li class="navelem"><a class="el" href="class_main_config_1_1_parsed_info.html">ParsedInfo</a></li>
-    <li class="footer">Generated on Mon Sep 1 2014 00:13:37 for CARTAVIS by
+    <li class="footer">Generated on Mon Sep 1 2014 00:34:38 for CARTAVIS by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>

@@ -167,7 +167,16 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>initialize the platform also parse the command line arguments </p>
-
+<div class="fragment"><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;{</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="comment">// install a custom message handler</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    qInstallMessageHandler( qtMessageHandler);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="comment">// create the connector</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="class_server_platform.html#a85336fceb2a1ff2edddfb031cfe819c5">m_connector</a> = <span class="keyword">new</span> <a class="code" href="class_server_connector.html">ServerConnector</a>();</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div>
+<div class="ttc" id="class_server_connector_html"><div class="ttname"><a href="class_server_connector.html">ServerConnector</a></div><div class="ttdef"><b>Definition:</b> ServerConnector.h:63</div></div>
+<div class="ttc" id="class_server_platform_html_a85336fceb2a1ff2edddfb031cfe819c5"><div class="ttname"><a href="class_server_platform.html#a85336fceb2a1ff2edddfb031cfe819c5">ServerPlatform::m_connector</a></div><div class="ttdeci">ServerConnector * m_connector</div><div class="ttdef"><b>Definition:</b> ServerPlatform.h:26</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -195,7 +204,11 @@ Protected Attributes</h2></td></tr>
 <p>returns the appropriate connector for this platform </p>
 
 <p>Implements <a class="el" href="class_i_platform.html#a12d4f5c24d055cb912bbf852c78bb0b1">IPlatform</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;{</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_server_platform.html#a85336fceb2a1ff2edddfb031cfe819c5">m_connector</a>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;}</div>
+<div class="ttc" id="class_server_platform_html_a85336fceb2a1ff2edddfb031cfe819c5"><div class="ttname"><a href="class_server_platform.html#a85336fceb2a1ff2edddfb031cfe819c5">ServerPlatform::m_connector</a></div><div class="ttdeci">ServerConnector * m_connector</div><div class="ttdef"><b>Definition:</b> ServerPlatform.h:26</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="abcf20b2262ad7ad906e0d9ef540189e1"></a>
@@ -222,7 +235,17 @@ Protected Attributes</h2></td></tr>
 <p>the list comes from url encoded parameters </p>
 
 <p>Implements <a class="el" href="class_i_platform.html#a7e88439cf0242baba4fafa989ea05a0a">IPlatform</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;{</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keyword">auto</span> params = <a class="code" href="class_server_platform.html#a85336fceb2a1ff2edddfb031cfe819c5">m_connector</a>-&gt; urlParams();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keyword">auto</span> it = this-&gt; <a class="code" href="class_server_platform.html#a85336fceb2a1ff2edddfb031cfe819c5">m_connector</a>-&gt; urlParams().find( <span class="stringliteral">&quot;file&quot;</span>);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">if</span>( it != this-&gt; <a class="code" href="class_server_platform.html#a85336fceb2a1ff2edddfb031cfe819c5">m_connector</a>-&gt; urlParams().end()) {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <a class="code" href="class_server_platform.html#a4b669019165eb9d73a09ea8ae0b4c2cb">m_initialFileList</a> &lt;&lt; ( * it).second;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_server_platform.html#a4b669019165eb9d73a09ea8ae0b4c2cb">m_initialFileList</a>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div>
+<div class="ttc" id="class_server_platform_html_a4b669019165eb9d73a09ea8ae0b4c2cb"><div class="ttname"><a href="class_server_platform.html#a4b669019165eb9d73a09ea8ae0b4c2cb">ServerPlatform::m_initialFileList</a></div><div class="ttdeci">QStringList m_initialFileList</div><div class="ttdef"><b>Definition:</b> ServerPlatform.h:27</div></div>
+<div class="ttc" id="class_server_platform_html_a85336fceb2a1ff2edddfb031cfe819c5"><div class="ttname"><a href="class_server_platform.html#a85336fceb2a1ff2edddfb031cfe819c5">ServerPlatform::m_connector</a></div><div class="ttdeci">ServerConnector * m_connector</div><div class="ttdef"><b>Definition:</b> ServerPlatform.h:26</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -276,7 +299,7 @@ Protected Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_server_platform.html">ServerPlatform</a></li>
-    <li class="footer">Generated on Mon Sep 1 2014 00:13:37 for CARTAVIS by
+    <li class="footer">Generated on Mon Sep 1 2014 00:34:38 for CARTAVIS by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>

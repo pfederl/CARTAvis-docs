@@ -166,7 +166,11 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
+<div class="fragment"><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;                                                :</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    QObject(parent)</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;{</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;}</div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -194,7 +198,13 @@ Public Member Functions</h2></td></tr>
 <p>at startup plugins will be asked to return a list of hook ids they are interested in listening to </p>
 
 <p>Implements <a class="el" href="class_i_plugin.html#a724d42a0f88091a76af7bc291850c361">IPlugin</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;{</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordflow">return</span> {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <a class="code" href="class_load_plugin.html#aef33b985704923d08dbf2cd2c577fb5cae521aeb99728d46c0cfe93244a1be52e">LoadPlugin::StaticHookId</a></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    };</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div>
+<div class="ttc" id="class_load_plugin_html_aef33b985704923d08dbf2cd2c577fb5cae521aeb99728d46c0cfe93244a1be52e"><div class="ttname"><a href="class_load_plugin.html#aef33b985704923d08dbf2cd2c577fb5cae521aeb99728d46c0cfe93244a1be52e">LoadPlugin::StaticHookId</a></div><div class="ttdef"><b>Definition:</b> IPlugin.h:170</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="aefb3636d63175bab6ca3f46488878ac4"></a>
@@ -222,7 +232,37 @@ Public Member Functions</h2></td></tr>
 <p>this is what we end up calling to do all work </p>
 
 <p>Implements <a class="el" href="class_i_plugin.html#aca6f9da5af97ac31904b6b915e0bdc85">IPlugin</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    qDebug() &lt;&lt; <span class="stringliteral">&quot;Python273Plugin is handling hook #&quot;</span> &lt;&lt; hookData.<a class="code" href="class_base_hook.html#a6ef88a05032d8798b5fc2516d54df994">hookId</a>();</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordflow">if</span>( hookData.<a class="code" href="class_base_hook.html#a6ef88a05032d8798b5fc2516d54df994">hookId</a>() == <a class="code" href="class_load_plugin.html#aef33b985704923d08dbf2cd2c577fb5cae521aeb99728d46c0cfe93244a1be52e">LoadPlugin::StaticHookId</a>) {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <a class="code" href="class_load_plugin.html">LoadPlugin</a> &amp; hook = <span class="keyword">static_cast&lt;</span><a class="code" href="class_load_plugin.html">LoadPlugin</a> &amp;<span class="keyword">&gt;</span>( hookData);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        hook.<a class="code" href="class_load_plugin.html#af669432ef0add340dce290b7e19ae397">result</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        qDebug() &lt;&lt; <span class="stringliteral">&quot;Python273Plugin is asked to load plugin&quot;</span> &lt;&lt; hook.<a class="code" href="class_load_plugin.html#a4f6ab2165f4e6ac8d734573eb18c6e01">paramsPtr</a>-&gt;<a class="code" href="struct_load_plugin_1_1_params.html#a1b772c7c5ceb1f7a366f169582b43772">json</a>.<a class="code" href="struct_plugin_json.html#acaa709098531fd4f2232d92be5c2f29a">name</a>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keywordflow">if</span>( hook.<a class="code" href="class_load_plugin.html#a4f6ab2165f4e6ac8d734573eb18c6e01">paramsPtr</a>-&gt;<a class="code" href="struct_load_plugin_1_1_params.html#a1b772c7c5ceb1f7a366f169582b43772">json</a>.<a class="code" href="struct_plugin_json.html#af19755534f2c2134663b8a1bb9cb0d92">typeString</a> != <span class="stringliteral">&quot;python&quot;</span>) {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        }</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            hook.<a class="code" href="class_load_plugin.html#af669432ef0add340dce290b7e19ae397">result</a> = <span class="keyword">new</span> <a class="code" href="class_py_cpp_plug.html">PyCppPlug</a>( * hook.<a class="code" href="class_load_plugin.html#a4f6ab2165f4e6ac8d734573eb18c6e01">paramsPtr</a>);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        } <span class="keywordflow">catch</span>( ...) {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        }</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    }</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    qWarning() &lt;&lt; <span class="stringliteral">&quot;Sorrry, dont&#39; know how to handle this hook&quot;</span>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div>
+<div class="ttc" id="struct_plugin_json_html_acaa709098531fd4f2232d92be5c2f29a"><div class="ttname"><a href="struct_plugin_json.html#acaa709098531fd4f2232d92be5c2f29a">PluginJson::name</a></div><div class="ttdeci">QString name</div><div class="ttdoc">name of the plugin </div><div class="ttdef"><b>Definition:</b> IPlugin.h:51</div></div>
+<div class="ttc" id="class_base_hook_html_a6ef88a05032d8798b5fc2516d54df994"><div class="ttname"><a href="class_base_hook.html#a6ef88a05032d8798b5fc2516d54df994">BaseHook::hookId</a></div><div class="ttdeci">HookId hookId() const </div><div class="ttdoc">getter </div><div class="ttdef"><b>Definition:</b> IPlugin.h:31</div></div>
+<div class="ttc" id="class_load_plugin_html"><div class="ttname"><a href="class_load_plugin.html">LoadPlugin</a></div><div class="ttdoc">load a plugin of unknown type </div><div class="ttdef"><b>Definition:</b> IPlugin.h:155</div></div>
+<div class="ttc" id="class_load_plugin_html_aef33b985704923d08dbf2cd2c577fb5cae521aeb99728d46c0cfe93244a1be52e"><div class="ttname"><a href="class_load_plugin.html#aef33b985704923d08dbf2cd2c577fb5cae521aeb99728d46c0cfe93244a1be52e">LoadPlugin::StaticHookId</a></div><div class="ttdef"><b>Definition:</b> IPlugin.h:170</div></div>
+<div class="ttc" id="struct_plugin_json_html_af19755534f2c2134663b8a1bb9cb0d92"><div class="ttname"><a href="struct_plugin_json.html#af19755534f2c2134663b8a1bb9cb0d92">PluginJson::typeString</a></div><div class="ttdeci">QString typeString</div><div class="ttdoc">type of the plugin (e.g. "cpp") </div><div class="ttdef"><b>Definition:</b> IPlugin.h:55</div></div>
+<div class="ttc" id="struct_load_plugin_1_1_params_html_a1b772c7c5ceb1f7a366f169582b43772"><div class="ttname"><a href="struct_load_plugin_1_1_params.html#a1b772c7c5ceb1f7a366f169582b43772">LoadPlugin::Params::json</a></div><div class="ttdeci">PluginJson json</div><div class="ttdef"><b>Definition:</b> IPlugin.h:168</div></div>
+<div class="ttc" id="class_py_cpp_plug_html"><div class="ttname"><a href="class_py_cpp_plug.html">PyCppPlug</a></div><div class="ttdoc">this is a plugin returned as a result of the hook call when loading a pythong plugin ...</div><div class="ttdef"><b>Definition:</b> PyCppPlugin.h:12</div></div>
+<div class="ttc" id="class_load_plugin_html_a4f6ab2165f4e6ac8d734573eb18c6e01"><div class="ttname"><a href="class_load_plugin.html#a4f6ab2165f4e6ac8d734573eb18c6e01">LoadPlugin::paramsPtr</a></div><div class="ttdeci">Params * paramsPtr</div><div class="ttdef"><b>Definition:</b> IPlugin.h:173</div></div>
+<div class="ttc" id="class_load_plugin_html_af669432ef0add340dce290b7e19ae397"><div class="ttname"><a href="class_load_plugin.html#af669432ef0add340dce290b7e19ae397">LoadPlugin::result</a></div><div class="ttdeci">ResultType result</div><div class="ttdef"><b>Definition:</b> IPlugin.h:172</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -259,7 +299,9 @@ Here is the call graph for this function:</div>
 <p>called immediately after the plugin was loaded TODO: should be pure virtual </p>
 
 <p>Reimplemented from <a class="el" href="class_i_plugin.html#ac634c63c99c596785168d2f4e7009eae">IPlugin</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;{</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;}</div>
+</div><!-- fragment -->
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
@@ -272,7 +314,7 @@ Here is the call graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_python273_plugin.html">Python273Plugin</a></li>
-    <li class="footer">Generated on Mon Sep 1 2014 00:13:37 for CARTAVIS by
+    <li class="footer">Generated on Mon Sep 1 2014 00:34:38 for CARTAVIS by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>

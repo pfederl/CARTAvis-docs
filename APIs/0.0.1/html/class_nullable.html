@@ -180,7 +180,10 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 
 <p>default constructor makes a nulled version </p>
-
+<div class="fragment"><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        : <a class="code" href="class_nullable.html#aab3fc67787ad84618578963b2a8ee38f">m_isNull</a>( <span class="keyword">true</span>)</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    {}</div>
+<div class="ttc" id="class_nullable_html_aab3fc67787ad84618578963b2a8ee38f"><div class="ttname"><a href="class_nullable.html#aab3fc67787ad84618578963b2a8ee38f">Nullable::m_isNull</a></div><div class="ttdeci">bool m_isNull</div><div class="ttdoc">is the value set? </div><div class="ttdef"><b>Definition:</b> Nullable.h:53</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="ad423b0ee02ab8e735976d93e660d7acf"></a>
@@ -208,7 +211,13 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 
 <p>initializer from value </p>
-
+<div class="fragment"><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        : <a class="code" href="class_nullable.html#aab3fc67787ad84618578963b2a8ee38f">m_isNull</a>( <span class="keyword">false</span>)</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        , <a class="code" href="class_nullable.html#aa007e83d0cd2a5b5237c46146e880f77">m_val</a>( <a class="code" href="class_nullable.html#a359300b077410402aedc772bda44d7ca">val</a>)</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    {}</div>
+<div class="ttc" id="class_nullable_html_aa007e83d0cd2a5b5237c46146e880f77"><div class="ttname"><a href="class_nullable.html#aa007e83d0cd2a5b5237c46146e880f77">Nullable::m_val</a></div><div class="ttdeci">T m_val</div><div class="ttdoc">copy of the value </div><div class="ttdef"><b>Definition:</b> Nullable.h:56</div></div>
+<div class="ttc" id="class_nullable_html_aab3fc67787ad84618578963b2a8ee38f"><div class="ttname"><a href="class_nullable.html#aab3fc67787ad84618578963b2a8ee38f">Nullable::m_isNull</a></div><div class="ttdeci">bool m_isNull</div><div class="ttdoc">is the value set? </div><div class="ttdef"><b>Definition:</b> Nullable.h:53</div></div>
+<div class="ttc" id="class_nullable_html_a359300b077410402aedc772bda44d7ca"><div class="ttname"><a href="class_nullable.html#a359300b077410402aedc772bda44d7ca">Nullable::val</a></div><div class="ttdeci">const T &amp; val() const </div><div class="ttdoc">returns a reference to the stored value </div><div class="ttdef"><b>Definition:</b> Nullable.h:43</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -236,7 +245,9 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 
 <p>returns true if the instance holds no value </p>
-
+<div class="fragment"><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="class_nullable.html#aab3fc67787ad84618578963b2a8ee38f">m_isNull</a>; }</div>
+<div class="ttc" id="class_nullable_html_aab3fc67787ad84618578963b2a8ee38f"><div class="ttname"><a href="class_nullable.html#aab3fc67787ad84618578963b2a8ee38f">Nullable::m_isNull</a></div><div class="ttdeci">bool m_isNull</div><div class="ttdoc">is the value set? </div><div class="ttdef"><b>Definition:</b> Nullable.h:53</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -272,7 +283,9 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 
 <p>returns true if the instance holds a value </p>
-
+<div class="fragment"><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;{ <span class="keywordflow">return</span> ! <a class="code" href="class_nullable.html#a5fcc2441f5f792c7606ca543c5ffbea6">isNull</a>(); }</div>
+<div class="ttc" id="class_nullable_html_a5fcc2441f5f792c7606ca543c5ffbea6"><div class="ttname"><a href="class_nullable.html#a5fcc2441f5f792c7606ca543c5ffbea6">Nullable::isNull</a></div><div class="ttdeci">bool isNull() const </div><div class="ttdoc">returns true if the instance holds no value </div><div class="ttdef"><b>Definition:</b> Nullable.h:34</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -308,7 +321,9 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 
 <p>safe bool check to see if the value was set </p>
-
+<div class="fragment"><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;{ <span class="keywordflow">return</span> ! <a class="code" href="class_nullable.html#a5fcc2441f5f792c7606ca543c5ffbea6">isNull</a>(); }</div>
+<div class="ttc" id="class_nullable_html_a5fcc2441f5f792c7606ca543c5ffbea6"><div class="ttname"><a href="class_nullable.html#a5fcc2441f5f792c7606ca543c5ffbea6">Nullable::isNull</a></div><div class="ttdeci">bool isNull() const </div><div class="ttdoc">returns true if the instance holds no value </div><div class="ttdef"><b>Definition:</b> Nullable.h:34</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="a359300b077410402aedc772bda44d7ca"></a>
@@ -335,7 +350,15 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 
 <p>returns a reference to the stored value </p>
-
+<div class="fragment"><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                          {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordflow">if</span>( <a class="code" href="class_nullable.html#a5fcc2441f5f792c7606ca543c5ffbea6">isNull</a>()) {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <span class="keywordflow">throw</span> std::logic_error( <span class="stringliteral">&quot;Trying to get value of Nullable&lt;&gt; with no value set&quot;</span>);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        }</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="class_nullable.html#aa007e83d0cd2a5b5237c46146e880f77">m_val</a>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div>
+<div class="ttc" id="class_nullable_html_aa007e83d0cd2a5b5237c46146e880f77"><div class="ttname"><a href="class_nullable.html#aa007e83d0cd2a5b5237c46146e880f77">Nullable::m_val</a></div><div class="ttdeci">T m_val</div><div class="ttdoc">copy of the value </div><div class="ttdef"><b>Definition:</b> Nullable.h:56</div></div>
+<div class="ttc" id="class_nullable_html_a5fcc2441f5f792c7606ca543c5ffbea6"><div class="ttname"><a href="class_nullable.html#a5fcc2441f5f792c7606ca543c5ffbea6">Nullable::isNull</a></div><div class="ttdeci">bool isNull() const </div><div class="ttdoc">returns true if the instance holds no value </div><div class="ttdef"><b>Definition:</b> Nullable.h:34</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -405,7 +428,7 @@ template&lt;typename T&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_nullable.html">Nullable</a></li>
-    <li class="footer">Generated on Mon Sep 1 2014 00:13:37 for CARTAVIS by
+    <li class="footer">Generated on Mon Sep 1 2014 00:34:38 for CARTAVIS by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>

@@ -160,7 +160,11 @@ Public Attributes</h2></td></tr>
 
 <p>convenience test for error </p>
 <p>=========================================================================== </p><h1><a class="el" href="struct_slice1_d_1_1_apply_result.html" title="type of result returned from the apply method ">Slice1D::ApplyResult</a> </h1>
-
+<div class="fragment"><div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;{</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="struct_slice1_d_1_1_apply_result.html#aeb17733eb6ca289f7d96a1c3294272ba">start</a> &lt; 0;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;}</div>
+<div class="ttc" id="struct_slice1_d_1_1_apply_result_html_aeb17733eb6ca289f7d96a1c3294272ba"><div class="ttname"><a href="struct_slice1_d_1_1_apply_result.html#aeb17733eb6ca289f7d96a1c3294272ba">Slice1D::ApplyResult::start</a></div><div class="ttdeci">Index start</div><div class="ttdoc">index of the first element to extract -1 means bad result/error </div><div class="ttdef"><b>Definition:</b> Slice.h:82</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -186,7 +190,11 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>convenience test for single value note, the result could still be an error... </p>
-
+<div class="fragment"><div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;{</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="struct_slice1_d_1_1_apply_result.html#a7adcc9ef41e2bc5ea426ef8e9e87112d">count</a> == -1;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;}</div>
+<div class="ttc" id="struct_slice1_d_1_1_apply_result_html_a7adcc9ef41e2bc5ea426ef8e9e87112d"><div class="ttname"><a href="struct_slice1_d_1_1_apply_result.html#a7adcc9ef41e2bc5ea426ef8e9e87112d">Slice1D::ApplyResult::count</a></div><div class="ttdeci">Index count</div><div class="ttdoc">how many elements to extract (could be 0) if count == -1, then the extraction is of a single index ...</div><div class="ttdef"><b>Definition:</b> Slice.h:85</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -212,7 +220,21 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>return a human readable string </p>
-
+<div class="fragment"><div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;{</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    <span class="keywordflow">if</span>( <a class="code" href="struct_slice1_d_1_1_apply_result.html#ac2df260559adc89d5e25d1b4f1f56239">isError</a>()) {</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;        <span class="keywordflow">return</span> <span class="stringliteral">&quot;error&quot;</span>;</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    }</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    <span class="keywordflow">if</span>( <a class="code" href="struct_slice1_d_1_1_apply_result.html#af03bd55cd1fe48bf5af1fb00d35cfed8">isSingle</a>()) {</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        <span class="keywordflow">return</span> QString(<span class="stringliteral">&quot;%1&quot;</span>).arg(<a class="code" href="struct_slice1_d_1_1_apply_result.html#aeb17733eb6ca289f7d96a1c3294272ba">start</a>);</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    }</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <span class="keywordflow">return</span> QString(<span class="stringliteral">&quot;%1+%2x%3&quot;</span>).arg(<a class="code" href="struct_slice1_d_1_1_apply_result.html#aeb17733eb6ca289f7d96a1c3294272ba">start</a>).arg(<a class="code" href="struct_slice1_d_1_1_apply_result.html#ae268978891b5b5315674a4435e7ccdb0">step</a>).arg(<a class="code" href="struct_slice1_d_1_1_apply_result.html#a7adcc9ef41e2bc5ea426ef8e9e87112d">count</a>);</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;}</div>
+<div class="ttc" id="struct_slice1_d_1_1_apply_result_html_af03bd55cd1fe48bf5af1fb00d35cfed8"><div class="ttname"><a href="struct_slice1_d_1_1_apply_result.html#af03bd55cd1fe48bf5af1fb00d35cfed8">Slice1D::ApplyResult::isSingle</a></div><div class="ttdeci">bool isSingle() const </div><div class="ttdoc">convenience test for single value note, the result could still be an error... </div><div class="ttdef"><b>Definition:</b> Slice.cpp:234</div></div>
+<div class="ttc" id="struct_slice1_d_1_1_apply_result_html_aeb17733eb6ca289f7d96a1c3294272ba"><div class="ttname"><a href="struct_slice1_d_1_1_apply_result.html#aeb17733eb6ca289f7d96a1c3294272ba">Slice1D::ApplyResult::start</a></div><div class="ttdeci">Index start</div><div class="ttdoc">index of the first element to extract -1 means bad result/error </div><div class="ttdef"><b>Definition:</b> Slice.h:82</div></div>
+<div class="ttc" id="struct_slice1_d_1_1_apply_result_html_ae268978891b5b5315674a4435e7ccdb0"><div class="ttname"><a href="struct_slice1_d_1_1_apply_result.html#ae268978891b5b5315674a4435e7ccdb0">Slice1D::ApplyResult::step</a></div><div class="ttdeci">Index step</div><div class="ttdoc">the step </div><div class="ttdef"><b>Definition:</b> Slice.h:87</div></div>
+<div class="ttc" id="struct_slice1_d_1_1_apply_result_html_a7adcc9ef41e2bc5ea426ef8e9e87112d"><div class="ttname"><a href="struct_slice1_d_1_1_apply_result.html#a7adcc9ef41e2bc5ea426ef8e9e87112d">Slice1D::ApplyResult::count</a></div><div class="ttdeci">Index count</div><div class="ttdoc">how many elements to extract (could be 0) if count == -1, then the extraction is of a single index ...</div><div class="ttdef"><b>Definition:</b> Slice.h:85</div></div>
+<div class="ttc" id="struct_slice1_d_1_1_apply_result_html_ac2df260559adc89d5e25d1b4f1f56239"><div class="ttname"><a href="struct_slice1_d_1_1_apply_result.html#ac2df260559adc89d5e25d1b4f1f56239">Slice1D::ApplyResult::isError</a></div><div class="ttdeci">bool isError() const </div><div class="ttdoc">convenience test for error </div><div class="ttdef"><b>Definition:</b> Slice.cpp:229</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -277,7 +299,7 @@ Here is the call graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_slice1_d.html">Slice1D</a></li><li class="navelem"><a class="el" href="struct_slice1_d_1_1_apply_result.html">ApplyResult</a></li>
-    <li class="footer">Generated on Mon Sep 1 2014 00:13:37 for CARTAVIS by
+    <li class="footer">Generated on Mon Sep 1 2014 00:34:38 for CARTAVIS by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>

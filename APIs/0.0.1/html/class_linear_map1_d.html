@@ -185,7 +185,15 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>default constructor is an identity map </p>
-
+<div class="fragment"><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                  {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <a class="code" href="class_linear_map1_d.html#a6ba8dde065875be265ea89f6040d7164">m_ax</a> = 1.0;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <a class="code" href="class_linear_map1_d.html#a3cb4b60d7cbbcb89e7a8b70fcc4c8c9a">m_bx</a> = 0.0;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <a class="code" href="class_linear_map1_d.html#ac2b2219942e3c26db3e26bedce244f4c">m_axinv</a> = 1.0;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    }</div>
+<div class="ttc" id="class_linear_map1_d_html_ac2b2219942e3c26db3e26bedce244f4c"><div class="ttname"><a href="class_linear_map1_d.html#ac2b2219942e3c26db3e26bedce244f4c">LinearMap1D::m_axinv</a></div><div class="ttdeci">double m_axinv</div><div class="ttdef"><b>Definition:</b> LinearMap.h:60</div></div>
+<div class="ttc" id="class_linear_map1_d_html_a6ba8dde065875be265ea89f6040d7164"><div class="ttname"><a href="class_linear_map1_d.html#a6ba8dde065875be265ea89f6040d7164">LinearMap1D::m_ax</a></div><div class="ttdeci">double m_ax</div><div class="ttdef"><b>Definition:</b> LinearMap.h:60</div></div>
+<div class="ttc" id="class_linear_map1_d_html_a3cb4b60d7cbbcb89e7a8b70fcc4c8c9a"><div class="ttname"><a href="class_linear_map1_d.html#a3cb4b60d7cbbcb89e7a8b70fcc4c8c9a">LinearMap1D::m_bx</a></div><div class="ttdeci">double m_bx</div><div class="ttdef"><b>Definition:</b> LinearMap.h:60</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="a560b7de67a24b33c56a5cd017f643c18"></a>
@@ -233,7 +241,15 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>creates a linear map so that apply(x1) = y1 and apply(x2) = y2 </p>
-
+<div class="fragment"><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                                                             {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <a class="code" href="class_linear_map1_d.html#a6ba8dde065875be265ea89f6040d7164">m_ax</a> = (y2-y1) / (x2-x1);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <a class="code" href="class_linear_map1_d.html#a3cb4b60d7cbbcb89e7a8b70fcc4c8c9a">m_bx</a> = y1 - x1 * <a class="code" href="class_linear_map1_d.html#a6ba8dde065875be265ea89f6040d7164">m_ax</a>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <a class="code" href="class_linear_map1_d.html#ac2b2219942e3c26db3e26bedce244f4c">m_axinv</a> = 1.0 / <a class="code" href="class_linear_map1_d.html#a6ba8dde065875be265ea89f6040d7164">m_ax</a>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    }</div>
+<div class="ttc" id="class_linear_map1_d_html_ac2b2219942e3c26db3e26bedce244f4c"><div class="ttname"><a href="class_linear_map1_d.html#ac2b2219942e3c26db3e26bedce244f4c">LinearMap1D::m_axinv</a></div><div class="ttdeci">double m_axinv</div><div class="ttdef"><b>Definition:</b> LinearMap.h:60</div></div>
+<div class="ttc" id="class_linear_map1_d_html_a6ba8dde065875be265ea89f6040d7164"><div class="ttname"><a href="class_linear_map1_d.html#a6ba8dde065875be265ea89f6040d7164">LinearMap1D::m_ax</a></div><div class="ttdeci">double m_ax</div><div class="ttdef"><b>Definition:</b> LinearMap.h:60</div></div>
+<div class="ttc" id="class_linear_map1_d_html_a3cb4b60d7cbbcb89e7a8b70fcc4c8c9a"><div class="ttname"><a href="class_linear_map1_d.html#a3cb4b60d7cbbcb89e7a8b70fcc4c8c9a">LinearMap1D::m_bx</a></div><div class="ttdeci">double m_bx</div><div class="ttdef"><b>Definition:</b> LinearMap.h:60</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -260,7 +276,10 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>apply the linear map to x </p>
-
+<div class="fragment"><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;{ <span class="keywordflow">return</span> x * <a class="code" href="class_linear_map1_d.html#a6ba8dde065875be265ea89f6040d7164">m_ax</a> + <a class="code" href="class_linear_map1_d.html#a3cb4b60d7cbbcb89e7a8b70fcc4c8c9a">m_bx</a>; }</div>
+<div class="ttc" id="class_linear_map1_d_html_a6ba8dde065875be265ea89f6040d7164"><div class="ttname"><a href="class_linear_map1_d.html#a6ba8dde065875be265ea89f6040d7164">LinearMap1D::m_ax</a></div><div class="ttdeci">double m_ax</div><div class="ttdef"><b>Definition:</b> LinearMap.h:60</div></div>
+<div class="ttc" id="class_linear_map1_d_html_a3cb4b60d7cbbcb89e7a8b70fcc4c8c9a"><div class="ttname"><a href="class_linear_map1_d.html#a3cb4b60d7cbbcb89e7a8b70fcc4c8c9a">LinearMap1D::m_bx</a></div><div class="ttdeci">double m_bx</div><div class="ttdef"><b>Definition:</b> LinearMap.h:60</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -294,7 +313,9 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>return the ax factor </p>
-
+<div class="fragment"><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="class_linear_map1_d.html#a6ba8dde065875be265ea89f6040d7164">m_ax</a>; }</div>
+<div class="ttc" id="class_linear_map1_d_html_a6ba8dde065875be265ea89f6040d7164"><div class="ttname"><a href="class_linear_map1_d.html#a6ba8dde065875be265ea89f6040d7164">LinearMap1D::m_ax</a></div><div class="ttdeci">double m_ax</div><div class="ttdef"><b>Definition:</b> LinearMap.h:60</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -328,7 +349,9 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>return the bx factor </p>
-
+<div class="fragment"><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="class_linear_map1_d.html#a3cb4b60d7cbbcb89e7a8b70fcc4c8c9a">m_bx</a>; }</div>
+<div class="ttc" id="class_linear_map1_d_html_a3cb4b60d7cbbcb89e7a8b70fcc4c8c9a"><div class="ttname"><a href="class_linear_map1_d.html#a3cb4b60d7cbbcb89e7a8b70fcc4c8c9a">LinearMap1D::m_bx</a></div><div class="ttdeci">double m_bx</div><div class="ttdef"><b>Definition:</b> LinearMap.h:60</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -373,7 +396,20 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>construct a linear map with ax,bx directly specified </p>
-
+<div class="fragment"><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <a class="code" href="class_linear_map1_d.html">LinearMap1D</a> res;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    res.<a class="code" href="class_linear_map1_d.html#a6ba8dde065875be265ea89f6040d7164">m_ax</a> = <a class="code" href="class_linear_map1_d.html#a4cb117b2bd1f5056d80c56429d57f0b6">ax</a>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    res.<a class="code" href="class_linear_map1_d.html#a3cb4b60d7cbbcb89e7a8b70fcc4c8c9a">m_bx</a> = <a class="code" href="class_linear_map1_d.html#a7db52db61165e8de2441a7c27aea6b13">bx</a>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    res.<a class="code" href="class_linear_map1_d.html#ac2b2219942e3c26db3e26bedce244f4c">m_axinv</a> = 1.0 / <a class="code" href="class_linear_map1_d.html#a4cb117b2bd1f5056d80c56429d57f0b6">ax</a>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordflow">return</span> res;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;}</div>
+<div class="ttc" id="class_linear_map1_d_html_ac2b2219942e3c26db3e26bedce244f4c"><div class="ttname"><a href="class_linear_map1_d.html#ac2b2219942e3c26db3e26bedce244f4c">LinearMap1D::m_axinv</a></div><div class="ttdeci">double m_axinv</div><div class="ttdef"><b>Definition:</b> LinearMap.h:60</div></div>
+<div class="ttc" id="class_linear_map1_d_html_a6ba8dde065875be265ea89f6040d7164"><div class="ttname"><a href="class_linear_map1_d.html#a6ba8dde065875be265ea89f6040d7164">LinearMap1D::m_ax</a></div><div class="ttdeci">double m_ax</div><div class="ttdef"><b>Definition:</b> LinearMap.h:60</div></div>
+<div class="ttc" id="class_linear_map1_d_html_a3cb4b60d7cbbcb89e7a8b70fcc4c8c9a"><div class="ttname"><a href="class_linear_map1_d.html#a3cb4b60d7cbbcb89e7a8b70fcc4c8c9a">LinearMap1D::m_bx</a></div><div class="ttdeci">double m_bx</div><div class="ttdef"><b>Definition:</b> LinearMap.h:60</div></div>
+<div class="ttc" id="class_linear_map1_d_html_a7db52db61165e8de2441a7c27aea6b13"><div class="ttname"><a href="class_linear_map1_d.html#a7db52db61165e8de2441a7c27aea6b13">LinearMap1D::bx</a></div><div class="ttdeci">double bx() const </div><div class="ttdoc">return the bx factor </div><div class="ttdef"><b>Definition:</b> LinearMap.h:55</div></div>
+<div class="ttc" id="class_linear_map1_d_html_a4cb117b2bd1f5056d80c56429d57f0b6"><div class="ttname"><a href="class_linear_map1_d.html#a4cb117b2bd1f5056d80c56429d57f0b6">LinearMap1D::ax</a></div><div class="ttdeci">double ax() const </div><div class="ttdoc">return the ax factor </div><div class="ttdef"><b>Definition:</b> LinearMap.h:52</div></div>
+<div class="ttc" id="class_linear_map1_d_html"><div class="ttname"><a href="class_linear_map1_d.html">LinearMap1D</a></div><div class="ttdoc">Helper class that can convert between two different linear coordinate systems in 1D. </div><div class="ttdef"><b>Definition:</b> LinearMap.h:20</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -408,7 +444,10 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>apply inverse map to x </p>
-
+<div class="fragment"><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="class_linear_map1_d.html#ac2b2219942e3c26db3e26bedce244f4c">m_axinv</a> * (x - <a class="code" href="class_linear_map1_d.html#a3cb4b60d7cbbcb89e7a8b70fcc4c8c9a">m_bx</a>); }</div>
+<div class="ttc" id="class_linear_map1_d_html_ac2b2219942e3c26db3e26bedce244f4c"><div class="ttname"><a href="class_linear_map1_d.html#ac2b2219942e3c26db3e26bedce244f4c">LinearMap1D::m_axinv</a></div><div class="ttdeci">double m_axinv</div><div class="ttdef"><b>Definition:</b> LinearMap.h:60</div></div>
+<div class="ttc" id="class_linear_map1_d_html_a3cb4b60d7cbbcb89e7a8b70fcc4c8c9a"><div class="ttname"><a href="class_linear_map1_d.html#a3cb4b60d7cbbcb89e7a8b70fcc4c8c9a">LinearMap1D::m_bx</a></div><div class="ttdeci">double m_bx</div><div class="ttdef"><b>Definition:</b> LinearMap.h:60</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="aa9b7cbfb523528d3b90c0f17b6256087"></a>
@@ -434,7 +473,9 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>same as apply(x) </p>
-
+<div class="fragment"><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="class_linear_map1_d.html#a0b4712c44db0d84e25d7b4dc18e26d2a">apply</a>(x); }</div>
+<div class="ttc" id="class_linear_map1_d_html_a0b4712c44db0d84e25d7b4dc18e26d2a"><div class="ttname"><a href="class_linear_map1_d.html#a0b4712c44db0d84e25d7b4dc18e26d2a">LinearMap1D::apply</a></div><div class="ttdeci">double apply(double x) const </div><div class="ttdoc">apply the linear map to x </div><div class="ttdef"><b>Definition:</b> LinearMap.h:43</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -517,7 +558,7 @@ Here is the call graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_linear_map1_d.html">LinearMap1D</a></li>
-    <li class="footer">Generated on Mon Sep 1 2014 00:13:37 for CARTAVIS by
+    <li class="footer">Generated on Mon Sep 1 2014 00:34:38 for CARTAVIS by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>

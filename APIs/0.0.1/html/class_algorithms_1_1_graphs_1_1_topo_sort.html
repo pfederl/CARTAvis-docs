@@ -171,7 +171,15 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>initiate algorithm with n vertices, numbered from 0..(n-1) </p>
-
+<div class="fragment"><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    Q_ASSERT( n &gt;= 0);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="class_algorithms_1_1_graphs_1_1_topo_sort.html#a905f7eddd79e4f96b5e73f8ddbc959a5">m_counts</a>.resize( n, 0);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="class_algorithms_1_1_graphs_1_1_topo_sort.html#a9ffbc1106bf745197b08a88faccca925">m_arrows</a>.resize( n, <a class="code" href="class_algorithms_1_1_graphs_1_1_topo_sort.html#ae3e066a7faf94522fc492a2fe189a69e">VI</a>());</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;}</div>
+<div class="ttc" id="class_algorithms_1_1_graphs_1_1_topo_sort_html_a9ffbc1106bf745197b08a88faccca925"><div class="ttname"><a href="class_algorithms_1_1_graphs_1_1_topo_sort.html#a9ffbc1106bf745197b08a88faccca925">Algorithms::Graphs::TopoSort::m_arrows</a></div><div class="ttdeci">std::vector&lt; VI &gt; m_arrows</div><div class="ttdoc">for each vertex we keep a list of outgoing arrows </div><div class="ttdef"><b>Definition:</b> TopoSort.h:53</div></div>
+<div class="ttc" id="class_algorithms_1_1_graphs_1_1_topo_sort_html_ae3e066a7faf94522fc492a2fe189a69e"><div class="ttname"><a href="class_algorithms_1_1_graphs_1_1_topo_sort.html#ae3e066a7faf94522fc492a2fe189a69e">Algorithms::Graphs::TopoSort::VI</a></div><div class="ttdeci">std::vector&lt; int &gt; VI</div><div class="ttdef"><b>Definition:</b> TopoSort.h:36</div></div>
+<div class="ttc" id="class_algorithms_1_1_graphs_1_1_topo_sort_html_a905f7eddd79e4f96b5e73f8ddbc959a5"><div class="ttname"><a href="class_algorithms_1_1_graphs_1_1_topo_sort.html#a905f7eddd79e4f96b5e73f8ddbc959a5">Algorithms::Graphs::TopoSort::m_counts</a></div><div class="ttdeci">VI m_counts</div><div class="ttdoc">counts of incoming arrows for each vertex </div><div class="ttdef"><b>Definition:</b> TopoSort.h:50</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -200,7 +208,20 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>add an arrow from vertex a to b </p>
-
+<div class="fragment"><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    Q_ASSERT( a &gt;= 0 &amp;&amp; b &gt;= 0);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    Q_ASSERT( <span class="keywordtype">size_t</span>(a) &lt; <a class="code" href="class_algorithms_1_1_graphs_1_1_topo_sort.html#a905f7eddd79e4f96b5e73f8ddbc959a5">m_counts</a>.size() &amp;&amp; size_t(b) &lt; <a class="code" href="class_algorithms_1_1_graphs_1_1_topo_sort.html#a905f7eddd79e4f96b5e73f8ddbc959a5">m_counts</a>.size());</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    Q_ASSERT( a != b);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="comment">// add the arrow</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="class_algorithms_1_1_graphs_1_1_topo_sort.html#a9ffbc1106bf745197b08a88faccca925">m_arrows</a>[a].push_back(b);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="comment">// increment the count</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="class_algorithms_1_1_graphs_1_1_topo_sort.html#a905f7eddd79e4f96b5e73f8ddbc959a5">m_counts</a>[b] ++;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div>
+<div class="ttc" id="class_algorithms_1_1_graphs_1_1_topo_sort_html_a9ffbc1106bf745197b08a88faccca925"><div class="ttname"><a href="class_algorithms_1_1_graphs_1_1_topo_sort.html#a9ffbc1106bf745197b08a88faccca925">Algorithms::Graphs::TopoSort::m_arrows</a></div><div class="ttdeci">std::vector&lt; VI &gt; m_arrows</div><div class="ttdoc">for each vertex we keep a list of outgoing arrows </div><div class="ttdef"><b>Definition:</b> TopoSort.h:53</div></div>
+<div class="ttc" id="class_algorithms_1_1_graphs_1_1_topo_sort_html_a905f7eddd79e4f96b5e73f8ddbc959a5"><div class="ttname"><a href="class_algorithms_1_1_graphs_1_1_topo_sort.html#a905f7eddd79e4f96b5e73f8ddbc959a5">Algorithms::Graphs::TopoSort::m_counts</a></div><div class="ttdeci">VI m_counts</div><div class="ttdoc">counts of incoming arrows for each vertex </div><div class="ttdef"><b>Definition:</b> TopoSort.h:50</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -226,7 +247,56 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>compute and return the sorted vertices </p>
-
+<div class="fragment"><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;{</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">size_t</span> n = <a class="code" href="class_algorithms_1_1_graphs_1_1_topo_sort.html#a905f7eddd79e4f96b5e73f8ddbc959a5">m_counts</a>.size();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment">// initialize the list of vertices with currently 0 count</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="class_algorithms_1_1_graphs_1_1_topo_sort.html#ae3e066a7faf94522fc492a2fe189a69e">VI</a> result;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    std::stack&lt;int&gt; zeroes;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordflow">for</span>( <span class="keywordtype">size_t</span> i = 0 ; i &lt; n ; i ++ ) {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordflow">if</span>( <a class="code" href="class_algorithms_1_1_graphs_1_1_topo_sort.html#a905f7eddd79e4f96b5e73f8ddbc959a5">m_counts</a>[i] == 0) {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            zeroes.push(i);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        }</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    }</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="comment">// main loop</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">while</span>(1) {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="comment">// if we have nothing in zeroes, we are done with the loop</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordflow">if</span>( zeroes.empty()) {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="comment">// get &amp; remove the last entry from the zero list</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keyword">auto</span> a = zeroes.top();</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        zeroes.pop();</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="comment">// for every arrow from a, update the counter of the destination</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordflow">for</span>( <span class="keyword">auto</span> b : <a class="code" href="class_algorithms_1_1_graphs_1_1_topo_sort.html#a9ffbc1106bf745197b08a88faccca925">m_arrows</a>[a]) {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <a class="code" href="class_algorithms_1_1_graphs_1_1_topo_sort.html#a905f7eddd79e4f96b5e73f8ddbc959a5">m_counts</a>[b] --;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="comment">// if the counter reached 0, add b to the zeros</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <span class="keywordflow">if</span>( <a class="code" href="class_algorithms_1_1_graphs_1_1_topo_sort.html#a905f7eddd79e4f96b5e73f8ddbc959a5">m_counts</a>[b] == 0) {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                zeroes.push( b);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="comment">// add a to the results</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        result.push_back( a);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="comment">// we are done with this iteration, go try the next one</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="comment">// if we still have unprocessed vertices, we have a cycle</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">if</span>( result.size() != <a class="code" href="class_algorithms_1_1_graphs_1_1_topo_sort.html#a905f7eddd79e4f96b5e73f8ddbc959a5">m_counts</a>.size()) {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="comment">// we have a cycle</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        qWarning() &lt;&lt; <span class="stringliteral">&quot;Cycle!!!&quot;</span>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="class_algorithms_1_1_graphs_1_1_topo_sort.html#ae3e066a7faf94522fc492a2fe189a69e">VI</a>();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;}</div>
+<div class="ttc" id="class_algorithms_1_1_graphs_1_1_topo_sort_html_a9ffbc1106bf745197b08a88faccca925"><div class="ttname"><a href="class_algorithms_1_1_graphs_1_1_topo_sort.html#a9ffbc1106bf745197b08a88faccca925">Algorithms::Graphs::TopoSort::m_arrows</a></div><div class="ttdeci">std::vector&lt; VI &gt; m_arrows</div><div class="ttdoc">for each vertex we keep a list of outgoing arrows </div><div class="ttdef"><b>Definition:</b> TopoSort.h:53</div></div>
+<div class="ttc" id="class_algorithms_1_1_graphs_1_1_topo_sort_html_ae3e066a7faf94522fc492a2fe189a69e"><div class="ttname"><a href="class_algorithms_1_1_graphs_1_1_topo_sort.html#ae3e066a7faf94522fc492a2fe189a69e">Algorithms::Graphs::TopoSort::VI</a></div><div class="ttdeci">std::vector&lt; int &gt; VI</div><div class="ttdef"><b>Definition:</b> TopoSort.h:36</div></div>
+<div class="ttc" id="class_algorithms_1_1_graphs_1_1_topo_sort_html_a905f7eddd79e4f96b5e73f8ddbc959a5"><div class="ttname"><a href="class_algorithms_1_1_graphs_1_1_topo_sort.html#a905f7eddd79e4f96b5e73f8ddbc959a5">Algorithms::Graphs::TopoSort::m_counts</a></div><div class="ttdeci">VI m_counts</div><div class="ttdoc">counts of incoming arrows for each vertex </div><div class="ttdef"><b>Definition:</b> TopoSort.h:50</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -293,7 +363,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_algorithms.html">Algorithms</a></li><li class="navelem"><a class="el" href="namespace_algorithms_1_1_graphs.html">Graphs</a></li><li class="navelem"><a class="el" href="class_algorithms_1_1_graphs_1_1_topo_sort.html">TopoSort</a></li>
-    <li class="footer">Generated on Mon Sep 1 2014 00:13:37 for CARTAVIS by
+    <li class="footer">Generated on Mon Sep 1 2014 00:34:38 for CARTAVIS by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>

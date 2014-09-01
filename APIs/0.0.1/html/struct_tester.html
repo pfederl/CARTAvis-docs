@@ -188,7 +188,8 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
+<div class="fragment"><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;{}</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="a38908bcf28b8f019886ae1ef9c9c0580"></a>
@@ -212,7 +213,11 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
+<div class="fragment"><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                       {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <a class="code" href="struct_tester.html#a71dc216dcbf10c67ad8f2ae77bfb7456">m_input</a> = s.simplified();</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    }</div>
+<div class="ttc" id="struct_tester_html_a71dc216dcbf10c67ad8f2ae77bfb7456"><div class="ttname"><a href="struct_tester.html#a71dc216dcbf10c67ad8f2ae77bfb7456">Tester::m_input</a></div><div class="ttdeci">QString m_input</div><div class="ttdef"><b>Definition:</b> SliceTester.cpp:128</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -236,7 +241,9 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
+<div class="fragment"><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;{ <span class="keywordflow">return</span> <span class="stringliteral">&quot;Testing &quot;</span> + <a class="code" href="struct_tester.html#a71dc216dcbf10c67ad8f2ae77bfb7456">m_input</a>.toStdString();}</div>
+<div class="ttc" id="struct_tester_html_a71dc216dcbf10c67ad8f2ae77bfb7456"><div class="ttname"><a href="struct_tester.html#a71dc216dcbf10c67ad8f2ae77bfb7456">Tester::m_input</a></div><div class="ttdeci">QString m_input</div><div class="ttdef"><b>Definition:</b> SliceTester.cpp:128</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="a33c9ac6a868f3f6b5ef373e9f08f5345"></a>
@@ -259,7 +266,9 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
+<div class="fragment"><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="struct_tester.html#aea03a36fdbfefb14cb94c79c34faa8ea">m_passed</a>; }</div>
+<div class="ttc" id="struct_tester_html_aea03a36fdbfefb14cb94c79c34faa8ea"><div class="ttname"><a href="struct_tester.html#aea03a36fdbfefb14cb94c79c34faa8ea">Tester::m_passed</a></div><div class="ttdeci">bool m_passed</div><div class="ttdef"><b>Definition:</b> SliceTester.cpp:131</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="aff6883969a1482256d0e297d6d40f754"></a>
@@ -282,7 +291,21 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
+<div class="fragment"><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                       {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordflow">if</span>( ! <a class="code" href="struct_tester.html#a1aef3e744644c6300b19b8d2b8bec6d2">m_internalError</a>.isEmpty()) {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            <span class="keywordflow">return</span> <span class="stringliteral">&quot;Internal error: &quot;</span> + <a class="code" href="struct_tester.html#a1aef3e744644c6300b19b8d2b8bec6d2">m_internalError</a>.toStdString();</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            std::string extra;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <span class="keywordflow">if</span>( ! <a class="code" href="struct_tester.html#a039a79f8e417421211ba61273e304b0a">m_extraInfo</a>.isEmpty()) {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                extra = <span class="stringliteral">&quot; //&quot;</span> + <a class="code" href="struct_tester.html#a039a79f8e417421211ba61273e304b0a">m_extraInfo</a>.toStdString();</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            }</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            <span class="keywordflow">return</span> <span class="stringliteral">&quot;Result: &quot;</span> + toStr( <a class="code" href="struct_tester.html#aeb86c2ed5505d478c5de5c83d4a9b1fe">m_result</a>) + extra;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        }</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    }</div>
+<div class="ttc" id="struct_tester_html_a1aef3e744644c6300b19b8d2b8bec6d2"><div class="ttname"><a href="struct_tester.html#a1aef3e744644c6300b19b8d2b8bec6d2">Tester::m_internalError</a></div><div class="ttdeci">QString m_internalError</div><div class="ttdef"><b>Definition:</b> SliceTester.cpp:129</div></div>
+<div class="ttc" id="struct_tester_html_aeb86c2ed5505d478c5de5c83d4a9b1fe"><div class="ttname"><a href="struct_tester.html#aeb86c2ed5505d478c5de5c83d4a9b1fe">Tester::m_result</a></div><div class="ttdeci">Slice1D::ApplyResult m_result</div><div class="ttdef"><b>Definition:</b> SliceTester.cpp:130</div></div>
+<div class="ttc" id="struct_tester_html_a039a79f8e417421211ba61273e304b0a"><div class="ttname"><a href="struct_tester.html#a039a79f8e417421211ba61273e304b0a">Tester::m_extraInfo</a></div><div class="ttdeci">QString m_extraInfo</div><div class="ttdef"><b>Definition:</b> SliceTester.cpp:132</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="a9dddc60b4882130e392944262cca160b"></a>
@@ -305,7 +328,108 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
+<div class="fragment"><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;               {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        QTextStream extra( &amp; <a class="code" href="struct_tester.html#a039a79f8e417421211ba61273e304b0a">m_extraInfo</a>);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <a class="code" href="class_slice1_d.html">Slice1D</a> slice;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <a class="code" href="struct_tester.html#a330ecb132e632df91639cc38312b8be6">Index</a> expectedCount, expectedStart, expectedStep;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <a class="code" href="struct_tester.html#a330ecb132e632df91639cc38312b8be6">Index</a> n;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        QStringList lv1 = <a class="code" href="struct_tester.html#a71dc216dcbf10c67ad8f2ae77bfb7456">m_input</a>.split( <span class="charliteral">&#39; &#39;</span>, QString::SkipEmptyParts);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordflow">if</span>( lv1.size() != 3) {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <a class="code" href="struct_tester.html#a1aef3e744644c6300b19b8d2b8bec6d2">m_internalError</a> = <span class="stringliteral">&quot;need 3 parts to input&quot;</span>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        }</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordtype">bool</span> ok;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="comment">// parse out n</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        n = lv1[0].toInt( &amp; ok);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordflow">if</span>( ! ok) {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <a class="code" href="struct_tester.html#a1aef3e744644c6300b19b8d2b8bec6d2">m_internalError</a> = <span class="stringliteral">&quot;bad n&quot;</span>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        extra &lt;&lt; <span class="stringliteral">&quot;n=&quot;</span> &lt;&lt; n &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="comment">// parse slice (it could be</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        QStringList lv2 = lv1[1].split( <span class="charliteral">&#39;:&#39;</span>);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="comment">// handle single index</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordflow">if</span>( lv2.size() == 1) {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <a class="code" href="struct_tester.html#a330ecb132e632df91639cc38312b8be6">Index</a> start = lv2[0].toInt( &amp; ok);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <span class="keywordflow">if</span>( ! ok) { <a class="code" href="struct_tester.html#a1aef3e744644c6300b19b8d2b8bec6d2">m_internalError</a> = <span class="stringliteral">&quot;bad single index&quot;</span>; <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            extra &lt;&lt; <span class="stringliteral">&quot;[&quot;</span> &lt;&lt; start &lt;&lt; <span class="stringliteral">&quot;]&quot;</span>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            slice.<a class="code" href="class_slice1_d.html#a68c9d6d45d62ee89796c2776010d76e8">index</a>( start);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>( lv2.size() &gt; 3) {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            <a class="code" href="struct_tester.html#a1aef3e744644c6300b19b8d2b8bec6d2">m_internalError</a> = <span class="stringliteral">&quot;slice needs &lt;=3 integers&quot;</span>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            <span class="comment">// padd the slice with empty strings</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            <span class="keywordflow">while</span>( lv2.size() &lt; 3) {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                lv2.append( <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <span class="keywordflow">if</span>( ! lv2[0].isEmpty()) {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                <a class="code" href="struct_tester.html#a330ecb132e632df91639cc38312b8be6">Index</a> start = lv2[0].toInt( &amp; ok);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                <span class="keywordflow">if</span>( ! ok) { <a class="code" href="struct_tester.html#a1aef3e744644c6300b19b8d2b8bec6d2">m_internalError</a> = <span class="stringliteral">&quot;bad start&quot;</span>; <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                extra &lt;&lt; start;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                slice.<a class="code" href="class_slice1_d.html#a9b26f5cf03dffd3da6c99a73ce3ed62a">start</a>( start);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            }</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            extra &lt;&lt; <span class="stringliteral">&quot;:&quot;</span>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            <span class="keywordflow">if</span>( ! lv2[1].isEmpty()) {</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                <a class="code" href="struct_tester.html#a330ecb132e632df91639cc38312b8be6">Index</a> end = lv2[1].toInt( &amp; ok);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                <span class="keywordflow">if</span>( ! ok) { <a class="code" href="struct_tester.html#a1aef3e744644c6300b19b8d2b8bec6d2">m_internalError</a> = <span class="stringliteral">&quot;bad end&quot;</span>; <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                slice.<a class="code" href="class_slice1_d.html#ad2126e886674a76d2ea88517237f06c0">end</a>( end);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                extra &lt;&lt; end;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            extra &lt;&lt; <span class="stringliteral">&quot;:&quot;</span>;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            <span class="keywordflow">if</span>( ! lv2[2].isEmpty()) {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                <a class="code" href="struct_tester.html#a330ecb132e632df91639cc38312b8be6">Index</a> step = lv2[2].toInt( &amp; ok);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                <span class="keywordflow">if</span>( ! ok) { <a class="code" href="struct_tester.html#a1aef3e744644c6300b19b8d2b8bec6d2">m_internalError</a> = <span class="stringliteral">&quot;bad step&quot;</span>; <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                slice.<a class="code" href="class_slice1_d.html#ae904b62aa0945ca32258469944fa291f">step</a>( step);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                extra &lt;&lt; step;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            }</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        }</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="comment">// parse expected values</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        QStringList lv3 = lv1[2].split( <span class="charliteral">&#39;,&#39;</span>);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="keywordflow">if</span>( lv3.size() != 3) {</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            <a class="code" href="struct_tester.html#a1aef3e744644c6300b19b8d2b8bec6d2">m_internalError</a> = <span class="stringliteral">&quot;expected values need 3 integers&quot;</span>;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        }</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        expectedStart = lv3[0].toInt( &amp; ok);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <span class="keywordflow">if</span>( ! ok) { <a class="code" href="struct_tester.html#a1aef3e744644c6300b19b8d2b8bec6d2">m_internalError</a> = <span class="stringliteral">&quot;bad expected start&quot;</span>; <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        expectedCount = lv3[1].toInt( &amp; ok);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="keywordflow">if</span>( ! ok) { <a class="code" href="struct_tester.html#a1aef3e744644c6300b19b8d2b8bec6d2">m_internalError</a> = <span class="stringliteral">&quot;bad expected end&quot;</span>; <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        expectedStep = lv3[2].toInt( &amp; ok);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <span class="keywordflow">if</span>( ! ok) { <a class="code" href="struct_tester.html#a1aef3e744644c6300b19b8d2b8bec6d2">m_internalError</a> = <span class="stringliteral">&quot;bad expected step&quot;</span>; <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment">//        m_result = slice.apply( n);</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <a class="code" href="struct_tester.html#aeb86c2ed5505d478c5de5c83d4a9b1fe">m_result</a> = slice.<a class="code" href="class_slice1_d.html#ae340c72af44abc9ea10716bd88784ccd">cpythonApply</a>( n);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="comment">// compare vs expected values</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <a class="code" href="struct_tester.html#aea03a36fdbfefb14cb94c79c34faa8ea">m_passed</a> = <a class="code" href="struct_tester.html#aeb86c2ed5505d478c5de5c83d4a9b1fe">m_result</a>.<a class="code" href="struct_slice1_d_1_1_apply_result.html#a7adcc9ef41e2bc5ea426ef8e9e87112d">count</a> == expectedCount</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                   &amp;&amp; <a class="code" href="struct_tester.html#aeb86c2ed5505d478c5de5c83d4a9b1fe">m_result</a>.<a class="code" href="struct_slice1_d_1_1_apply_result.html#aeb17733eb6ca289f7d96a1c3294272ba">start</a> == expectedStart</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                   &amp;&amp; <a class="code" href="struct_tester.html#aeb86c2ed5505d478c5de5c83d4a9b1fe">m_result</a>.<a class="code" href="struct_slice1_d_1_1_apply_result.html#ae268978891b5b5315674a4435e7ccdb0">step</a> == expectedStep;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    }</div>
+<div class="ttc" id="class_slice1_d_html_ae340c72af44abc9ea10716bd88784ccd"><div class="ttname"><a href="class_slice1_d.html#ae340c72af44abc9ea10716bd88784ccd">Slice1D::cpythonApply</a></div><div class="ttdeci">ApplyResult cpythonApply(Index n)</div><div class="ttdoc">this is adaptation of cpython&#39;s PySlice_GetIndicesEx() https://docs.python.org/2/c-api/slice.html </div><div class="ttdef"><b>Definition:</b> Slice.cpp:101</div></div>
+<div class="ttc" id="class_slice1_d_html_ad2126e886674a76d2ea88517237f06c0"><div class="ttname"><a href="class_slice1_d.html#ad2126e886674a76d2ea88517237f06c0">Slice1D::end</a></div><div class="ttdeci">Slice1D &amp; end(Index e)</div><div class="ttdoc">set stop (the index past the last element to be extracted) </div><div class="ttdef"><b>Definition:</b> Slice.cpp:25</div></div>
+<div class="ttc" id="struct_tester_html_a330ecb132e632df91639cc38312b8be6"><div class="ttname"><a href="struct_tester.html#a330ecb132e632df91639cc38312b8be6">Tester::Index</a></div><div class="ttdeci">Slice1D::Index Index</div><div class="ttdef"><b>Definition:</b> SliceTester.cpp:22</div></div>
+<div class="ttc" id="struct_tester_html_a1aef3e744644c6300b19b8d2b8bec6d2"><div class="ttname"><a href="struct_tester.html#a1aef3e744644c6300b19b8d2b8bec6d2">Tester::m_internalError</a></div><div class="ttdeci">QString m_internalError</div><div class="ttdef"><b>Definition:</b> SliceTester.cpp:129</div></div>
+<div class="ttc" id="struct_tester_html_aeb86c2ed5505d478c5de5c83d4a9b1fe"><div class="ttname"><a href="struct_tester.html#aeb86c2ed5505d478c5de5c83d4a9b1fe">Tester::m_result</a></div><div class="ttdeci">Slice1D::ApplyResult m_result</div><div class="ttdef"><b>Definition:</b> SliceTester.cpp:130</div></div>
+<div class="ttc" id="class_slice1_d_html_a68c9d6d45d62ee89796c2776010d76e8"><div class="ttname"><a href="class_slice1_d.html#a68c9d6d45d62ee89796c2776010d76e8">Slice1D::index</a></div><div class="ttdeci">void index(Index s)</div><div class="ttdoc">set single index note we do not want chaining here, so we return void </div><div class="ttdef"><b>Definition:</b> Slice.cpp:37</div></div>
+<div class="ttc" id="struct_slice1_d_1_1_apply_result_html_aeb17733eb6ca289f7d96a1c3294272ba"><div class="ttname"><a href="struct_slice1_d_1_1_apply_result.html#aeb17733eb6ca289f7d96a1c3294272ba">Slice1D::ApplyResult::start</a></div><div class="ttdeci">Index start</div><div class="ttdoc">index of the first element to extract -1 means bad result/error </div><div class="ttdef"><b>Definition:</b> Slice.h:82</div></div>
+<div class="ttc" id="struct_tester_html_a71dc216dcbf10c67ad8f2ae77bfb7456"><div class="ttname"><a href="struct_tester.html#a71dc216dcbf10c67ad8f2ae77bfb7456">Tester::m_input</a></div><div class="ttdeci">QString m_input</div><div class="ttdef"><b>Definition:</b> SliceTester.cpp:128</div></div>
+<div class="ttc" id="struct_slice1_d_1_1_apply_result_html_ae268978891b5b5315674a4435e7ccdb0"><div class="ttname"><a href="struct_slice1_d_1_1_apply_result.html#ae268978891b5b5315674a4435e7ccdb0">Slice1D::ApplyResult::step</a></div><div class="ttdeci">Index step</div><div class="ttdoc">the step </div><div class="ttdef"><b>Definition:</b> Slice.h:87</div></div>
+<div class="ttc" id="class_slice1_d_html_ae904b62aa0945ca32258469944fa291f"><div class="ttname"><a href="class_slice1_d.html#ae904b62aa0945ca32258469944fa291f">Slice1D::step</a></div><div class="ttdeci">Slice1D &amp; step(Index s)</div><div class="ttdoc">set step value </div><div class="ttdef"><b>Definition:</b> Slice.cpp:31</div></div>
+<div class="ttc" id="struct_slice1_d_1_1_apply_result_html_a7adcc9ef41e2bc5ea426ef8e9e87112d"><div class="ttname"><a href="struct_slice1_d_1_1_apply_result.html#a7adcc9ef41e2bc5ea426ef8e9e87112d">Slice1D::ApplyResult::count</a></div><div class="ttdeci">Index count</div><div class="ttdoc">how many elements to extract (could be 0) if count == -1, then the extraction is of a single index ...</div><div class="ttdef"><b>Definition:</b> Slice.h:85</div></div>
+<div class="ttc" id="class_slice1_d_html"><div class="ttname"><a href="class_slice1_d.html">Slice1D</a></div><div class="ttdoc">Classes for describing slices of arrays, which are used as input for algorithms that extract views fr...</div><div class="ttdef"><b>Definition:</b> Slice.h:41</div></div>
+<div class="ttc" id="struct_tester_html_a039a79f8e417421211ba61273e304b0a"><div class="ttname"><a href="struct_tester.html#a039a79f8e417421211ba61273e304b0a">Tester::m_extraInfo</a></div><div class="ttdeci">QString m_extraInfo</div><div class="ttdef"><b>Definition:</b> SliceTester.cpp:132</div></div>
+<div class="ttc" id="struct_tester_html_aea03a36fdbfefb14cb94c79c34faa8ea"><div class="ttname"><a href="struct_tester.html#aea03a36fdbfefb14cb94c79c34faa8ea">Tester::m_passed</a></div><div class="ttdeci">bool m_passed</div><div class="ttdef"><b>Definition:</b> SliceTester.cpp:131</div></div>
+<div class="ttc" id="class_slice1_d_html_a9b26f5cf03dffd3da6c99a73ce3ed62a"><div class="ttname"><a href="class_slice1_d.html#a9b26f5cf03dffd3da6c99a73ce3ed62a">Slice1D::start</a></div><div class="ttdeci">Slice1D &amp; start(Index s)</div><div class="ttdoc">set start (index of first element to be extracted) </div><div class="ttdef"><b>Definition:</b> Slice.cpp:19</div></div>
+</div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -387,7 +511,7 @@ Here is the call graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="struct_tester.html">Tester</a></li>
-    <li class="footer">Generated on Mon Sep 1 2014 00:13:37 for CARTAVIS by
+    <li class="footer">Generated on Mon Sep 1 2014 00:34:38 for CARTAVIS by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>
